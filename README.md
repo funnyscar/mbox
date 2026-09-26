@@ -13,7 +13,7 @@ anything beyond is fluff or just unabstracting too many things at once.
 so some mental-model building ground rules:
 - socrates method with chat
 - chat as reference lookup
-- speed up the mental model building cycle. build <-- chat --> refining
+- speed up the mental model building cycle. build <-- chat/library --> refining
 
 projects:
 - [x] mmore
