@@ -24,8 +24,8 @@ projects:
 ⬜ vectorsearch - HNSW, Malkov&Yashunin2016 <br>
 ⬜ umap - <br>
 ⬜ modal<br>
-	* [ ] inferencing
-	* [ ] training
+* [ ] inferencing
+* [ ] training
 ⬜ spark <br>
 ⬜ pixelcnn - oord2016 <br>
 
