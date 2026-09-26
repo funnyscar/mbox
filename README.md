@@ -16,43 +16,52 @@ so some mental-model building ground rules:
 - speed up the mental model building cycle. build abstractions <-- chat/library --> refining
 
 projects:
-- [x] mmore
-- [] gpt
+- [x] mmore - autoregressive
+- [ ] words - transformers model
+- [ ] multi - multimodality
+- [ ] jepa
+- [ ] pysr
+- modal
+	- [ ] inferencing
+	- [ ] training
+- ray
+	- [ ] inference
+	- [ ] train
 
-- [] mapreduce
-- [] bigtable
-- [] spanner
-- [] dynamo
-- [] kafka
-- [] Raft
-- [] Cassandra
-- [] Redis
-- [] CDNs
-- [] Cassandra
+- [ ] mapreduce
+- [ ] bigtable
+- [ ] spanner
+- [ ] dynamo
+- [ ] kafka
+- [ ] Raft
+- [ ] Cassandra
+- [ ] Redis
+- [ ] CDNs
+- [ ] Cassandra
 
-- [] global KV cache
-- [] continuous batching
-- [] load balancing
-- [] auto-scaling
+- [ ] global KV cache
+- [ ] continuous batching
+- [ ] load balancing
+- [ ] auto-scaling
 
-- [] quantization
-- [] decoding
-- [] tail latency
-- [] parallelism
+- [ ] quantization
+- [ ] decoding
+- [ ] tail latency
+- [ ] parallelism
 
-- [] Konnect
-- [] hydrocode sims
+- [ ] Konnect
+- [ ] hydrocode sims
 
-- [] qlib
+- [ ] qlib
 
 
 
-- [] SAP
-- [] DMAIC mini-project
-- [] Queueing simulation in Python
+- [ ] SAP
+- [ ] DMAIC mini-project
+- [ ] Queueing simulation in Python
 
-- [] MIT OCW 2.008 – Design and Manufacturing II
-- [] Measurement and tolerances (calipers, micrometers, GD&T basics)
+- [ ] MIT OCW 2.008 – Design and Manufacturing II
+- [ ] Measurement and tolerances (calipers, micrometers, GD&T basics)
 - 3D printing and CAD (Fusion 360 or Onshape)
 - Laser cutting and sheet metal
 - CNC machining
