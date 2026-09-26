@@ -14,6 +14,7 @@ so some mental-model building ground rules:
 + socrates method with chat
 + chat as reference lookup
 + speed up the mental model building cycle. build abstractions <-- chat/library --> refining
++ *for just reimplementing papers (no abstractions) go to [dl repo](https://github.com/funnyscar/dl), kinda messy organization*
 
 projects:
 
