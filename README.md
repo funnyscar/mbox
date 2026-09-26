@@ -11,70 +11,64 @@ toy problems. as bare bones as possible. such that it fits on an a4 page. and ca
 anything beyond is fluff or just unabstracting too many things at once. 
 
 so some mental-model building ground rules:
-- socrates method with chat
-- chat as reference lookup
-- speed up the mental model building cycle. build abstractions <-- chat/library --> refining
++ socrates method with chat
++ chat as reference lookup
++ speed up the mental model building cycle. build abstractions <-- chat/library --> refining
 
 projects:
 * [x] mmore - autoregressive: bengio2003, oord2016, vaswani2018
 * [ ] autograd - pytorch reimplementation (remove abstractions), kernel implementations
-- [ ] moe - shazeer2017
-- [ ] vectorsearch - HNSW, Malkov2016
-- [ ] words - transformers vaswani2018 - 
-- [ ] multi - multimodality. 
-- [ ] jepa - LeCun2020 - 
-- [ ] pysr - cranmer2023
-- [ ] sparse or linear attention, KV-cache compression
-- [ ] tsne / KLdiv - hinton 2002, 2008
-- [ ] umap - 
-- modal
-	- [ ] inferencing
-	- [ ] training
-- ray
-	- [ ] inference
-	- [ ] train
+* [ ] moe - shazeer2017
+* [ ] vectorsearch - HNSW, Malkov2016
+* [ ] words - transformers vaswani2018 - 
+* [ ] multi - multimodality. 
+* [ ] jepa - LeCun2020 - 
+* [ ] pysr - cranmer2023
+* [ ] sparse or linear attention, KV-cache compression
+* [ ] tsne / KLdiv - hinton 2002, 2008
+* [ ] umap - 
+* modal
+	* [ ] inferencing
+	* [ ] training
+* ray
+	* [ ] inference
+	* [ ] train
 
-- [x] mapreduce - dean2004
-- [ ] spark
-- [ ] bigtable
-- [ ] spanner
-- [ ] dynamo
-- [ ] kafka
-- [ ] Raft
-- [ ] Cassandra
-- [ ] Redis
-- [ ] CDNs
-- [ ] Cassandra
+* [x] mapreduce - dean2004
+* [ ] spark
+* [ ] bigtable
+* [ ] spanner
+* [ ] dynamo
+* [ ] kafka
+* [ ] Raft
+* [ ] Cassandra
+* [ ] Redis
+* [ ] CDNs
+* [ ] Cassandra
 
-- [ ] global KV cache
-- [ ] continuous batching
-- [ ] load balancing
-- [ ] auto-scaling
+* [ ] global KV cache
+* [ ] continuous batching
+* [ ] load balancing
+* [ ] auto-scaling
 
-- [ ] quantization
-- [ ] decoding
-- [ ] tail latency
-- [ ] parallelism
+* [ ] quantization
+* [ ] decoding
+* [ ] tail latency
+* [ ] parallelism
 
-- [ ] Konnect
-- [ ] hydrocode sims
+* [ ] Konnect
+* [ ] hydrocode sims
 
-- [ ] qlib
+* [ ] qlib
 
 
 
-- [ ] SAP
-- [ ] DMAIC mini-project
-- [ ] Queueing simulation in Python
+* [ ] SAP
+* [ ] DMAIC mini-project
+* [ ] Queueing simulation in Python
 
-- [ ] MIT OCW 2.008 – Design and Manufacturing II
-- [ ] Measurement and tolerances (calipers, micrometers, GD&T basics)
-- 3D printing and CAD (Fusion 360 or Onshape)
-- Laser cutting and sheet metal
-- CNC machining
-- Injection molding and casting (understand the design rules even without doing it)
-- Electronics assembly and soldering
-- Cleanroom and semiconductor processes (lithography, deposition, etching), usually via university courses
+* [ ] MIT OCW 2.008 – Design and Manufacturing II
+* [ ] Measurement and tolerances (calipers, micrometers, GD&T basics)
 
 
 
