@@ -16,11 +16,17 @@ so some mental-model building ground rules:
 - speed up the mental model building cycle. build abstractions <-- chat/library --> refining
 
 projects:
-- [x] mmore - autoregressive
-- [ ] words - transformers model
-- [ ] multi - multimodality
-- [ ] jepa
-- [ ] pysr
+- [x] mmore - autoregressive: bengio2003, oord2016, vaswani2018
+- [ ] autograd - pytorch reimplementation (remove abstractions), kernel implementations
+- [ ] moe - shazeer2017
+- [ ] vectorsearch - HNSW, Malkov2016
+- [ ] words - transformers vaswani2018 - 
+- [ ] multi - multimodality. 
+- [ ] jepa - LeCun2020 - 
+- [ ] pysr - cranmer2023
+- [ ] sparse or linear attention, KV-cache compression
+- [ ] tsne / KLdiv - hinton 2002, 2008
+- [ ] umap - 
 - modal
 	- [ ] inferencing
 	- [ ] training
@@ -28,7 +34,8 @@ projects:
 	- [ ] inference
 	- [ ] train
 
-- [ ] mapreduce
+- [x] mapreduce - dean2004
+- [ ] spark
 - [ ] bigtable
 - [ ] spanner
 - [ ] dynamo
