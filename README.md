@@ -21,23 +21,27 @@ projects:
 🟡 [autograd](minimal/autograd) - pytorch reimplementation (remove abstractions), kernel implementations<br>
 ⬜ [sne / tsne / KLdiv](minimal/tsne) - hinton 2002, 2008<br>
 ⬜ [mapreduce](mapreduce) - wordcount, sql, pagerank, dean2004 <br>
-⬜ vectorsearch - HNSW, Malkov&Yashunin2016 <br>
+⬜ [vectorsearch](minimal/words) - HNSW, Malkov&Yashunin2016 <br>
 ⬜ umap - <br>
 ⬜ modal<br>
-* [ ] inferencing
-* [ ] training
 ⬜ spark <br>
 ⬜ pixelcnn - oord2016 <br>
+⬜ pysr - cranmer2023<br>
+⬜ words - transformers vaswani2018<br>
+⬜ moe - shazeer2017<br>
+⬜ ray <br>
+⬜ load balancing <br>
+⬜ auto-scaling <br>
+⬜ global KV cache <br>
+⬜ continuous batching <br>
+⬜ quantization <br>
+⬜ decoding<br>
+⬜ tail latency<br>
+⬜ parallelism<br>
 
-* [ ] moe - shazeer2017
-* [ ] words - transformers vaswani2018 - 
 * [ ] multi - multimodality. 
 * [ ] jepa - LeCun2020 - 
-* [ ] pysr - cranmer2023
 * [ ] sparse or linear attention, KV-cache compression
-* ray
-	* [ ] inference
-	* [ ] train
 
 * [ ] Konnect
 * [ ] bigtable
@@ -50,15 +54,6 @@ projects:
 * [ ] CDNs
 * [ ] Cassandra
 
-* [ ] global KV cache
-* [ ] continuous batching
-* [ ] load balancing
-* [ ] auto-scaling
-
-* [ ] quantization
-* [ ] decoding
-* [ ] tail latency
-* [ ] parallelism
 
 * [ ] hydrocode sims
 
