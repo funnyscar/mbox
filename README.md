@@ -16,8 +16,8 @@ so some mental-model building ground rules:
 + speed up the mental model building cycle. build abstractions <-- chat/library --> refining
 
 projects:
-* [x] mmore - autoregressive: bengio2003, oord2016, vaswani2018
-* [ ] autograd - pytorch reimplementation (remove abstractions), kernel implementations
+✅ mmore - autoregressive: bengio2003, oord2016, vaswani2018 <br>
+⬜ autograd - pytorch reimplementation (remove abstractions), kernel implementations<br>
 * [ ] moe - shazeer2017
 * [ ] vectorsearch - HNSW, Malkov2016
 * [ ] words - transformers vaswani2018 - 
