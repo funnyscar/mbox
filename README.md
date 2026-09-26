@@ -7,7 +7,7 @@ as a **mirror of the mental model in one's head**.
 goal is to suck out the abstraction to apply somewhere else.
 so make sure its something quite foundational.
 
-toy problems. as bare bones as possible. such that it fits on an a4 page. and can understand in 30 sec.
+toy problems. as bare bones as possible. such that it fits on an a4 page. and can re-understand in < 30 sec.
 anything beyond is fluff or just unabstracting too many things at once. 
 
 so some mental-model building ground rules:
