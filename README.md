@@ -18,25 +18,28 @@ so some mental-model building ground rules:
 projects:
 
 ✅ [mmore](minimal/mmore) - autoregressive: bengio2003, oord2016, vaswani2018 <br>
-⬜ [autograd](minimal/autograd) - pytorch reimplementation (remove abstractions), kernel implementations<br>
+🟡 [autograd](minimal/autograd) - pytorch reimplementation (remove abstractions), kernel implementations<br>
+⬜ [sne / tsne / KLdiv](minimal/tsne) - hinton 2002, 2008<br>
+⬜ [mapreduce](mapreduce) - wordcount, sql, pagerank, dean2004 <br>
+⬜ vectorsearch - HNSW, Malkov&Yashunin2016 <br>
+⬜ umap - <br>
+⬜ modal<br>
+	* [ ] inferencing
+	* [ ] training
+⬜ spark <br>
+⬜ pixelcnn - oord2016 <br>
+
 * [ ] moe - shazeer2017
-* [ ] vectorsearch - HNSW, Malkov2016
 * [ ] words - transformers vaswani2018 - 
 * [ ] multi - multimodality. 
 * [ ] jepa - LeCun2020 - 
 * [ ] pysr - cranmer2023
 * [ ] sparse or linear attention, KV-cache compression
-* [ ] tsne / KLdiv - hinton 2002, 2008
-* [ ] umap - 
-* modal
-	* [ ] inferencing
-	* [ ] training
 * ray
 	* [ ] inference
 	* [ ] train
 
-* [x] mapreduce - dean2004
-* [ ] spark
+* [ ] Konnect
 * [ ] bigtable
 * [ ] spanner
 * [ ] dynamo
@@ -57,7 +60,6 @@ projects:
 * [ ] tail latency
 * [ ] parallelism
 
-* [ ] Konnect
 * [ ] hydrocode sims
 
 * [ ] qlib
