@@ -1,24 +1,22 @@
 # mbox
-> models from ground up
-
-project-based learning. one's output = what they know, what they can build
+> project-based learning. one's output = what they know, what they can build
 
 it's so easy to abstract away everything (pytorch, agents, etc). 
-so build minimalistic toy models here.
+so build **minimalistic toy models** here.
 as a **mirror of the mental model in one's head**.
 goal is to suck out the abstraction to apply somewhere else.
-so make sure its something quite foundational alr.
+so make sure its something quite foundational.
 
-toy problems. as bare bones as possible. such that its 1 a4 page. and can understand in 30 sec.
-anything beyond is fluff. 
+toy problems. as bare bones as possible. such that it fits on an a4 page. and can understand in 30 sec.
+anything beyond is fluff or just unabstracting too many things at once. 
 
-so some ground rules:
+so some mental-model building ground rules:
 - socrates method with chat
 - chat as reference lookup
-- basically speed up the mental model building cycle. build <-- chat --> refining
+- speed up the mental model building cycle. build <-- chat --> refining
 
 projects:
-- [] mmore
+- [x] mmore
 - [] gpt
 
 - [] mapreduce
