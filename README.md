@@ -17,8 +17,8 @@ so some mental-model building ground rules:
 
 projects:
 
-✅ mmore - autoregressive: bengio2003, oord2016, vaswani2018 <br>
-⬜ autograd - pytorch reimplementation (remove abstractions), kernel implementations<br>
+✅ [mmore](minimal/mmore) - autoregressive: bengio2003, oord2016, vaswani2018 <br>
+⬜ [autograd](minimal/autograd) - pytorch reimplementation (remove abstractions), kernel implementations<br>
 * [ ] moe - shazeer2017
 * [ ] vectorsearch - HNSW, Malkov2016
 * [ ] words - transformers vaswani2018 - 
