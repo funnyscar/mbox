@@ -23,7 +23,7 @@ context_size = 3
 X, Y = [], []
 
 for name in names:
-	context = [0] * context_size
+	context = [26] * context_size
 	for c in name:
 		idx = ord(c) - ord("a")
 		X.append(context)
