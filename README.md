@@ -18,31 +18,39 @@ so some mental-model building ground rules:
 
 projects:
 
-✅ [mmore](minimal/mmore) - autoregressive: bengio2003, oord2016, vaswani2018 <br>
-🟡 [autograd](minimal/autograd) - pytorch reimplementation (remove abstractions), kernel implementations<br>
-⬜ [sne / tsne / KLdiv](minimal/tsne) - hinton 2002, 2008<br>
-⬜ [mapreduce](mapreduce) - wordcount, sql, pagerank, dean2004 <br>
-⬜ [vectorsearch](minimal/words) - HNSW, Malkov&Yashunin2016 <br>
-⬜ umap - <br>
-⬜ modal<br>
-⬜ spark <br>
-⬜ pixelcnn - oord2016 <br>
-⬜ pysr - cranmer2023<br>
-⬜ words - transformers vaswani2018<br>
+✅ [mmore](minimal/mmore) - autoregressive: bengio2003, oord2016, vaswani2017-ish <br>
+✅ [mapreduce](mapreduce) - wordcount dean2004 <br>
+✅ [autograd](minimal/autograd) - pytorch reimplementation (remove abstractions), fused kernels<br>
+🟡 [sne / tsne / umap](minimal/tsne) - hinton 2002, 2008<br>
+🟡 [vectorsearch](minimal/words) - HNSW, Malkov&Yashunin2016 <br>
+⬜ [words,gpt-*](minimal/words) - larger transformers models vaswani2018<br>
+🟡 [KLdiv / wasserstein / cnfs](minimal/cnfs) - <br>
+🟡 [imagenet](minimal/imagenet) - resnet, vit, deepdream, <br>
+⬜ [multimodality]() - gemini <br>
+⬜ [jepa]() -  <br>
+⬜ [post-training]() - sft, rlhf <br>
+⬜ [spark]() - matei2016 (i took his cs162 class lolz)<br>
+⬜ [pixelcnn]() - oord2016 <br>
+⬜ [modal]() - distributed computing model training<br>
 ⬜ moe - shazeer2017<br>
 ⬜ ray <br>
-⬜ load balancing <br>
-⬜ auto-scaling <br>
-⬜ global KV cache <br>
-⬜ continuous batching <br>
-⬜ quantization <br>
+⬜ kubeflow <br>
+⬜ [pysr]() - cranmer2023<br>
+⬜ [gnome]() - <br>
+⬜ fold - <br>
+⬜ weather - <br>
+⬜ serve efficiency - load balancing, auto-scaling, kvcache, continuous batching <br>
+⬜ inference efficiency - quantization <br>
 ⬜ decoding<br>
 ⬜ tail latency<br>
 ⬜ parallelism<br>
+⬜ sparse or linear attention, KV-cache compression <br>
 
-* [ ] multi - multimodality. 
-* [ ] jepa - LeCun2020 - 
-* [ ] sparse or linear attention, KV-cache compression
+⬜ minichat - 
+⬜ post-trained
+⬜ [alpha ___]() AlphaEvolve, AlphaDev, MuZero, .... 
+⬜ [agentic]() co-scientist
+
 
 * [ ] Konnect
 * [ ] bigtable
@@ -55,11 +63,8 @@ projects:
 * [ ] CDNs
 * [ ] Cassandra
 
-
 * [ ] hydrocode sims
-
 * [ ] qlib
-
 
 
 * [ ] SAP
