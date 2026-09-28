@@ -21,22 +21,23 @@ projects:
 ✅ [mmore](minimal/mmore) - autoregressive: bengio2003, oord2016, vaswani2017-ish <br>
 ✅ [mapreduce](mapreduce) - wordcount dean2004 <br>
 ✅ [autograd](minimal/autograd) - pytorch reimplementation (remove abstractions), fused kernels<br>
-🟡 [sne / tsne / umap](minimal/tsne) - hinton 2002, 2008<br>
+✅ [sne / tsne / umap](minimal/tsne) - hinton 2002, 2008, maybe imagenet future?<br>
 🟡 [vectorsearch](minimal/words) - HNSW, Malkov&Yashunin2016 <br>
-⬜ [words,gpt-*](minimal/words) - larger transformers models vaswani2018<br>
-🟡 [KLdiv / wasserstein / cnfs](minimal/cnfs) - <br>
+🟡 [cnfs](minimal/cnfs) - cnf, kldiv, wasserstein <br>
+🟡 [modal train/data-sharding]() - distributed computing model training<br>
+🟡 [words,gpt-*](minimal/words) - larger transformers models vaswani2018<br>
 🟡 [imagenet](minimal/imagenet) - resnet, vit, deepdream, <br>
 ⬜ [multimodality]() - gemini <br>
 ⬜ [jepa]() -  <br>
 ⬜ [post-training]() - sft, rlhf <br>
 ⬜ [spark]() - matei2016 (i took his cs162 class lolz)<br>
 ⬜ [pixelcnn]() - oord2016 <br>
-⬜ [modal]() - distributed computing model training<br>
-⬜ moe - shazeer2017<br>
-⬜ ray <br>
-⬜ kubeflow <br>
+⬜ [ray]() <br>
+⬜ [kubeflow]() <br>
+⬜ [moe]() - shazeer2017<br>
 ⬜ [pysr]() - cranmer2023<br>
 ⬜ [gnome]() - <br>
+⬜ [miniautopilot]() - <br>
 ⬜ fold - <br>
 ⬜ weather - <br>
 ⬜ serve efficiency - load balancing, auto-scaling, kvcache, continuous batching <br>
@@ -46,10 +47,10 @@ projects:
 ⬜ parallelism<br>
 ⬜ sparse or linear attention, KV-cache compression <br>
 
-⬜ minichat - 
-⬜ post-trained
-⬜ [alpha ___]() AlphaEvolve, AlphaDev, MuZero, .... 
-⬜ [agentic]() co-scientist
+⬜ minichat - <br>
+⬜ post-trained <br>
+⬜ [alpha ___]() alphaevolve, alphadev, MuZero, ....  <br>
+⬜ [agentic]() co-scientist <br>
 
 
 * [ ] Konnect
