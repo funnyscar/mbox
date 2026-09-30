@@ -117,7 +117,7 @@ def train(epochs=5000, out_path="/ckpts/minigpt-0.2.pt"):
 
 	mymodel = MiniGPT().to(device)
 
-	old = "/ckpts/none.pt"
+	old = "/ckpts/minigpt-0.2.pt"
 	if os.path.exists(old):
 		mymodel.load_state_dict(torch.load(old, map_location=device))
 		print(f"Loaded {old}", flush=True)
@@ -161,8 +161,9 @@ def train(epochs=5000, out_path="/ckpts/minigpt-0.2.pt"):
 				print("best val: ", val_loss)
 
 
-	with open("losses-0.1.json", "w") as f:
+	with open("losses-0.2.json", "w") as f:
 		json.dump({"train": lossi, "val": vlossi}, f)
+		vol.commit()
 
 	mymodel.eval()
 	with torch.no_grad():
