@@ -24,7 +24,7 @@ projects:
 ✅ [sne / tsne](minimal/tsne) - hinton 2002, 2008, maybe imagenet future?<br>
 ✅ [flax,jax,xla](minimal/jax) - flax,jax,optax,orbax exploring the deepmind vertical research stack<br>
 ✅ [umaps](minimal/tsne) - rough umaps implemtation<br>
-🟡 [vectorsearch](minimal/tsne) - HNSW, Malkov&Yashunin2016 <br>
+✅ [vectorsearch](minimal/tsne) - HNSW, Malkov&Yashunin2016 <br>
 🟡 [serve efficiency](inference) <br>
 - kvcache,
 - continuous batching
