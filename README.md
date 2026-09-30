@@ -21,53 +21,107 @@ projects:
 ✅ [mmore](minimal/mmore) - autoregressive: bengio2003, oord2016, vaswani2017-ish <br>
 ✅ [mapreduce](mapreduce) - wordcount dean2004 <br>
 ✅ [autograd](minimal/autograd) - pytorch reimplementation (remove abstractions), fused kernels<br>
-✅ [sne / tsne / umap](minimal/tsne) - hinton 2002, 2008, maybe imagenet future?<br>
-🟡 [vectorsearch](minimal/words) - HNSW, Malkov&Yashunin2016 <br>
-🟡 [cnfs](minimal/cnfs) - cnf, kldiv, wasserstein <br>
-🟡 [modal train/data-sharding]() - distributed computing model training<br>
+✅ [sne / tsne](minimal/tsne) - hinton 2002, 2008, maybe imagenet future?<br>
+✅ [flax,jax,xla](minimal/jax) - flax,jax,optax,orbax exploring the deepmind vertical research stack<br>
+✅ [umaps](minimal/tsne) - rough umaps implemtation<br>
+🟡 [vectorsearch](minimal/tsne) - HNSW, Malkov&Yashunin2016 <br>
+🟡 [serve efficiency](inference) <br>
+- kvcache,
+- continuous batching
+- vllm
+- CUDA graphs, spec decoding, prefix caching, paged attention <br>
+- quantization
+🟡 [modal train/data-sharding](modal) - distributed computing model training<br>
+🟡 [kernels](metal) cuDNN,cuBLASS, writing cuda kernels <br>
+🟡 [cuda](metal) nvcc, ptx, sass, amd rocm, hip <br>
+🟡 [cnfs](minimal/cnfs) - cnf, wasserstein <br>
+🟡 [flashattention](minimal/tsne) - flashattention <br>
 🟡 [words,gpt-*](minimal/words) - larger transformers models vaswani2018<br>
 🟡 [imagenet](minimal/imagenet) - resnet, vit, deepdream, <br>
-⬜ [multimodality]() - gemini <br>
-⬜ [jepa]() -  <br>
+🟡 [spark, flink, databricks]() - matei2016 (i took his cs162 class lolz)<br>
+🟡 [multimodality]() - gemini <br>
+🟡 [interpretability]()
+🟡 [ray]() <br>
+🟡 [kubeflow]() <br>
+🟡 [jepa]() -  <br>
+🟡 minichat - <br>
+⬜ [jaxgpt]() -  <br>
 ⬜ [post-training]() - sft, rlhf <br>
-⬜ [spark]() - matei2016 (i took his cs162 class lolz)<br>
 ⬜ [pixelcnn]() - oord2016 <br>
-⬜ [ray]() <br>
-⬜ [kubeflow]() <br>
 ⬜ [moe]() - shazeer2017<br>
 ⬜ [pysr]() - cranmer2023<br>
 ⬜ [gnome]() - <br>
 ⬜ [miniautopilot]() - <br>
 ⬜ fold - <br>
 ⬜ weather - <br>
-⬜ serve efficiency - load balancing, auto-scaling, kvcache, continuous batching <br>
-⬜ inference efficiency - quantization <br>
 ⬜ decoding<br>
 ⬜ tail latency<br>
-⬜ parallelism<br>
+⬜ zookeeper, etcd<br>
+⬜ parallelism, all-reduce<br>
 ⬜ sparse or linear attention, KV-cache compression <br>
-
-⬜ minichat - <br>
-⬜ post-trained <br>
+⬜ nerfs, lightfields, worldmodels - <br>
+⬜ video gen
+⬜ triton - <br>
+⬜ einops - <br>
+⬜ FSDP / DeepSpeed (ZeRO) - <br>
+⬜ megatron lm - <br>
+⬜ post-trained - sft, rlhf, safety, alignment, tooling, mcp<br>
 ⬜ [alpha ___]() alphaevolve, alphadev, MuZero, ....  <br>
 ⬜ [agentic]() co-scientist <br>
+* gambling engine
+	* ⬜ 
+
+* spack
+* openmp, mpi, cuda, hip, fortran
+* suitesparse, petc, trilios, sundials, eigen, Blas, Lapack, mfem
+* sparse matrices
+* LU, QR, SVD, eigenvalue problems, and iterative solvers (CG, GMRES)
+* Floating point: precision, rounding, stability, conditioning.
+
+* meshes
+* fpga, verilog, eecs151
+* navier stokes erodos
+* FreeRTOS / Zephyr:
+* lean4 swarms
+* collierbox, firmware
+* g++, clang, gcc, msvc, custom
+* gRPC, protobufs
+* OS, groundup
+* computer design + fab
+* python interpreters
+* browsers
+* agentic orchestration designs
+* konnect, cad
+* flops, ops speed
+* openEMS, Meep, Optiland, rayoptics, Elmer, FEniCS, OpenFOAM, FreeCAD FEM, CalculiX, Elmer, Code_Aster, Molflow
+* qiskit
+* astrodynamics
+* insane engines
+* engines
+* rocket eng
 
 
-* [ ] Konnect
 * [ ] bigtable
+* [ ] presto, trino
+* [ ] nccl
 * [ ] spanner
 * [ ] dynamo
 * [ ] kafka
-* [ ] Raft
-* [ ] Cassandra
-* [ ] Redis
+* [ ] cassandra
+* [ ] s3, hdfs, gfs, lustre
+* [ ] parquet,arrow
+* [ ] raft
 * [ ] CDNs
-* [ ] Cassandra
 
+* [ ] Konnect
 * [ ] hydrocode sims
 * [ ] qlib
 
 
+* networking, tcp stack, ipconfig ssh ports, rg, old servers
+* abmb, tracing work of 1920 physicists
+
+* cobol
 * [ ] SAP
 * [ ] DMAIC mini-project
 * [ ] Queueing simulation in Python
@@ -77,11 +131,7 @@ projects:
 
 
 
-https://scholar.google.com/citations?user=10WfwCQAAAAJ&hl=en
-
-
-hang up the cape on vibe coding, cuz i like learn nothing.
-these are fundamentals and why not...like a weekend project.
+> hanging up the cape on vibe coding, cuz i like learn nothing. these are fundamentals and why not...like a weekend project.
 
 
 
