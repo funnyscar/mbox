@@ -22,15 +22,16 @@ batchsize = 32
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-# do note every time modal loads from this model it loads this txt as well
-url = "https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt"
-text = urllib.request.urlopen(url).read().decode("utf-8")
-n = int(0.9 * len(text))
+def get_data():
+	url = "https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt"
+	text = urllib.request.urlopen(url).read().decode("utf-8")
+	n = int(0.9 * len(text))
 
-enc = tiktoken.get_encoding('gpt2')
+	enc = tiktoken.get_encoding('gpt2')
 
-data = torch.tensor(enc.encode(text[:n]), dtype=torch.long)
-val_data = torch.tensor(enc.encode(text[n:]), dtype=torch.long)
+	data = torch.tensor(enc.encode(text[:n]), dtype=torch.long)
+	val_data = torch.tensor(enc.encode(text[n:]), dtype=torch.long)
+	return data, val_data, enc
 
 
 def get_batch(d):
@@ -84,19 +85,19 @@ class Block(nn.Module):
 
 
 class MiniGPT(nn.Module):
-	def __init__(self, embedding_size=384, nheads=6, nblocks=6):
+	def __init__(self, vocab_size=50257, embedding_size=384, nheads=6, nblocks=6):
 		super().__init__()
 
 		self.B, self.T, self.C = batchsize, context_size, embedding_size
 		self.d = self.C // nheads
 
-		self.embeddings = nn.Embedding(enc.n_vocab, self.C)
+		self.embeddings = nn.Embedding(vocab_size, self.C)
 		self.pos = nn.Embedding(self.T, self.C) 
 
 		self.blocks = nn.ModuleList([Block(self.C, self.d, nheads) for _ in range(nblocks)])
 
 		self.ln_f = nn.LayerNorm(self.C)
-		self.head = nn.Linear(self.C, enc.n_vocab)
+		self.head = nn.Linear(self.C, vocab_size)
 	
 	def forward(self, tokens):
 		T = tokens.shape[1]
@@ -110,9 +111,10 @@ class MiniGPT(nn.Module):
 
 
 @app.function(image=image, gpu="A10G", volumes={"/ckpts": vol}, timeout=60 * 60)
-def train(epochs=5000, out_path="/ckpts/minigpt-0.1.pt"):
+def train(epochs=5000, out_path="/ckpts/minigpt-0.0.pt"):
+	data, val_data, enc = get_data()
 
-	mymodel = MiniGPT().to(device)
+	mymodel = MiniGPT(vocab_size=enc.n_vocab).to(device)
 
 	old = "/ckpts/minigpt.pt"
 	if os.path.exists(old):
@@ -158,8 +160,9 @@ def train(epochs=5000, out_path="/ckpts/minigpt-0.1.pt"):
 				print("best val: ", val_loss)
 
 
-	with open("losses-0.1.json", "w") as f:
+	with open("losses-0.0.json", "w") as f:
 		json.dump({"train": lossi, "val": vlossi}, f)
+		vol.commit()
 
 	mymodel.eval()
 	with torch.no_grad():

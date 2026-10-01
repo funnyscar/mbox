@@ -10,7 +10,7 @@ class GenRequest(BaseModel):
 app = modal.App("minigpt_serve")
 image = (
 	modal.Image.debian_slim()
-	.pip_install("torch", "tiktoken", "fastapi[standard]")
+	.pip_install("torch", "tiktoken", "fastapi[standard]", "numpy")
 	.add_local_python_source("minigpt_00")
 )
 vol = modal.Volume.from_name("minigpt")
@@ -27,8 +27,8 @@ class Model:
 		self.enc = tiktoken.get_encoding("gpt2")
 		self.context_size = context_size
 
-		self.model = MiniGPT().to("cuda").eval()
-		ckpt = torch.load("/ckpts/minigpt.pt", map_location="cuda")
+		self.model = MiniGPT(vocab_size=self.enc.n_vocab).to("cuda").eval()
+		ckpt = torch.load("/ckpts/minigpt-0.0.pt", map_location="cuda")
 		self.model.load_state_dict(ckpt)
 
 	@modal.method()
