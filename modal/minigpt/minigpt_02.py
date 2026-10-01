@@ -56,7 +56,7 @@ class MiniGPT(nn.Module):
 		self.blocks = nn.ModuleList([Block(self.T, self.C, self.d, nheads) for _ in range(nblocks)])
 
 		self.ln_f = nn.LayerNorm(self.C)
-		self.head = nn.Linear(self.C, vocab_size, bias=False)
+		self.head = nn.Linear(self.C, vocab_size)
 	
 	def forward(self, tokens):
 		T = tokens.shape[1]
