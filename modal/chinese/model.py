@@ -1,8 +1,3 @@
-# VERY small dataset
-# run 0.42 M tokens 
-# so small/data doesn't "understand" english
-# using fine-tuning in later models
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -13,10 +8,7 @@ class MultiHead(nn.Module):
 		super().__init__()
 		self.nh = nheads
 		self.QKV = nn.Linear(C, 3*C, bias=False)
-		self.W0 = nn.Sequential(
-			nn.Linear(C, C, bias=False),
-			nn.Dropout(0.1)
-		)
+		self.W0 = nn.Linear(C, C, bias=False)
 
 	def forward(self, x):
 		B, T, C = x.shape
@@ -34,13 +26,12 @@ class Block(nn.Module):
 		self.mlp = nn.Sequential(
 			nn.Linear(C, C*4, bias=False),
 			nn.GELU(),
-			nn.Linear(C*4, C, bias=False),
-			nn.Dropout(0.1)
+			nn.Linear(C*4, C, bias=False)
 		)
 
 		std = 0.02 / (2 * nblocks) ** 0.5
 		nn.init.normal_(self.mlp[2].weight, mean=0.0, std=std)
-		nn.init.normal_(self.multiheads.W0[0].weight, mean=0.0, std=std)
+		nn.init.normal_(self.multiheads.W0.weight, mean=0.0, std=std)
 
 		self.ln1 = nn.LayerNorm(C)
 		self.ln2 = nn.LayerNorm(C)
@@ -52,11 +43,12 @@ class Block(nn.Module):
 		return x
 
 
-class MainGPT(nn.Module):
+class ChineseGPT(nn.Module):
 	def __init__(self, context_size=128, vocab_size=50304, embedding_size=128, nheads=4, nblocks=4):
 		super().__init__()
 
 		self.Tmax, self.C = context_size, embedding_size
+		self.nheads, self.nblocks = nheads, nblocks
 
 		assert self.C % nheads == 0, "embedding_size must be divisible by nheads"
 
@@ -72,8 +64,6 @@ class MainGPT(nn.Module):
 		self.ln_f = nn.LayerNorm(self.C)
 		self.head = nn.Linear(self.C, vocab_size, bias=False)
 
-		# same matrix, saves parameters 
-		# embedding to id <--> id to embedding
 		self.head.weight = self.embeddings.weight
 	
 	def forward(self, tokens):
