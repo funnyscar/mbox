@@ -1,0 +1,60 @@
+# Ray cluster on GCP: CPU head + autoscaling A100 workers
+# Usage: ray up cluster.yaml   |   ray down cluster.yaml
+cluster_name: chinesegpt
+
+max_workers: 2
+idle_timeout_minutes: 10          # idle GPU nodes shut down automatically
+
+provider:
+  type: gcp
+  region: us-central1
+  availability_zone: us-central1-a
+  project_id: funnyscar
+
+auth:
+  ssh_user: ubuntu
+
+available_node_types:
+  head:
+    resources: {"CPU": 8}
+    node_config:
+      machineType: n2-standard-8
+      disks:
+        - boot: true
+          autoDelete: true
+          type: PERSISTENT
+          initializeParams:
+            diskSizeGb: 100
+            sourceImage: projects/deeplearning-platform-release/global/images/family/common-cpu
+
+  gpu_worker:
+    min_workers: 0
+    max_workers: 2
+    resources: {"CPU": 12, "GPU": 1}
+    node_config:
+      machineType: a2-highgpu-1g      # 1x A100; a2-highgpu-8g = 8x A100 (set GPU: 8)
+      disks:
+        - boot: true
+          autoDelete: true
+          type: PERSISTENT
+          initializeParams:
+            diskSizeGb: 200
+            # GPU image with CUDA; list current families with:
+            # gcloud compute images list --project deeplearning-platform-release
+            sourceImage: projects/deeplearning-platform-release/global/images/family/common-cu124
+      metadata:
+        items:
+          - key: install-nvidia-driver
+            value: "True"
+      scheduling:
+        - onHostMaintenance: TERMINATE   # required for GPU VMs
+        - provisioningModel: SPOT        # cheap; resume handles preemption
+
+head_node_type: head
+
+# copy your code to every node
+file_mounts:
+  /home/ubuntu/app: .
+
+setup_commands:
+  - pip install -U "ray[train]" torch transformers sentencepiece datasets gcsfs
