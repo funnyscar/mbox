@@ -112,6 +112,7 @@ def train(steps=5000, out_path="/data/genz-0.1.pt"):
 			if val_loss < best_val:
 				best_val = val_loss
 				torch.save({
+					"nparams": sum(p.numel() for p in mymodel.parameters() if p.requires_grad),
 					"model": mymodel._orig_mod.state_dict(),
 					"optim": optimizer.state_dict(),
 					"step": step,
@@ -135,6 +136,7 @@ def train(steps=5000, out_path="/data/genz-0.1.pt"):
 		print("val loss: ", val_loss.item())
 
 	print("train loss: ", loss.item())
+	print("n model params: ", sum(p.numel() for p in mymodel.parameters() if p.requires_grad))
 
 	return loss.item(), val_loss.item()
 

@@ -70,8 +70,6 @@ class GenZGPT(nn.Module):
 		self.ln_f = nn.LayerNorm(self.C)
 		self.head = nn.Linear(self.C, vocab_size, bias=False)
 
-		# same matrix, saves parameters 
-		# embedding to id <--> id to embedding
 		self.head.weight = self.embeddings.weight
 	
 	def forward(self, tokens):
