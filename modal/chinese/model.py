@@ -47,6 +47,8 @@ class ChineseGPT(nn.Module):
 	def __init__(self, context_size=128, vocab_size=50304, embedding_size=128, nheads=4, nblocks=4):
 		super().__init__()
 
+		assert vocab_size % 64 == 0
+
 		self.Tmax, self.C = context_size, embedding_size
 		self.nheads, self.nblocks = nheads, nblocks
 

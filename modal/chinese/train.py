@@ -58,13 +58,15 @@ def train(total_steps=8000, model_version="a"):
 	enc = AutoTokenizer.from_pretrained("01-ai/Yi-6B")
 	EOT = enc.eos_token_id
 
-	ds = load_dataset("CASIA-LM/ChineseWebText2.0", split="test", streaming=True)
-	val_ds = ds.take(400)
-	train_ds = ds.skip(400)
+	ds = load_dataset("Skywork/SkyPile-150B", split="train", streaming=True)
+	val_ds = ds.take(1e4)
+	train_ds = ds.skip(1e4)
+
+	n_vocab = (-len(enc) % 64) + len(enc)
 
 	mymodel = ChineseGPT(
 		context_size=context_size,
-		vocab_size=len(enc),
+		vocab_size=n_vocab,
 		# change this line for study
 		embedding_size=128, nheads=2,  nblocks=4	  # 0.8M a
 		# embedding_size=192, nheads=3,  nblocks=4	  # 1.8M b 
@@ -127,6 +129,10 @@ def train(total_steps=8000, model_version="a"):
 
 	for step in range(start, total_steps):
 		tokens, targets = next(batchstream)
+
+		assert tokens.min() >= 0, "negative token"
+		assert tokens.max() < n_vocab, "token id out of bounds"
+
 		with torch.autocast("cuda", dtype=torch.bfloat16):
 			logits = mymodel(tokens)
 			loss = criterion(logits.mT, targets)
@@ -164,7 +170,7 @@ def train(total_steps=8000, model_version="a"):
 			"val": vlossi,
 			"out_path": out_path,
 			"nparams":  nparams,
-			"vocab_size": len(enc),
+			"vocab_size": n_vocab,
 			"context_size": context_size,
 			"embedding_size": mymodel._orig_mod.C,
 			"nheads": mymodel._orig_mod.nheads,
@@ -177,8 +183,6 @@ def train(total_steps=8000, model_version="a"):
 	print("train loss: ", loss.item())
 
 	return loss.item(), val_loss
-
-
 
 @app.local_entrypoint()
 def main():
