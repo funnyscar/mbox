@@ -40,9 +40,8 @@ def get_last_shard_ix():
 	return last_shard_idx
 
 
-@app.function(image=hfimage, cpu=4, volumes={"/data": vol}, timeout=60 * 60)
-def process_tiktok_comments(args):
-	i, hf_path = args
+@app.function(image=hfimage, cpu=4, volumes={"/data": vol}, timeout=60 * 60 * 4, secrets=[modal.Secret.from_name("huggingface-secret")])
+def process_tiktok_comments(hf_path):
 
 	import os
 	import re
@@ -73,19 +72,19 @@ def process_tiktok_comments(args):
 
 		if len(ids) > SHARD:
 			np.array(ids, dtype=np.uint16).tofile(f"/data/big/tiktok_{ym}_{k:03d}.bin")
+			print("wrote", f"/data/big/tiktok_{ym}_{k:03d}.bin", len(ids))
 			k += 1
 			ids = [EOT]
 	
-	if len(ids) <= 1:
+	if len(ids) > 1:
 		np.array(ids, dtype=np.uint16).tofile(f"/data/big/tiktok_{ym}_{k:03d}.bin")
-
-	with open("/data/tiktok_done.txt", "a") as f:
-		f.write(hf_path + "\n")
+		print("wrote", f"/data/big/tiktok_{ym}_{k:03d}.bin", len(ids))
+		
 
 	vol.commit()
 
 	print(f"succcess, finished tiktok task {hf_path}")
-	return 1
+	return hf_path
 
 
 
@@ -164,14 +163,20 @@ def process_reddit_tifu():
 @app.local_entrypoint()
 def main():
 	# process_reddit_tifu.remote()
-	process_reddit.remote()
+	# process_reddit.remote()
 
-	# from huggingface_hub import list_repo_files
-	# files = [f for f in list_repo_files("tiagozip/tiktok", repo_type="dataset")
-	# 	if f.endswith(".parquet") and "comments" in f]
+	from huggingface_hub import list_repo_files
+	files = [f for f in list_repo_files("tiagozip/tiktok", repo_type="dataset")
+		if f.endswith(".parquet") and "comments" in f]
+	
+	print("total num to parse: ", len(files))
+	files = files[5:]
 		
-	# # map this
-	# process_tiktok_comments.map(enumerate(files))
-	# print("success")
+	done_files = list(process_tiktok_comments.map(files, return_exceptions=True))
+
+	with open("tiktok_done.txt", "a") as f:
+		f.write("\n".join(done_files) + "\n")
+
+	print("success")
 
 
