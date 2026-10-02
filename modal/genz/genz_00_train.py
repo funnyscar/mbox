@@ -22,6 +22,7 @@ vol = modal.Volume.from_name("genz", create_if_missing=True)
 
 context_size = 128
 batchsize = 32
+EOT = tiktoken.get_encoding("gpt2").eot_token
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -33,18 +34,27 @@ def get_data():
 	val_data = data[n:]
 	return train_data, val_data
 
-def get_batch(d):
-	ix = torch.randint(len(d) - context_size - 1, (batchsize,))
-	x = torch.stack([d[i:i+context_size] for i in ix])
-	y = torch.stack([d[i+1:i+context_size+1] for i in ix])  # shifted by 1 token
-	return x.to(device), y.to(device)
+def get_starts(d):
+	eot_pos = (d == EOT).nonzero().squeeze(1)
+	eot_pos = torch.cat([torch.tensor([0], device=d.device), eot_pos])
+	return eot_pos[eot_pos < len(d) - context_size - 1]
+
+def get_batch(eotp, d):
+	rstarts = eotp[torch.randint(len(eotp), (batchsize,), device=d.device)] # (B,)
+	ctx_slice = torch.arange(context_size+1, device=d.device) # (T+1,)
+
+	batch = d[rstarts[:, None] + ctx_slice] # (B,1) + (T+1,) = (B, T+1)
+
+	# (B, 0-T), (B, 1 - T+1)
+	return batch[:, :-1], batch[:, 1:]
 
 
 @app.function(image=image, gpu="A10G", volumes={"/data": vol}, timeout=60 * 60)
-def train(steps=5000, out_path="/data/genz-0.0.pt"):
+def train(steps=5000, out_path="/data/genz-0.1.pt"):
 	from genz_00 import GenZGPT
 
 	data, val_data = get_data()
+	eot_pos, val_eot_pos = get_starts(data), get_starts(val_data)
 
 	mymodel = GenZGPT().to(device)
 
@@ -55,7 +65,7 @@ def train(steps=5000, out_path="/data/genz-0.0.pt"):
 	loss = None
 	best_val = float('inf')
 
-	old = "/data/genz-0.0.pt"
+	old = "/data/genz-0.1.pt"
 	if os.path.exists(old):
 		ck = torch.load(old, map_location=device)
 		mymodel.load_state_dict(ck["model"])
@@ -73,7 +83,7 @@ def train(steps=5000, out_path="/data/genz-0.0.pt"):
 
 	for step in range(start, steps):
 
-		tokens, targets = get_batch(data)
+		tokens, targets = get_batch(eot_pos, data)
 
 		# use bfloat16 for training to speed up training and reduce memory usage
 		# fp32 still used for sensitive operations like layernorm and softmax
@@ -92,7 +102,7 @@ def train(steps=5000, out_path="/data/genz-0.0.pt"):
 		if step % 250 == 0:
 			mymodel.eval()
 			with torch.no_grad():
-				tokens, targets = get_batch(val_data)
+				tokens, targets = get_batch(val_eot_pos, val_data)
 				with torch.autocast("cuda", dtype=torch.bfloat16):
 					logits = mymodel(tokens)
 					val_loss = criterion(logits.mT, targets).item()
@@ -112,13 +122,13 @@ def train(steps=5000, out_path="/data/genz-0.0.pt"):
 				print("best val: ", val_loss)
 
 
-	with open("/data/losses-0.0.json", "w") as f:
+	with open("/data/losses-0.1.json", "w") as f:
 		json.dump({"train": lossi, "val": vlossi}, f)
 	vol.commit()
 
 	mymodel.eval()
 	with torch.no_grad():
-		tokens, targets = get_batch(val_data)
+		tokens, targets = get_batch(val_eot_pos, val_data)
 		with torch.autocast("cuda", dtype=torch.bfloat16):
 			logits = mymodel(tokens)
 			val_loss = criterion(logits.mT, targets)

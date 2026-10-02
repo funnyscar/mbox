@@ -7,30 +7,28 @@ class GenRequest(BaseModel):
 	max_tokens: int = Field(200, ge=1, le=500)
 	temperature: float = Field(0.8, gt=0, le=2.0)
 
-app = modal.App("minigpt_serve")
+app = modal.App("genz00_serve")
 image = (
 	modal.Image.debian_slim()
 	.pip_install("torch", "tiktoken", "fastapi[standard]", "numpy")
-	.add_local_python_source("minigpt_02")
+	.add_local_python_source("genz_00")
 )
-vol = modal.Volume.from_name("minigpt")
+vol = modal.Volume.from_name("genz")
 
 
-@app.cls(image=image, gpu="T4", volumes={"/ckpts": vol}, scaledown_window=300, secrets=[modal.Secret.from_name("minigpt-auth")])
+@app.cls(image=image, gpu="T4", volumes={"/data": vol}, scaledown_window=300, secrets=[modal.Secret.from_name("minigpt-auth")])
 class Model:
 	@modal.enter()
 	def load(self):
 		import torch, tiktoken
-		from minigpt_02 import MiniGPT, context_size
-
-		# too slow
+		from genz_00 import MiniGPT, context_size
 
 		self.torch = torch
 		self.enc = tiktoken.get_encoding("gpt2")
 		self.context_size = context_size
 
-		self.model = MiniGPT(vocab_size=self.enc.n_vocab).to("cuda").eval()
-		ckpt = torch.load("/ckpts/minigpt-0.2.pt", map_location="cuda")
+		self.model = GenZGPT().to("cuda").eval()
+		ckpt = torch.load("/data/genz-0.0.pt", map_location="cuda")
 		self.model.load_state_dict(ckpt)
 
 	@modal.method()
@@ -48,12 +46,12 @@ class Model:
 
 	@modal.fastapi_endpoint(method="POST")
 	def web(self, req: GenRequest, authorization: str = Header(None)):
-		import os, secrets
-		expected = os.environ["API_TOKEN"]
-		if not authorization or not secrets.compare_digest(authorization, expected):
-			raise HTTPException(401)
+		# import os, secrets
+		# expected = os.environ["API_TOKEN"]
+		# if not authorization or not secrets.compare_digest(authorization, expected):
+		# 	raise HTTPException(401)
 		return {"text": self.generate.local(req.prompt, req.max_tokens, req.temperature)}
 
 @app.local_entrypoint()
-def main(prompt: str = "ROMEO:"):
+def main(prompt: str = "whats good"):
 	print(Model().generate.remote(prompt))
