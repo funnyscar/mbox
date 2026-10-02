@@ -1,3 +1,5 @@
+# minigpt-00 but we made it a lot bigger
+
 import torch
 import torch.nn as nn
 
