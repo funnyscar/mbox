@@ -28,29 +28,23 @@ projects:
 ✅ [tokenizers](minimal/words) - deepdive internals of tiktoken, Tokenizer <br>
 ✅ [flashattention](inference) - flashattention and fused kernels <br>
 ✅ [minigpt-*](modal/minigpt/) - minigpt-(1.0-2.6) minimal gpt found at chat.funnyscar.com<br>
-- shakespeare - minigpt-0.0, minigpt-0.2
 ✅ [kernels](metal) nvcc -> ptx -> sass, flashattention example might be overkill <br>
 ✅ [cudalibs](metal) cuDNN,cuBLASS, prewritten kernels <br>
 ✅ [triton](minimal/autograd/) basics of fused kernels in python<br>
-⬜ [genz](modal/genz) - gpts trained on the modern lingo<br>
-- genz model
-- genz translator
-⬜ [minortweaks]() - streaming and end on a sentence / complete thought <br>
-⬜ [metalearning]() - small model learns from output of big models...instead of dataset in s3 I just prompt chatgpt for some text<br>
-- like having a conversation
-🟡 [ddp, fsdp](modal) - distributed computing model training ddp, fsdp<br>
-🟡 [kilogpt-*](minimal/words) - kilogpt-(1.0-2.6) larger transformers models vaswani2018<br>
+✅ [ray](ray) - trying out ray for training, serve, data<br>
+🟡 [genz-*](modal/genz) - gpts trained on the modern genz. translator, finetuning, chatbots. <br>
+🟡 [minortweaks]() - streaming and end on a sentence / complete thought <br>
+🟡 [meta-*]() - small model learns from output of big models...instead of dataset in s3 I just prompt chatgpt for some text<br>
+🟡 [ddp, fsdp](modal/chinese) - training via ddp, fsdp, clusters (larger models) <br>
+🟡 [chinesegpt-*](modal/chinese) - scaling laws & gpu throughput study <br>
+🟡 [arxivgpt-*](ray/arxiv) massive<br>
 - arxiv (100 GB per month) - arxiv-1.0, arxiv-2.6
-- chinesegpt
-- eng2chinesegpt
-🟡 [openwebtext-*](minimal/words) - kilogpt-(1.0-2.6) larger transformers models vaswani2018<br>
-- openwebtext () - openwebtext-1.0, openwebtext-2.6
-🟡 [voicechat]() - <br>
-🟡 [gideon,facial meshing]() -  <br>
-🟡 [megagpt-*](minimal/words) - megagpt-(1.0-2.6) larger transformers models vaswani2018<br>
-🟡 [gigagpt-*](minimal/words) - gigagpt-(1.0-2.6) larger transformers models vaswani2018<br>
-🟡 [teragpt-*](minimal/words) - teragpt-(1.0-2.6) larger transformers models vaswani2018<br>
-- a lot of data: https://github.com/niderhoff/nlp-datasets
+🟡 [openwebtext-*](ray/openwebtext/) - kilogpt-(1.0-2.6) larger transformers models vaswani2018<br>
+🟡 [commoncrawl-*](ray/commoncrawl/) - kilogpt-(1.0-2.6) larger transformers models vaswani2018<br>
+🟡 [spokendigit](modal/spokendigit) - mnist for audio diffusion<br>
+🟡 [synth](modal/spokendigit) - bigger audio diffusion<br>
+🟡 [voicechat]() - local encoding + rest streaming<br>
+🟡 [multimodality]() - gemini <br>
 🟡 [serve efficiency](inference) <br>
 - kvcache,
 - continuous batching
@@ -61,14 +55,12 @@ projects:
 🟡 [cnfs](minimal/cnfs) - cnf, wasserstein <br>
 🟡 [imagenet](minimal/imagenet) - resnet, vit, deepdream, <br>
 🟡 [spark, flink, databricks]() - matei2016 (i took his cs162 class lolz)<br>
-🟡 [multimodality]() - gemini <br>
+🟡 [gideon](gideon) - facial meshing, asmr video data <br>
 🟡 [interpretability]()
-🟡 [ray]() <br>
-🟡 [kubeflow]() <br>
 🟡 [jepa]() -  <br>
 🟡 [minichat]() - <br>
 🟡 [agents]() -  <br>
-⬜ [post-training]() - sft, rlhf <br>
+🟡 [post-training]() - sft, rlhf <br>
 ⬜ [pixelcnn]() - oord2016 <br>
 ⬜ [pysr]() - cranmer2023<br>
 ⬜ [gnome]() - <br>
