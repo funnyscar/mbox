@@ -8,6 +8,7 @@ import torch.nn as nn
 import tiktoken
 import modal
 import json
+import math
 
 app = modal.App("metalearning")
 
@@ -26,13 +27,13 @@ batchsize = 32
 enc = tiktoken.get_encoding("o200k_base")
 EOT = enc.eot_token
 EOP = enc.encode_single_token("<|endofprompt|>")
-n_vocab = -(-(len(enc) + 2) // 64) * 64
+n_vocab = -(-enc.n_vocab // 64) * 64
 
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 
-@app.function(image=image, cpu=4, volumes={"/data": vol}, timeout=60 * 60, secrets=[modal.Secret.from_name("metalearning")])
+@app.function(image=image, cpu=4, volumes={"/data": vol}, timeout=60 * 60 * 8, secrets=[modal.Secret.from_name("metalearning")])
 def data_worker(worker_i, state_dict):
 	import os
 	import torch
@@ -41,21 +42,26 @@ def data_worker(worker_i, state_dict):
 	from model import MainGPT
 	enc = tiktoken.get_encoding("o200k_base")
 
+	os.makedirs("/data/shards", exist_ok=True)
+
 	@torch.no_grad()
 	def generate(model, toks, max_new=64, temp=1.0):
-		m = model._orig_mod
+		m = getattr(model, "_orig_mod", model)
+		was = m.training
 		m.eval()
 		x = torch.tensor([toks], device=device)
 		out = []
 		for _ in range(max_new):
-			logits = m(x[:, -context_size:])[:, -1] / temp
+			logits = m(x[:, -context_size:])[:, -1].float() / temp
+			logits[:, enc.n_vocab:] = -float("inf")
 			nxt = torch.multinomial(logits.softmax(-1), 1)
-			if nxt.item() in (EOP, EOT):
+			t = nxt.item()
+			if t in (EOP, EOT):
 				break
-			out.append(nxt.item())
+			out.append(t)
 			x = torch.cat([x, nxt], 1)
-		m.train()
-		return enc.decode([t for t in out if t < len(enc)])
+		m.train(was)
+		return enc.decode(out)	
 	
 	model_path = f"/data/meta-{state_dict['old_model_version']}.pt"
 	mymodel = MainGPT(
@@ -67,16 +73,17 @@ def data_worker(worker_i, state_dict):
 	if os.path.exists(model_path):
 		ck = torch.load(model_path, map_location=device)
 		mymodel.load_state_dict(ck["model"])
-		print(f"Loaded {old_model_version}", flush=True)
+		print(f"Loaded {state_dict['old_model_version']}", flush=True)
 
+	out_path = f"/data/shards/{state_dict['old_model_version']}-{worker_i}.bin"
 	ids = enc.encode_ordinary("Ask me a question.") + [EOP]
 	ice_breaker_len = len(ids)
 	max_tokens = 250
-	temperature = 1.0
 	SHARD = 100_000
 	num_errors = 0
-	with OpenRouter(api_key=os.getenv("OPENROUTER_API_KEY")) as client, torch.no_grad():
-		while len(ids) < SHARD: 
+	n_chunks, written = 0, 0
+	with OpenRouter(api_key=os.getenv("OPEN_ROUTER_API_KEY")) as client, torch.no_grad(), open(out_path, "ab") as f:
+		while written < SHARD: 
 			try:
 				prompt = generate(mymodel, ids[-context_size:])
 				if not prompt.strip():
@@ -92,18 +99,26 @@ def data_worker(worker_i, state_dict):
 				)
 				answer = res.choices[0].message.content or ""
 
+				print(prompt + answer + "\n")
+
 				chunk = enc.encode_ordinary(prompt) + [EOP] + enc.encode_ordinary(answer) + [EOT]
+				f.write(np.asarray(chunk, dtype=np.uint32).tobytes())
+				f.flush()
+				written += len(chunk)
+				n_chunks += 1
+
 				ids.extend(chunk)
+				ids = ids[-context_size:]
+
+				if n_chunks % 20 == 0:
+					vol.commit()
+
 			except Exception as e:
 				print("Error data_worker: ", e)
 				num_errors += 1
 				if num_errors > 10:
 					raise RuntimeError(f"too many API failures: {e}")
 
-	trimmed_chunk = ids[ice_breaker_len:SHARD]
-
-	os.makedirs("/data/shards", exist_ok=True)
-	np.array(trimmed_chunk, dtype=np.uint32).tofile(f"/data/shards/{state_dict['old_model_version']}-{worker_i}.bin")
 	vol.commit()
 	print("fetched data")
 
