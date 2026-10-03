@@ -1,2 +1,3 @@
 *.json
 !losses-a.json
+*.jsonl
