@@ -50,6 +50,7 @@ def train():
 			loss = nn.functional.cross_entropy(cmodel(x).mT, y)
 		opt.zero_grad()
 		loss.backward()
+		torch.nn.utils.clip_grad_norm_(cmodel.parameters(), 1.0)
 		opt.step()
 
 		if step == 20:
