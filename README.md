@@ -31,32 +31,35 @@ projects:
 ✅ [kernels](metal) nvcc -> ptx -> sass, flashattention example might be overkill <br>
 ✅ [cudalibs](metal) cuDNN,cuBLASS, prewritten kernels <br>
 ✅ [triton](minimal/autograd/) basics of fused kernels in python<br>
+✅ [genz-*](modal/genz) - gpts trained on the modern genz. translator, finetuning, chatbots. <br>
+✅ [minortweaks]() - streaming and end on a sentence / complete thought <br>
+✅ [meta-*](modal/meta) - small model learns from output of big models...instead of dataset in s3 I just prompt chatgpt for some text<br>
+✅ [chinesegpt-*](modal/chinese) - scaling laws & gpu throughput study <br>
+✅ [gpu thruput, ddp, fsdp](modal/chinese) - training via ddp, fsdp, clusters (larger models) <br>
+✅ [experimental scaling laws](modal/chinese) - scaling laws & gpu throughput study <br>
+✅ [sft](modal/post_train/) - sft, lora, dpo <br>
+✅ [imagenet-small](minimal/imagenet) - resnet, vit, dit, vae, deepdream<br>
+🟡 [imagenet-large](imagenet) - (need more compute for bare min results) vae, dit, vit, VL, clip <br>
+🟡 [audionet](minimal/audionet) - diff, AST, CLAP, whisper, neural codecs, audioLM, full duplex <br>
+🟡 [obama](gideon) - facial meshing the obama paper <br>
+🟡 [minimultimodality](gemini) - text,audio,images. also explored in [imagenet](imagenet) and [audionet](audionet) separately <br>
+🟡 [voicechat]() - local encoding + rest streaming<br>
+🟡 [gideon](gideon) - facial meshing, asmr video data <br>
+🟡 [videos](minimal/audionet) - vivit <br>
 ✅ [ray](ray) - trying out ray for training, serve, data<br>
-🟡 [genz-*](modal/genz) - gpts trained on the modern genz. translator, finetuning, chatbots. <br>
-🟡 [minortweaks]() - streaming and end on a sentence / complete thought <br>
-🟡 [meta-*]() - small model learns from output of big models...instead of dataset in s3 I just prompt chatgpt for some text<br>
-🟡 [ddp, fsdp](modal/chinese) - training via ddp, fsdp, clusters (larger models) <br>
-🟡 [chinesegpt-*](modal/chinese) - scaling laws & gpu throughput study <br>
 🟡 [arxivgpt-*](ray/arxiv) massive<br>
 - arxiv (100 GB per month) - arxiv-1.0, arxiv-2.6
 🟡 [openwebtext-*](ray/openwebtext/) - kilogpt-(1.0-2.6) larger transformers models vaswani2018<br>
 🟡 [commoncrawl-*](ray/commoncrawl/) - kilogpt-(1.0-2.6) larger transformers models vaswani2018<br>
-🟡 [spokendigit](modal/spokendigit) - mnist for audio diffusion<br>
-🟡 [synth](modal/spokendigit) - bigger audio diffusion<br>
-🟡 [voicechat]() - local encoding + rest streaming<br>
-🟡 [multimodality]() - gemini <br>
 🟡 [serve efficiency](inference) <br>
-- kvcache,
+- kvcache
 - continuous batching
 - vllm
 - CUDA graphs, spec decoding, prefix caching, paged attention <br>
-- quantization
 🟡 [moe]() - shazeer2017<br>
 🟡 [cnfs](minimal/cnfs) - cnf, wasserstein <br>
-🟡 [imagenet](minimal/imagenet) - resnet, vit, deepdream, <br>
 🟡 [spark, flink, databricks]() - matei2016 (i took his cs162 class lolz)<br>
-🟡 [gideon](gideon) - facial meshing, asmr video data <br>
-🟡 [interpretability]()
+🟡 [interpretability]() - grokking <br>
 🟡 [jepa]() -  <br>
 🟡 [minichat]() - <br>
 🟡 [agents]() -  <br>
