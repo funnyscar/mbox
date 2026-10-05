@@ -72,6 +72,9 @@ def train(epochs: int = 200):
 	abar = torch.cumprod(1 - beta, dim=0)
 	opt = torch.optim.AdamW(mymodel.parameters(), lr=1e-4, weight_decay=0) 
 
+	cfg = 4.0
+	NULL = 10
+
 	for epoch in range(epochs):
 		for x, y in train_dl:
 
@@ -91,8 +94,16 @@ def train(epochs: int = 200):
 			y = torch.where(drop_mask, torch.full_like(y, 10), y)
 
 			with torch.autocast("cuda", dtype=torch.bfloat16):
-				pred_noise = cmodel(x_t, t, y)
-			loss = F.mse_loss(pred_noise.float(), noise)
+				xx = torch.cat([x,x], dim=0) # add another batch
+				tt = t.expand(2 * t.shape[0])
+				yy = torch.cat([y, torch.full_like(y, NULL)])
+				pred_noise = cmodel(xx, tt, yy)
+			
+			pnoise_c, pnoise_u = pred_noise.chunk(2)
+			pnoise = pnoise_u + cfg * (pnoise_c - pnoise_u)
+
+			loss = F.mse_loss(pnoise.float(), noise)
+
 
 			opt.zero_grad()
 			loss.backward()
