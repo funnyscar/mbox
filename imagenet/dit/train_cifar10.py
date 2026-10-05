@@ -27,7 +27,7 @@ def download():
     vol.commit()
 
 
-@app.function(image=image, gpu="A100", volumes={"/data": vol}, timeout=60 * 60 * 3, secrets=[hf])
+@app.function(image=image, gpu="A100", cpu=8, volumes={"/data": vol}, timeout=60 * 60 * 15, secrets=[hf])
 def train(epochs: int = 200):
 	import torch
 	import json
@@ -35,8 +35,9 @@ def train(epochs: int = 200):
 	from torchvision.transforms import v2
 	from model_cifar10 import DiT
 	import torch.nn.functional as F
+	from torch.utils.data import DataLoader
 
-	ds = load_dataset("uoft-cs/cifar10", cache_dir=CACHE)
+	ds = load_dataset("uoft-cs/cifar10", split="train", cache_dir=CACHE)
 	tf = v2.Compose([
 		v2.ToImage(),
 		v2.RandomHorizontalFlip(),
@@ -72,9 +73,6 @@ def train(epochs: int = 200):
 	abar = torch.cumprod(1 - beta, dim=0)
 	opt = torch.optim.AdamW(mymodel.parameters(), lr=1e-4, weight_decay=0) 
 
-	cfg = 4.0
-	NULL = 10
-
 	for epoch in range(epochs):
 		for x, y in train_dl:
 
@@ -94,15 +92,8 @@ def train(epochs: int = 200):
 			y = torch.where(drop_mask, torch.full_like(y, 10), y)
 
 			with torch.autocast("cuda", dtype=torch.bfloat16):
-				xx = torch.cat([x,x], dim=0) # add another batch
-				tt = t.expand(2 * t.shape[0])
-				yy = torch.cat([y, torch.full_like(y, NULL)])
-				pred_noise = cmodel(xx, tt, yy)
-			
-			pnoise_c, pnoise_u = pred_noise.chunk(2)
-			pnoise = pnoise_u + cfg * (pnoise_c - pnoise_u)
-
-			loss = F.mse_loss(pnoise.float(), noise)
+				pred_noise = cmodel(x_t, t, y)
+			loss = F.mse_loss(pred_noise.float(), noise)
 
 
 			opt.zero_grad()
@@ -119,14 +110,14 @@ def train(epochs: int = 200):
 
 
 @app.function(image=image, gpu="A10G", volumes={"/data": vol}, timeout=60 * 60 * 3)
-def generate(T: int = 500, steps: int = 50, seed: int = 0) -> bytes:
+def generate(noise_t: int = 500, steps: int = 50, seed: int = 0) -> bytes:
 	import math
 	import torch
 	from datasets import load_dataset
 	from torchvision import transforms
 	from torchvision.utils import make_grid
 	from PIL import Image
-	from model import DiT
+	from model_cifar10 import DiT
 
 	dev = "cuda"
 	g = torch.Generator(device="cpu").manual_seed(seed)
@@ -145,31 +136,34 @@ def generate(T: int = 500, steps: int = 50, seed: int = 0) -> bytes:
 	x0 = tf(ex["img"].convert("RGB"))[None].to(dev)                # (1,3,32,32) in [-1,1]
 	y = torch.tensor([ex["label"]], device=dev)
 
-	# --- schedule ---
-	def alpha_bar(t):
-		s = 0.008
-		return (torch.cos((t + s) / (1 + s) * math.pi / 2) ** 2).clamp(1e-5, 1.0)
+	# --- schedule: must match training ---
+	N = 1000
+	beta = torch.linspace(1e-4, 0.02, N, device=dev)
+	abar = torch.cumprod(1 - beta, dim=0)
 
-	# --- forward: add noise up to T (out of 1000) ---
-	t_start = torch.tensor(T / 1000.0, device=dev)
-	a = alpha_bar(t_start)
+	# --- forward: add noise up to step noise_t ---
+	noise_t = min(max(noise_t, 1), N - 1)
+	a = abar[noise_t]
 	noise = torch.randn(x0.shape, generator=g).to(dev)
 	x_noisy = a.sqrt() * x0 + (1 - a).sqrt() * noise
 
-	# --- reverse: deterministic DDIM from t_start down to 0 ---
+	# --- reverse: deterministic DDIM from noise_t down to 0 ---
 	x = x_noisy
-	ts = torch.linspace(t_start.item(), 0.0, steps + 1, device=dev)
+	ts = torch.linspace(noise_t, 0, steps + 1, device=dev).round().long()
 	with torch.no_grad():
 		for i in range(steps):
 			t, s = ts[i], ts[i + 1]
-			a_t, a_s = alpha_bar(t), alpha_bar(s)
+			if t == s:
+				continue
+			a_t = abar[t]
+			a_s = abar[s] if i < steps - 1 else torch.tensor(1.0, device=dev)
 			with torch.autocast("cuda", dtype=torch.bfloat16):
-				eps = model(x, (t * T_SCALE).expand(1), y).float()
+				eps = model(x, t.expand(1), y).float()
 			x0_hat = ((x - (1 - a_t).sqrt() * eps) / a_t.sqrt()).clamp(-1, 1)
 			x = a_s.sqrt() * x0_hat + (1 - a_s).sqrt() * eps
 
 	mse = ((x - x0) ** 2).mean().item()
-	print(f"idx={idx} label={ex['label']} T={T} steps={steps} recon MSE={mse:.4f}")
+	print(f"idx={idx} label={ex['label']} noise_t={noise_t} steps={steps} recon MSE={mse:.4f}")
 
 	# --- [original | noised | denoised] ---
 	row = (torch.cat([x0, x_noisy.clamp(-1, 1), x.clamp(-1, 1)]) + 1) / 2
@@ -182,11 +176,12 @@ def generate(T: int = 500, steps: int = 50, seed: int = 0) -> bytes:
 
  
 @app.local_entrypoint()
-def main(T: int = 500, steps: int = 50, seed: int = 0):
-	png = generate.remote(T, steps, seed)
+def main(noise_t: int = 500, steps: int = 50, seed: int = 0):
+	# png = generate.remote(T, steps, seed)
 
-	out = f"denoise_T{T}_seed{seed}.png"
-	with open(out, "wb") as f:
-		f.write(png)
-	print(f"saved {out}")
+	# out = f"denoise_T{T}_seed{seed}.png"
+	# with open(out, "wb") as f:
+	# 	f.write(png)
+	# print(f"saved {out}")
+	train.remote()
  
