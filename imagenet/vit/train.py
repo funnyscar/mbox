@@ -134,10 +134,11 @@ def train():
 				total += y.numel()
 				accui.append(correct/total)
 
-				loss = criterion(logits, y)
-				vlossi.append(loss)
+				vloss = criterion(logits, y).item()
+				vlossi.append(vloss)
 			cmymodel.train()
-			rec = {"epoch": epoch, "train_loss": train_loss,
+
+			rec = {"epoch": epoch, "train_loss": loss.item(),
                "val_loss": vloss / n, "acc": correct / n}
 			print(rec)
 			with open("/data/log.jsonl", "a") as f:
