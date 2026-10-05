@@ -1,3 +1,4 @@
+import os
 import modal
 import torch
 import torch.nn as nn
@@ -52,7 +53,7 @@ def train():
 			return batch
 		return f
 
-	ds = load_dataset("ILSVRC/imagenet-1k", cache=CACHE)
+	ds = load_dataset("ILSVRC/imagenet-1k", cache_dir=CACHE)
 	train_ds = ds["train"].with_transform(apply(train_tf))
 	val_ds = ds["validation"].with_transform(apply(val_tf))
 
