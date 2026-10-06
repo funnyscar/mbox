@@ -123,12 +123,11 @@ def train():
 	from torchvision.transforms import v2
 	import torchvision.transforms as transforms
 
-	train_tf = transforms.Compose([
-		transforms.RandomCrop(32, padding=4),
-		transforms.RandomHorizontalFlip(),
-		transforms.RandAugment(num_ops=2, magnitude=9),
-		transforms.ToTensor(),
-		transforms.Normalize(mean, std),
+	train_tf = T.Compose([
+		T.RandomCrop(32, padding=4),
+		T.RandomHorizontalFlip(),
+		T.RandAugment(num_ops=2, magnitude=9),
+		T.ToTensor(),
 	])
 
 	train_ds = load_dataset("uoft-cs/cifar10", split="train", streaming=True)
@@ -140,7 +139,7 @@ def train():
 		return x, y
 
 	def collate(batch):
-		x = torch.stack([b["img"] for b in batch]) 
+		x = torch.stack([T.ToTensor()(b["img"]) for b in batch]) 
 		y = torch.tensor([b["label"] for b in batch])
 		return x, y
 
@@ -182,7 +181,7 @@ def train():
 			logits = mymodel(x)
 			loss = criterion(logits, y)
 
-			optimizer.zero_grad()
+			opt.zero_grad()
 			loss.backward()
 			opt.step()
 			sched.step()
@@ -215,8 +214,8 @@ def train():
 	torch.save(mymodel.state_dict(), "/data/vit_cifar10.pt")
 	
 	vol.commit()
-	return 
+	return loss.item()
 
 @app.local_entrypoint()
 def main():
-	print("final acc:", train.remote(epochs))
+	print("final loss:", train.remote())
