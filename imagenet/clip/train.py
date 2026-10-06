@@ -1,8 +1,11 @@
 # THIS will take a lot of compute from scratch as you train a ViT and a LLM to predict the same embedding
 
 import modal
+import math
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
+from transformers import AutoModel
 
 app = modal.App("imagenet")
 
@@ -43,12 +46,12 @@ class CLIP(nn.Module):
 
 	
 @app.function(image=image, volumes={"/data": vol}, secrets=[hf], gpu="A100", cpu=8, timeout=24 * 60 * 60)
-def train(epochs: int = 5, bs: int = 128):
+def train(epochs: int = 200, bs: int = 128):
 	import math, random
 	import torch, torch.nn as nn, torch.nn.functional as F
 	from datasets import load_dataset
 	from torch.utils.data import DataLoader
-	from transformers import AutoModel, AutoTokenizer, AutoImageProcessor
+	from transformers import  AutoTokenizer, AutoImageProcessor
 
 	IMG, TXT = "google/vit-base-patch16-224", "distilbert-base-uncased"
 	proc, tok = AutoImageProcessor.from_pretrained(IMG), AutoTokenizer.from_pretrained(TXT)

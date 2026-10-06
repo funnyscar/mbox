@@ -1,7 +1,6 @@
 import os
 import torch
 import torch.nn as nn
-import tiktoken
 import modal
 import json
 import math
@@ -11,13 +10,41 @@ app = modal.App("imagenet")
 image = (
 	modal.Image
 		.debian_slim()
-		.pip_install("torch", "datasets", "torchvision", "lpips", "tiktoken")
+		.pip_install("torch", "datasets", "transformers", "torchvision", "lpips", "tiktoken", "sentencepiece")
 		.add_local_python_source("model")
 )
 
 vol = modal.Volume.from_name("imagenet", create_if_missing=True)
+hf = modal.Secret.from_name("huggingface-secret")
 CACHE = "/data/hf_cache"
 CKPT = "/data/vae_cifar10.pt"
+
+@app.function(image=image, volumes={"/data": vol}, secrets=[hf], gpu="A10G")
+def generate(prompts: list[str], idx: int = -1):
+	import random
+	from datasets import load_dataset
+	from transformers import AutoTokenizer, AutoImageProcessor
+
+	IMG, TXT = "google/vit-base-patch16-224", "distilbert-base-uncased"
+	proc, tok = AutoImageProcessor.from_pretrained(IMG), AutoTokenizer.from_pretrained(TXT)
+
+	model = CLIP(VIT_MODEL=IMG, LLM_MODEL=TXT).cuda().eval()
+	model.load_state_dict(torch.load("/data/clip.pt", map_location="cuda"))
+
+	ds = load_dataset("lmms-lab/flickr30k", split="test", cache_dir=CACHE)
+	ex = ds[random.randrange(len(ds)) if idx < 0 else idx]
+
+	pix = proc(ex["image"].convert("RGB"), return_tensors="pt").pixel_values.cuda()
+	txt = tok(prompts, padding=True, truncation=True, max_length=64, return_tensors="pt").to("cuda")
+
+	with torch.no_grad():
+		i = F.normalize(model.img_proj(model.img(pixel_values=pix).last_hidden_state[:, 0]), dim=-1)
+		t = F.normalize(model.txt_proj(model.txt(**txt).last_hidden_state[:, 0]), dim=-1)
+		probs = (model.logit_scale.exp() * i @ t.T).softmax(-1)[0]
+
+	print("true caption:", ex["caption"][0])
+	for p, s in sorted(zip(prompts, probs.tolist()), key=lambda x: -x[1]):
+		print(f"{s:.3f}  {p}")
 
 
 @app.function(image=image, gpu="T4", volumes={"/data": vol}, timeout=60 * 60)
@@ -52,7 +79,7 @@ def train(epochs: int = 30, workers: int = 2, bs: int = 128):
 			l1_loss = (rec - x).abs().mean() + 0.5
 			kl = 0.5 * (mu**2 + logvar.exp() - 1 - logvar).sum(dim=[1, 2, 3]).mean()
 			perc_loss = perc(rec, x).mean()
-			loss = l1_loss * perc_loss + 1e-6 * kl
+			loss = l1_loss + 0.5 * perc_loss + 1e-6 * kl
 
 			opt.zero_grad(set_to_none=True)
 			scaler.scale(loss).backward()

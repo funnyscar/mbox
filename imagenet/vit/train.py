@@ -143,7 +143,7 @@ def train():
 			print(rec)
 			with open("/data/log.jsonl", "a") as f:
 				f.write(json.dumps(rec) + "\n")
-			torch.save({"model": model.state_dict(), "opt": opt.state_dict(),
+			torch.save({"model": mymodel.state_dict(), "opt": opt.state_dict(),
                     "sched": sched.state_dict(), "epoch": epoch}, ckpt_path)
 			vol.commit()
 		

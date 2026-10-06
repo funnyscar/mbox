@@ -41,8 +41,8 @@ def train(epochs: int = 200):
 	tf = v2.Compose([
 		v2.ToImage(),
 		v2.RandomHorizontalFlip(),
-		v2.ToDtype(torch.float32, scale=True),             # [0, 1]
-		v2.Normalize([0.5] * 3, [0.5] * 3),                # [-1, 1]
+		v2.ToDtype(torch.float32, scale=True), # [0, 1]
+		v2.Normalize([0.5] * 3, [0.5] * 3), # [-1, 1]
 	])
 
 	def apply_tf(batch):
@@ -72,6 +72,7 @@ def train(epochs: int = 200):
 	beta = torch.linspace(1e-4, 0.02, T, device=device)
 	abar = torch.cumprod(1 - beta, dim=0)
 	opt = torch.optim.AdamW(mymodel.parameters(), lr=1e-4, weight_decay=0) 
+	sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: min(1.0, (s + 1) / 1000))
 
 	for epoch in range(epochs):
 		for x, y in train_dl:
@@ -98,7 +99,9 @@ def train(epochs: int = 200):
 
 			opt.zero_grad()
 			loss.backward()
+			torch.nn.utils.clip_grad_norm_(mymodel.parameters(), 1.0)
 			opt.step()
+			sched.step()
 
 		print(loss.item())
 
