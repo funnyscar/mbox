@@ -9,7 +9,7 @@ app = modal.App("imagenet")
 image = (
 	modal.Image
 		.debian_slim()
-		.pip_install("torch", "datasets", "torchvision")
+		.pip_install("torch", "datasets", "torchvision", "transformers")
 )
 
 vol = modal.Volume.from_name("imagenet", create_if_missing=True)

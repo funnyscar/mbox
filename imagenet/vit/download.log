@@ -1,0 +1,2559 @@
+✓ Initialized. View run at https://modal.com/apps/curtisjhu/main/ap-hQttOt9npEpmWTeptRjDFd
+✓ Created objects.
+├── 🔨 Created mount /root/mbox/imagenet/vit/train.py
+├── 🔨 Created mount PythonPackage:model
+├── 🔨 Created function download.
+└── 🔨 Created function train.
+
+
+
+
+[1A
+[1ADownloading data:   0%|          | 0/37 [00:00<?, ?files/s][A[A[A
+
+
+
+
+[1A
+[1ADownloading data:   0%|          | 0/37 [00:00<?, ?files/s][A[A[A[A
+
+
+[1A
+[1ADownloading data:   0%|          | 0/37 [00:00<?, ?files/s][A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:   0%|          | 0/37 [00:00<?, ?files/s][A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:   0%|          | 0/37 [00:00<?, ?files/s][A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:   0%|          | 0/37 [00:00<?, ?files/s][A[A[A[A[A
+
+[1A
+[1ADownloading data:   0%|          | 0/37 [00:00<?, ?files/s][A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:   0%|          | 0/35 [00:00<?, ?files/s][A[A[A[A[A[A[A[A
+
+[1A
+[1ADownloading data:   3%|▎         | 1/37 [00:03<02:10,  3.63s/files][A
+
+[1A
+[1ADownloading data:   5%|▌         | 2/37 [00:09<02:46,  4.77s/files][A
+
+
+[1A
+[1ADownloading data:   3%|▎         | 1/37 [00:11<06:54, 11.52s/files][A[A
+
+
+
+
+[1A
+[1ADownloading data:   3%|▎         | 1/37 [00:11<07:08, 11.90s/files][A[A[A[A
+
+[1A
+[1ADownloading data:   8%|▊         | 3/37 [00:12<02:19,  4.11s/files][A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:   3%|▎         | 1/37 [00:12<07:35, 12.64s/files][A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:   3%|▎         | 1/37 [00:15<09:08, 15.23s/files][A[A[A
+
+[1A
+[1ADownloading data:  11%|█         | 4/37 [00:15<02:07,  3.85s/files][A
+
+
+
+
+
+
+[1A
+[1ADownloading data:   3%|▎         | 1/37 [00:15<09:29, 15.83s/files][A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:   3%|▎         | 1/37 [00:16<09:55, 16.54s/files][A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:   5%|▌         | 2/37 [00:18<05:22,  9.22s/files][A[A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:   5%|▌         | 2/37 [00:22<06:25, 11.02s/files][A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:   3%|▎         | 1/35 [00:25<14:16, 25.19s/files][A[A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:   5%|▌         | 2/37 [00:25<07:21, 12.62s/files][A[A[A[A
+
+[1A
+[1ADownloading data:  14%|█▎        | 5/37 [00:27<02:58,  5.57s/files][A
+
+
+
+[1A
+[1ADownloading data:   5%|▌         | 2/37 [00:28<08:26, 14.47s/files][A[A[A
+
+
+
+
+
+
+
+
+[1ADownloading data:   6%|▌         | 2/35 [00:30<08:15, 15.03s/files][A[A[A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:   8%|▊         | 3/37 [00:33<06:19, 11.17s/files][A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:   5%|▌         | 2/37 [00:33<09:54, 16.98s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:   9%|▊         | 3/35 [00:34<06:09, 11.53s/files][A[A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:   8%|▊         | 3/37 [00:34<06:33, 11.59s/files][A[A[A[A
+
+[1A
+[1ADownloading data:  16%|█▌        | 6/37 [00:39<03:24,  6.60s/files][A
+
+[1A
+[1ADownloading data:  19%|█▉        | 7/37 [00:43<03:04,  6.16s/files][A
+
+
+
+
+[1ADownloading data:  11%|█         | 4/37 [00:45<06:13, 11.31s/files][A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:   8%|▊         | 3/37 [00:45<08:32, 15.09s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:   8%|▊         | 3/37 [00:45<08:39, 15.27s/files][A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:   8%|▊         | 3/37 [00:47<08:54, 15.73s/files][A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  11%|█▏        | 4/35 [00:48<06:17, 12.18s/files][A[A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  11%|█         | 4/37 [00:51<07:01, 12.76s/files][A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  11%|█         | 4/37 [00:51<07:03, 12.83s/files][A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  14%|█▎        | 5/37 [00:51<05:31, 10.35s/files][A[A[A[A
+
+[1A
+[1ADownloading data:  22%|██▏       | 8/37 [00:52<03:11,  6.61s/files][A
+
+
+[1A
+[1ADownloading data:  11%|█         | 4/37 [00:55<07:38, 13.91s/files][A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  14%|█▍        | 5/35 [00:57<05:42, 11.41s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  14%|█▎        | 5/37 [00:57<06:07, 11.47s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  11%|█         | 4/37 [00:58<08:00, 14.55s/files][A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  16%|█▌        | 6/37 [01:00<05:11, 10.06s/files][A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  14%|█▎        | 5/37 [01:01<06:31, 12.25s/files][A[A[A
+
+
+[1A
+[1ADownloading data:  14%|█▎        | 5/37 [01:02<06:42, 12.57s/files][A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  14%|█▎        | 5/37 [01:02<06:43, 12.59s/files][A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:   5%|▌         | 2/37 [01:04<18:40, 32.01s/files][A[A[A[A[A
+
+[1A
+[1ADownloading data:  24%|██▍       | 9/37 [01:05<03:24,  7.31s/files][A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  17%|█▋        | 6/35 [01:08<05:30, 11.41s/files][A[A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  16%|█▌        | 6/37 [01:09<05:58, 11.57s/files][A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  16%|█▌        | 6/37 [01:09<06:00, 11.61s/files][A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:   8%|▊         | 3/37 [01:09<13:09, 23.23s/files][A[A[A[A[A
+
+[1A
+[1ADownloading data:  27%|██▋       | 10/37 [01:09<03:08,  6.99s/files][A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  16%|█▌        | 6/37 [01:12<06:13, 12.04s/files][A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  16%|█▌        | 6/37 [01:12<06:14, 12.09s/files][A[A
+
+
+
+[1A
+[1ADownloading data:  19%|█▉        | 7/37 [01:15<05:22, 10.76s/files][A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  11%|█         | 4/37 [01:17<10:38, 19.34s/files][A[A[A[A[A
+
+[1A
+[1ADownloading data:  30%|██▉       | 11/37 [01:17<03:03,  7.07s/files][A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  19%|█▉        | 7/37 [01:18<05:35, 11.18s/files][A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  19%|█▉        | 7/37 [01:19<05:41, 11.40s/files][A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  20%|██        | 7/35 [01:21<05:26, 11.66s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  14%|█▎        | 5/37 [01:22<08:48, 16.51s/files][A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  22%|██▏       | 8/37 [01:23<05:02, 10.43s/files][A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  19%|█▉        | 7/37 [01:24<06:00, 12.03s/files][A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  19%|█▉        | 7/37 [01:24<06:03, 12.12s/files][A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  23%|██▎       | 8/35 [01:25<04:47, 10.63s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  16%|█▌        | 6/37 [01:25<07:24, 14.33s/files][A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  24%|██▍       | 9/37 [01:27<04:32,  9.72s/files][A[A[A
+
+[1A
+[1ADownloading data:  32%|███▏      | 12/37 [01:28<03:04,  7.38s/files][A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  22%|██▏       | 8/37 [01:28<05:22, 11.11s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  26%|██▌       | 9/35 [01:31<04:25, 10.21s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  22%|██▏       | 8/37 [01:35<05:44, 11.89s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  24%|██▍       | 9/37 [01:35<04:56, 10.59s/files][A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  35%|███▌      | 13/37 [01:35<02:56,  7.34s/files][A
+
+
+[1A
+[1ADownloading data:  22%|██▏       | 8/37 [01:35<05:46, 11.94s/files][A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  29%|██▊       | 10/35 [01:36<04:02,  9.70s/files][A[A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  22%|██▏       | 8/37 [01:38<05:55, 12.25s/files][A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  27%|██▋       | 10/37 [01:42<04:35, 10.21s/files][A[A[A
+
+[1A
+[1ADownloading data:  38%|███▊      | 14/37 [01:42<02:48,  7.33s/files][A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  27%|██▋       | 10/37 [01:43<04:40, 10.39s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  31%|███▏      | 11/35 [01:45<03:51,  9.63s/files][A[A[A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  41%|████      | 15/37 [01:46<02:36,  7.10s/files][A
+
+
+
+
+
+[1A
+[1ADownloading data:  19%|█▉        | 7/37 [01:46<07:37, 15.25s/files][A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  24%|██▍       | 9/37 [01:47<05:33, 11.92s/files][A[A[A[A
+
+
+[1A
+[1ADownloading data:  24%|██▍       | 9/37 [01:49<05:41, 12.21s/files][A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  24%|██▍       | 9/37 [01:50<05:44, 12.31s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  30%|██▉       | 11/37 [01:53<04:28, 10.31s/files][A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  22%|██▏       | 8/37 [01:53<06:51, 14.21s/files][A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  27%|██▋       | 10/37 [01:54<05:09, 11.46s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  34%|███▍      | 12/35 [01:56<03:42,  9.67s/files][A[A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  27%|██▋       | 10/37 [01:56<05:13, 11.61s/files][A[A[A[A
+
+[1A
+[1ADownloading data:  43%|████▎     | 16/37 [01:56<02:33,  7.31s/files][A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  32%|███▏      | 12/37 [01:57<04:05,  9.80s/files][A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  24%|██▍       | 9/37 [01:58<06:08, 13.16s/files][A[A[A[A[A
+
+[1A
+[1ADownloading data:  46%|████▌     | 17/37 [02:01<02:22,  7.13s/files][A
+
+
+[1A
+[1ADownloading data:  27%|██▋       | 10/37 [02:02<05:30, 12.25s/files][A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  30%|██▉       | 11/37 [02:03<04:51, 11.19s/files][A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  30%|██▉       | 11/37 [02:06<04:58, 11.46s/files][A[A[A
+
+
+[1A
+[1ADownloading data:  30%|██▉       | 11/37 [02:08<05:04, 11.73s/files][A[A
+
+[1A
+[1ADownloading data:  49%|████▊     | 18/37 [02:09<02:16,  7.17s/files][A
+
+
+
+
+
+[1A
+[1ADownloading data:  27%|██▋       | 10/37 [02:09<05:48, 12.91s/files][A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  32%|███▏      | 12/37 [02:11<04:33, 10.92s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  37%|███▋      | 13/35 [02:12<03:44, 10.19s/files][A[A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  32%|███▏      | 12/37 [02:13<04:38, 11.14s/files][A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  35%|███▌      | 13/37 [02:14<04:08, 10.36s/files][A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  51%|█████▏    | 19/37 [02:16<02:09,  7.18s/files][A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  35%|███▌      | 13/37 [02:16<04:12, 10.51s/files][A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  35%|███▌      | 13/37 [02:18<04:15, 10.65s/files][A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  38%|███▊      | 14/37 [02:20<03:50, 10.00s/files][A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  54%|█████▍    | 20/37 [02:20<01:59,  7.01s/files][A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  40%|████      | 14/35 [02:21<03:31, 10.08s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  30%|██▉       | 11/37 [02:23<05:39, 13.07s/files][A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  38%|███▊      | 14/37 [02:26<04:00, 10.48s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1ADownloading data:  43%|████▎     | 15/35 [02:26<03:15,  9.79s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  41%|████      | 15/37 [02:27<03:35,  9.81s/files][A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  38%|███▊      | 14/37 [02:29<04:05, 10.67s/files][A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  46%|████▌     | 16/35 [02:31<03:00,  9.48s/files][A[A[A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  57%|█████▋    | 21/37 [02:31<01:55,  7.23s/files][A
+
+
+[1A
+[1ADownloading data:  32%|███▏      | 12/37 [02:36<05:25, 13.00s/files][A[A
+
+
+
+
+[1A
+[1ADownloading data:  30%|██▉       | 11/37 [02:36<06:09, 14.20s/files][A[A[A[A
+
+
+
+
+
+
+
+
+[1ADownloading data:  49%|████▊     | 17/35 [02:37<02:46,  9.26s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  32%|███▏      | 12/37 [02:37<05:28, 13.16s/files][A[A[A[A[A
+
+[1A
+[1ADownloading data:  59%|█████▉    | 22/37 [02:38<01:47,  7.20s/files][A
+
+
+[1A
+[1ADownloading data:  35%|███▌      | 13/37 [02:40<04:55, 12.33s/files][A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  41%|████      | 15/37 [02:44<04:00, 10.95s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  43%|████▎     | 16/37 [02:44<03:36, 10.30s/files][A[A[A[A[A[A
+
+[1ADownloading data:  62%|██████▏   | 23/37 [02:48<01:42,  7.32s/files][A
+
+
+
+
+
+[1A
+[1ADownloading data:  35%|███▌      | 13/37 [02:49<05:13, 13.06s/files][A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  32%|███▏      | 12/37 [02:50<05:55, 14.20s/files][A[A[A[A
+
+
+[1A
+[1ADownloading data:  38%|███▊      | 14/37 [02:50<04:40, 12.20s/files][A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  46%|████▌     | 17/37 [02:51<03:22, 10.11s/files][A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  65%|██████▍   | 24/37 [02:51<01:33,  7.16s/files][A
+
+
+
+[1A
+[1ADownloading data:  41%|████      | 15/37 [02:53<04:14, 11.59s/files][A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  43%|████▎     | 16/37 [02:54<03:48, 10.88s/files][A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  35%|███▌      | 13/37 [02:55<05:23, 13.49s/files][A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  51%|█████▏    | 18/35 [02:55<02:45,  9.74s/files][A[A[A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  41%|████      | 15/37 [02:58<04:21, 11.89s/files][A[A
+
+[1A
+[1ADownloading data:  68%|██████▊   | 25/37 [02:58<01:25,  7.14s/files][A
+
+
+
+
+[1A
+[1ADownloading data:  38%|███▊      | 14/37 [03:00<04:56, 12.89s/files][A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  46%|████▌     | 17/37 [03:00<03:32, 10.64s/files][A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  43%|████▎     | 16/37 [03:03<04:00, 11.44s/files][A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  54%|█████▍    | 19/35 [03:03<02:34,  9.64s/files][A[A[A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  70%|███████   | 26/37 [03:04<01:18,  7.11s/files][A
+
+
+
+
+
+[1A
+[1ADownloading data:  38%|███▊      | 14/37 [03:06<05:06, 13.34s/files][A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  41%|████      | 15/37 [03:07<04:34, 12.47s/files][A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  49%|████▊     | 18/37 [03:08<03:18, 10.45s/files][A[A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  43%|████▎     | 16/37 [03:08<04:07, 11.77s/files][A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  49%|████▊     | 18/37 [03:08<03:19, 10.49s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  57%|█████▋    | 20/35 [03:10<02:22,  9.53s/files][A[A[A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  73%|███████▎  | 27/37 [03:12<01:11,  7.12s/files][A
+
+
+
+
+
+
+[1ADownloading data:  51%|█████▏    | 19/37 [03:15<03:05, 10.30s/files][A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  76%|███████▌  | 28/37 [03:16<01:03,  7.00s/files][A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  51%|█████▏    | 19/37 [03:16<03:06, 10.34s/files][A[A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  46%|████▌     | 17/37 [03:16<03:51, 11.58s/files][A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  60%|██████    | 21/35 [03:17<02:11,  9.42s/files][A[A[A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  78%|███████▊  | 29/37 [03:22<00:55,  6.99s/files][A
+
+
+
+
+
+[1ADownloading data:  41%|████      | 15/37 [03:23<04:58, 13.57s/files][A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  49%|████▊     | 18/37 [03:24<03:35, 11.34s/files][A[A
+
+
+
+
+[1A
+[1ADownloading data:  43%|████▎     | 16/37 [03:24<04:28, 12.81s/files][A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  54%|█████▍    | 20/37 [03:24<02:54, 10.25s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  63%|██████▎   | 22/35 [03:25<02:01,  9.32s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  54%|█████▍    | 20/37 [03:27<02:56, 10.35s/files][A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  43%|████▎     | 16/37 [03:29<04:34, 13.07s/files][A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  46%|████▌     | 17/37 [03:29<04:06, 12.34s/files][A[A[A
+
+
+[1A
+[1ADownloading data:  51%|█████▏    | 19/37 [03:30<03:19, 11.07s/files][A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  57%|█████▋    | 21/37 [03:31<02:41, 10.08s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  66%|██████▌   | 23/35 [03:33<01:51,  9.29s/files][A[A[A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  54%|█████▍    | 20/37 [03:34<03:02, 10.72s/files][A[A
+
+
+
+[1ADownloading data:  49%|████▊     | 18/37 [03:35<03:47, 11.95s/files][A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  46%|████▌     | 17/37 [03:38<04:16, 12.82s/files][A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  46%|████▌     | 17/37 [03:38<04:16, 12.84s/files][A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  51%|█████▏    | 19/37 [03:39<03:28, 11.57s/files][A[A[A
+
+[1A
+[1ADownloading data:  81%|████████  | 30/37 [03:39<00:51,  7.33s/files][A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  69%|██████▊   | 24/35 [03:42<01:42,  9.28s/files][A[A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  49%|████▊     | 18/37 [03:42<03:55, 12.38s/files][A[A[A[A
+
+
+[1A
+[1ADownloading data:  57%|█████▋    | 21/37 [03:43<02:50, 10.65s/files][A[A
+
+[1A
+[1ADownloading data:  84%|████████▍ | 31/37 [03:47<00:43,  7.32s/files][A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  57%|█████▋    | 21/37 [03:47<02:53, 10.83s/files][A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  51%|█████▏    | 19/37 [03:48<03:36, 12.00s/files][A[A[A[A
+
+
+
+
+
+
+[1ADownloading data:  59%|█████▉    | 22/37 [03:48<02:35, 10.40s/files][A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  54%|█████▍    | 20/37 [03:50<03:15, 11.50s/files][A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  49%|████▊     | 18/37 [03:52<04:05, 12.91s/files][A[A[A[A[A
+
+[1A
+[1ADownloading data:  86%|████████▋ | 32/37 [03:52<00:36,  7.27s/files][A
+
+
+
+[1ADownloading data:  57%|█████▋    | 21/37 [03:54<02:58, 11.15s/files][A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  59%|█████▉    | 22/37 [03:54<02:39, 10.65s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  71%|███████▏  | 25/35 [03:54<01:33,  9.38s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  62%|██████▏   | 23/37 [03:55<02:23, 10.23s/files][A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  89%|████████▉ | 33/37 [03:58<00:28,  7.23s/files][A
+
+
+
+
+[1A
+[1ADownloading data:  54%|█████▍    | 20/37 [03:59<03:23, 11.98s/files][A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  74%|███████▍  | 26/35 [04:00<01:23,  9.23s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  65%|██████▍   | 24/37 [04:01<02:10, 10.05s/files][A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  59%|█████▉    | 22/37 [04:02<02:45, 11.00s/files][A[A[A
+
+[1A
+[1ADownloading data:  92%|█████████▏| 34/37 [04:02<00:21,  7.14s/files][A
+
+
+[1A
+[1ADownloading data:  59%|█████▉    | 22/37 [04:04<02:46, 11.12s/files][A[A
+
+
+
+
+[1A
+[1ADownloading data:  57%|█████▋    | 21/37 [04:05<03:07, 11.70s/files][A[A[A[A
+
+
+
+[1ADownloading data:  62%|██████▏   | 23/37 [04:06<02:29, 10.71s/files][A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  68%|██████▊   | 25/37 [04:06<01:58,  9.86s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  77%|███████▋  | 27/35 [04:07<01:13,  9.17s/files][A[A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  59%|█████▉    | 22/37 [04:09<02:50, 11.34s/files][A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  62%|██████▏   | 23/37 [04:10<02:32, 10.89s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  70%|███████   | 26/37 [04:13<01:47,  9.73s/files][A[A[A[A[A[A
+
+
+
+[1ADownloading data:  65%|██████▍   | 24/37 [04:13<02:17, 10.55s/files][A[A[A
+
+
+[1A
+[1ADownloading data:  62%|██████▏   | 23/37 [04:16<02:35, 11.14s/files][A[A
+
+
+
+
+
+
+
+
+[1ADownloading data:  80%|████████  | 28/35 [04:16<01:04,  9.16s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  65%|██████▍   | 24/37 [04:17<02:19, 10.73s/files][A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  51%|█████▏    | 19/37 [04:20<04:06, 13.69s/files][A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  73%|███████▎  | 27/37 [04:20<01:36,  9.63s/files][A[A[A[A[A[A
+
+[1A
+[1ADownloading data:  95%|█████████▍| 35/37 [04:20<00:14,  7.44s/files][A
+
+
+
+[1A
+[1ADownloading data:  68%|██████▊   | 25/37 [04:21<02:05, 10.45s/files][A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  68%|██████▊   | 25/37 [04:23<02:06, 10.53s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  83%|████████▎ | 29/35 [04:24<00:54,  9.14s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  54%|█████▍    | 20/37 [04:25<03:45, 13.28s/files][A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  76%|███████▌  | 28/37 [04:26<01:25,  9.50s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  70%|███████   | 26/37 [04:28<01:53, 10.32s/files][A[A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  65%|██████▍   | 24/37 [04:28<02:25, 11.20s/files][A[A
+
+[1A
+[1ADownloading data:  97%|█████████▋| 36/37 [04:28<00:07,  7.46s/files][A
+
+
+
+
+[1A
+[1ADownloading data:  62%|██████▏   | 23/37 [04:31<02:45, 11.80s/files][A[A[A[A
+
+[1A
+[1ADownloading data: 100%|██████████| 37/37 [04:32<00:00,  7.38s/files][A
+[1ADownloading data: 100%|██████████| 37/37 [04:32<00:00,  7.38s/files]
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  78%|███████▊  | 29/37 [04:33<01:15,  9.43s/files][A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  57%|█████▋    | 21/37 [04:33<03:28, 13.02s/files][A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  68%|██████▊   | 25/37 [04:33<02:11, 10.96s/files][A[A
+
+
+
+
+
+
+
+[1ADownloading data:  73%|███████▎  | 27/37 [04:34<01:41, 10.17s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  86%|████████▌ | 30/35 [04:36<00:46,  9.22s/files][A[A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  70%|███████   | 26/37 [04:38<01:57, 10.72s/files][A[A[A
+
+
+[1A
+[1ADownloading data:  70%|███████   | 26/37 [04:38<01:57, 10.73s/files][A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  59%|█████▉    | 22/37 [04:39<03:10, 12.72s/files][A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  65%|██████▍   | 24/37 [04:39<02:31, 11.66s/files][A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  76%|███████▌  | 28/37 [04:40<01:30, 10.01s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  81%|████████  | 30/37 [04:42<01:05,  9.41s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  89%|████████▊ | 31/35 [04:42<00:36,  9.12s/files][A[A[A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  73%|███████▎  | 27/37 [04:42<01:44, 10.47s/files][A[A
+
+
+
+
+[1A
+[1ADownloading data:  68%|██████▊   | 25/37 [04:47<02:17, 11.49s/files][A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  91%|█████████▏| 32/35 [04:47<00:26,  8.99s/files][A[A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  73%|███████▎  | 27/37 [04:48<01:46, 10.68s/files][A[A[A
+
+
+
+
+
+[1ADownloading data:  62%|██████▏   | 23/37 [04:48<02:55, 12.53s/files][A[A[A[A[A
+
+
+[1ADownloading data:  76%|███████▌  | 28/37 [04:52<01:33, 10.43s/files][A[A
+
+
+
+
+[1A
+[1ADownloading data:  70%|███████   | 26/37 [04:52<02:03, 11.24s/files][A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  94%|█████████▍| 33/35 [04:52<00:17,  8.86s/files][A[A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  65%|██████▍   | 24/37 [04:52<02:38, 12.20s/files][A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  76%|███████▌  | 28/37 [04:53<01:34, 10.50s/files][A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  84%|████████▍ | 31/37 [04:57<00:57,  9.59s/files][A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  78%|███████▊  | 29/37 [04:57<01:22, 10.26s/files][A[A
+
+
+
+
+[1A
+[1ADownloading data:  73%|███████▎  | 27/37 [04:57<01:50, 11.03s/files][A[A[A[A
+
+
+
+[1ADownloading data:  78%|███████▊  | 29/37 [04:59<01:22, 10.32s/files][A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  68%|██████▊   | 25/37 [04:59<02:23, 11.99s/files][A[A[A[A[A
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  97%|█████████▋| 34/35 [05:00<00:08,  8.82s/files][A[A[A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  81%|████████  | 30/37 [05:01<01:10, 10.05s/files][A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  78%|███████▊  | 29/37 [05:01<01:23, 10.39s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  86%|████████▋ | 32/37 [05:02<00:47,  9.45s/files][A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  76%|███████▌  | 28/37 [05:05<01:38, 10.93s/files][A[A[A[A
+
+
+[1A
+[1ADownloading data:  84%|████████▍ | 31/37 [05:08<00:59,  9.95s/files][A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  81%|████████  | 30/37 [05:08<01:11, 10.29s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  89%|████████▉ | 33/37 [05:10<00:37,  9.40s/files][A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  81%|████████  | 30/37 [05:11<01:12, 10.38s/files][A[A[A
+
+
+[1A
+[1ADownloading data:  86%|████████▋ | 32/37 [05:13<00:49,  9.81s/files][A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  84%|████████▍ | 31/37 [05:14<01:00, 10.13s/files][A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  70%|███████   | 26/37 [05:15<02:13, 12.12s/files][A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  92%|█████████▏| 34/37 [05:16<00:27,  9.30s/files][A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[1ADownloading data: 100%|██████████| 35/35 [05:19<00:00,  9.13s/files][A[A[A[A[A[A[A[A
+[1ADownloading data: 100%|██████████| 35/35 [05:19<00:00,  9.13s/files]
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  86%|████████▋ | 32/37 [05:21<00:50, 10.04s/files][A[A[A[A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  73%|███████▎  | 27/37 [05:22<01:59, 11.94s/files][A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  95%|█████████▍| 35/37 [05:23<00:18,  9.25s/files][A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  78%|███████▊  | 29/37 [05:25<01:29, 11.22s/files][A[A[A[A
+
+
+
+[1ADownloading data:  84%|████████▍ | 31/37 [05:25<01:03, 10.51s/files][A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  89%|████████▉ | 33/37 [05:26<00:39,  9.89s/files][A[A[A[A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data:  97%|█████████▋| 36/37 [05:27<00:09,  9.10s/files][A[A[A[A[A[A
+
+
+[1A
+[1ADownloading data:  89%|████████▉ | 33/37 [05:28<00:39,  9.97s/files][A[A
+
+
+
+
+[1A
+[1ADownloading data:  81%|████████  | 30/37 [05:29<01:16, 10.97s/files][A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  76%|███████▌  | 28/37 [05:30<01:46, 11.80s/files][A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  86%|████████▋ | 32/37 [05:31<00:51, 10.36s/files][A[A[A
+
+
+[1A
+[1ADownloading data:  92%|█████████▏| 34/37 [05:33<00:29,  9.81s/files][A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  92%|█████████▏| 34/37 [05:33<00:29,  9.82s/files][A[A[A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  84%|████████▍ | 31/37 [05:37<01:05, 10.87s/files][A[A[A[A
+
+
+[1A
+[1ADownloading data:  95%|█████████▍| 35/37 [05:41<00:19,  9.74s/files][A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  78%|███████▊  | 29/37 [05:41<01:34, 11.77s/files][A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  86%|████████▋ | 32/37 [05:41<00:53, 10.68s/files][A[A[A[A
+
+
+
+
+
+
+[1A
+[1ADownloading data: 100%|██████████| 37/37 [05:45<00:00,  9.33s/files][A[A[A[A[A[A
+[1ADownloading data: 100%|██████████| 37/37 [05:45<00:00,  9.33s/files]
+
+
+
+
+
+[1A
+[1ADownloading data:  89%|████████▉ | 33/37 [05:47<00:42, 10.52s/files][A[A[A[A
+
+
+[1A
+[1ADownloading data:  97%|█████████▋| 36/37 [05:47<00:09,  9.66s/files][A[A
+
+
+
+
+
+[1ADownloading data:  81%|████████  | 30/37 [05:48<01:21, 11.63s/files][A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  95%|█████████▍| 35/37 [05:50<00:20, 10.01s/files][A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  89%|████████▉ | 33/37 [05:51<00:42, 10.66s/files][A[A[A
+
+
+
+
+
+[1ADownloading data:  84%|████████▍ | 31/37 [05:55<01:08, 11.45s/files][A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  92%|█████████▏| 34/37 [05:55<00:31, 10.45s/files][A[A[A[A
+
+
+[1A
+[1ADownloading data: 100%|██████████| 37/37 [05:55<00:00,  9.62s/files][A[ADownloading data: 100%|██████████| 37/37 [05:55<00:00,  9.62s/files]
+
+
+
+
+
+
+
+
+[1A
+[1ADownloading data:  97%|█████████▋| 36/37 [05:57<00:09,  9.94s/files][A[A[A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  92%|█████████▏| 34/37 [06:01<00:31, 10.63s/files][A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  86%|████████▋ | 32/37 [06:05<00:57, 11.42s/files][A[A[A[A[A
+
+
+
+
+
+
+
+[1A
+[1ADownloading data: 100%|██████████| 37/37 [06:09<00:00,  9.99s/files][A[A[A[A[A[A[A
+[1ADownloading data: 100%|██████████| 37/37 [06:09<00:00,  9.99s/files]
+
+
+
+
+
+
+[1A
+[1ADownloading data:  89%|████████▉ | 33/37 [06:12<00:45, 11.30s/files][A[A[A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  95%|█████████▍| 35/37 [06:15<00:21, 10.72s/files][A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  95%|█████████▍| 35/37 [06:15<00:21, 10.73s/files][A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  92%|█████████▏| 34/37 [06:17<00:33, 11.11s/files][A[A[A[A[A
+
+
+
+[1A
+[1ADownloading data:  97%|█████████▋| 36/37 [06:18<00:10, 10.51s/files][A[A[A
+
+
+
+
+[1A
+[1ADownloading data:  97%|█████████▋| 36/37 [06:19<00:10, 10.55s/files][A[A[A[A
+
+
+
+
+
+[1A
+[1ADownloading data:  95%|█████████▍| 35/37 [06:24<00:21, 10.99s/files][A[A[A[A[A
+
+
+
+[1ADownloading data: 100%|██████████| 37/37 [06:25<00:00, 10.41s/files][A[A[ADownloading data: 100%|██████████| 37/37 [06:25<00:00, 10.41s/files]
+
+
+
+
+
+[1A
+[1ADownloading data: 100%|██████████| 37/37 [06:28<00:00, 10.51s/files][A[A[A[A
+[1ADownloading data: 100%|██████████| 37/37 [06:28<00:00, 10.51s/files]
+
+
+
+
+
+
+[1A
+[1ADownloading data:  97%|█████████▋| 36/37 [06:29<00:10, 10.82s/files][A[A[A[A[A
+
+
+
+
+
+[1ADownloading data: 100%|██████████| 37/37 [06:33<00:00, 10.64s/files][A[A[A[A[A
+[1ADownloading data: 100%|██████████| 37/37 [06:33<00:00, 10.64s/files]
+
+[1AGenerating train split:   0%|          | 0/1281167 [00:00<?, ? examples/s]
+[1AGenerating train split:   0%|          | 872/1281167 [00:01<26:00, 820.56 examples/s]
+[1AGenerating train split:   0%|          | 1744/1281167 [00:01<12:48, 1665.52 examples/s]
+[1AGenerating train split:   0%|          | 6104/1281167 [00:01<02:58, 7149.17 examples/s]
+[1AGenerating train split:   1%|          | 7848/1281167 [00:01<02:49, 7506.00 examples/s]
+[1AGenerating train split:   1%|          | 10464/1281167 [00:01<02:01, 10433.38 examples/s]
+[1AGenerating train split:   1%|          | 13080/1281167 [00:01<01:44, 12143.80 examples/s]
+[1AGenerating train split:   1%|          | 14824/1281167 [00:01<01:41, 12479.34 examples/s]
+[1AGenerating train split:   1%|▏         | 19184/1281167 [00:02<01:09, 18209.25 examples/s]
+[1AGenerating train split:   2%|▏         | 21800/1281167 [00:02<01:26, 14599.15 examples/s]
+[1AGenerating train split:   2%|▏         | 26158/1281167 [00:02<01:04, 19375.83 examples/s]
+[1AGenerating train split:   2%|▏         | 28770/1281167 [00:02<01:02, 19982.27 examples/s]
+[1AGenerating train split:   2%|▏         | 31381/1281167 [00:02<01:02, 19840.05 examples/s]
+[1AGenerating train split:   3%|▎         | 33993/1281167 [00:02<01:05, 18928.03 examples/s]
+[1AGenerating train split:   3%|▎         | 36606/1281167 [00:03<02:11, 9456.92 examples/s] 
+[1AGenerating train split:   3%|▎         | 38350/1281167 [00:04<03:06, 6657.55 examples/s]
+[1AGenerating train split:   3%|▎         | 40091/1281167 [00:04<03:19, 6218.82 examples/s]
+[1AGenerating train split:   3%|▎         | 41835/1281167 [00:04<02:48, 7339.55 examples/s]
+[1AGenerating train split:   4%|▎         | 45323/1281167 [00:04<01:54, 10780.36 examples/s]
+[1AGenerating train split:   4%|▎         | 47939/1281167 [00:05<02:25, 8472.90 examples/s] 
+[1AGenerating train split:   4%|▍         | 50555/1281167 [00:05<01:56, 10588.99 examples/s]
+[1AGenerating train split:   4%|▍         | 53171/1281167 [00:05<02:56, 6945.16 examples/s] 
+[1AGenerating train split:   4%|▍         | 54915/1281167 [00:06<02:53, 7054.68 examples/s]
+[1AGenerating train split:   5%|▍         | 61019/1281167 [00:06<01:41, 11970.81 examples/s]
+[1AGenerating train split:   5%|▍         | 63631/1281167 [00:06<01:44, 11703.24 examples/s]
+[1AGenerating train split:   5%|▌         | 67119/1281167 [00:06<01:26, 14075.36 examples/s]
+[1AGenerating train split:   5%|▌         | 69730/1281167 [00:06<01:17, 15727.56 examples/s]
+[1AGenerating train split:   6%|▌         | 72340/1281167 [00:06<01:09, 17402.22 examples/s]
+[1AGenerating train split:   6%|▌         | 74953/1281167 [00:07<01:28, 13660.55 examples/s]
+[1AGenerating train split:   6%|▌         | 77569/1281167 [00:07<01:31, 13089.26 examples/s]
+[1AGenerating train split:   6%|▌         | 79313/1281167 [00:07<01:38, 12247.28 examples/s]
+[1AGenerating train split:   6%|▋         | 81057/1281167 [00:07<01:59, 10060.60 examples/s]
+[1AGenerating train split:   7%|▋         | 85417/1281167 [00:07<01:27, 13612.06 examples/s]
+[1AGenerating train split:   7%|▋         | 88033/1281167 [00:08<01:18, 15192.58 examples/s]
+[1AGenerating train split:   7%|▋         | 90649/1281167 [00:08<01:12, 16421.21 examples/s]
+[1AGenerating train split:   7%|▋         | 95004/1281167 [00:08<01:04, 18443.58 examples/s]
+[1AGenerating train split:   8%|▊         | 98490/1281167 [00:08<01:06, 17730.87 examples/s]
+[1AGenerating train split:   8%|▊         | 101106/1281167 [00:08<01:03, 18470.30 examples/s]
+[1AGenerating train split:   8%|▊         | 103720/1281167 [00:09<01:22, 14226.16 examples/s]
+[1AGenerating train split:   8%|▊         | 108076/1281167 [00:09<01:05, 17926.93 examples/s]
+[1AGenerating train split:   9%|▊         | 110687/1281167 [00:09<01:06, 17667.62 examples/s]
+[1AGenerating train split:   9%|▉         | 113303/1281167 [00:09<01:22, 14133.27 examples/s]
+[1AGenerating train split:   9%|▉         | 115047/1281167 [00:09<01:24, 13740.82 examples/s]
+[1AGenerating train split:   9%|▉         | 117663/1281167 [00:09<01:13, 15929.27 examples/s]
+[1AGenerating train split:   9%|▉         | 120279/1281167 [00:10<01:22, 14065.49 examples/s]
+[1AGenerating train split:  10%|▉         | 122021/1281167 [00:10<01:25, 13508.11 examples/s]
+[1AGenerating train split:  10%|▉         | 124637/1281167 [00:10<01:23, 13899.73 examples/s]
+[1AGenerating train split:  10%|█         | 128125/1281167 [00:10<01:04, 17905.97 examples/s]
+[1AGenerating train split:  10%|█         | 130741/1281167 [00:10<01:11, 16157.49 examples/s]
+[1AGenerating train split:  10%|█         | 133354/1281167 [00:10<01:08, 16651.12 examples/s]
+[1AGenerating train split:  11%|█         | 135970/1281167 [00:11<01:02, 18463.20 examples/s]
+[1AGenerating train split:  11%|█         | 139452/1281167 [00:11<00:51, 22005.92 examples/s]
+[1AGenerating train split:  11%|█         | 142068/1281167 [00:11<00:55, 20638.21 examples/s]
+[1AGenerating train split:  11%|█▏        | 144677/1281167 [00:11<01:00, 18914.71 examples/s]
+[1AGenerating train split:  11%|█▏        | 147293/1281167 [00:11<01:33, 12155.07 examples/s]
+[1AGenerating train split:  12%|█▏        | 149909/1281167 [00:11<01:19, 14184.38 examples/s]
+[1AGenerating train split:  12%|█▏        | 152525/1281167 [00:12<01:15, 14909.11 examples/s]
+[1AGenerating train split:  12%|█▏        | 155139/1281167 [00:12<01:25, 13129.09 examples/s]
+[1AGenerating train split:  12%|█▏        | 156883/1281167 [00:12<01:24, 13253.30 examples/s]
+[1AGenerating train split:  13%|█▎        | 161240/1281167 [00:12<01:07, 16620.67 examples/s]
+[1AGenerating train split:  13%|█▎        | 163854/1281167 [00:12<01:13, 15227.67 examples/s]
+[1AGenerating train split:  13%|█▎        | 166470/1281167 [00:13<01:09, 16028.34 examples/s]
+[1AGenerating train split:  13%|█▎        | 168214/1281167 [00:13<01:22, 13442.83 examples/s]
+[1AGenerating train split:  13%|█▎        | 170830/1281167 [00:13<01:10, 15723.54 examples/s]
+[1AGenerating train split:  14%|█▎        | 173444/1281167 [00:13<01:02, 17679.08 examples/s]
+[1AGenerating train split:  14%|█▎        | 176058/1281167 [00:13<01:11, 15487.18 examples/s]
+[1AGenerating train split:  14%|█▍        | 179546/1281167 [00:13<00:58, 18946.76 examples/s]
+[1AGenerating train split:  14%|█▍        | 182155/1281167 [00:13<00:59, 18585.85 examples/s]
+[1AGenerating train split:  14%|█▍        | 184771/1281167 [00:14<01:05, 16798.29 examples/s]
+[1AGenerating train split:  15%|█▍        | 187387/1281167 [00:14<01:33, 11672.63 examples/s]
+[1AGenerating train split:  15%|█▍        | 190873/1281167 [00:14<01:14, 14651.49 examples/s]
+[1AGenerating train split:  15%|█▌        | 193487/1281167 [00:14<01:11, 15242.21 examples/s]
+[1AGenerating train split:  15%|█▌        | 196103/1281167 [00:15<01:20, 13463.79 examples/s]
+[1AGenerating train split:  16%|█▌        | 198716/1281167 [00:15<01:17, 14049.83 examples/s]
+[1AGenerating train split:  16%|█▌        | 200460/1281167 [00:15<01:20, 13474.34 examples/s]
+[1AGenerating train split:  16%|█▌        | 203076/1281167 [00:15<01:32, 11651.71 examples/s]
+[1AGenerating train split:  16%|█▌        | 206564/1281167 [00:15<01:22, 13007.63 examples/s]
+[1AGenerating train split:  16%|█▋        | 210919/1281167 [00:16<01:09, 15388.87 examples/s]
+[1AGenerating train split:  17%|█▋        | 215277/1281167 [00:16<00:54, 19677.60 examples/s]
+[1AGenerating train split:  17%|█▋        | 217891/1281167 [00:16<00:57, 18438.93 examples/s]
+[1AGenerating train split:  17%|█▋        | 220505/1281167 [00:16<00:59, 17963.00 examples/s]
+[1AGenerating train split:  17%|█▋        | 223119/1281167 [00:16<00:57, 18335.39 examples/s]
+[1AGenerating train split:  18%|█▊        | 225735/1281167 [00:16<00:59, 17618.44 examples/s]
+[1AGenerating train split:  18%|█▊        | 228351/1281167 [00:17<01:11, 14759.64 examples/s]
+[1AGenerating train split:  18%|█▊        | 231839/1281167 [00:17<01:00, 17350.97 examples/s]
+[1AGenerating train split:  18%|█▊        | 234455/1281167 [00:17<00:57, 18269.87 examples/s]
+[1AGenerating train split:  19%|█▊        | 237938/1281167 [00:17<00:48, 21686.91 examples/s]
+[1AGenerating train split:  19%|█▉        | 240552/1281167 [00:17<00:57, 18003.21 examples/s]
+[1AGenerating train split:  19%|█▉        | 243168/1281167 [00:17<00:59, 17475.66 examples/s]
+[1AGenerating train split:  19%|█▉        | 245782/1281167 [00:18<01:16, 13505.36 examples/s]
+[1AGenerating train split:  19%|█▉        | 248398/1281167 [00:18<01:10, 14666.14 examples/s]
+[1AGenerating train split:  20%|█▉        | 250142/1281167 [00:18<01:08, 15022.61 examples/s]
+[1AGenerating train split:  20%|█▉        | 255365/1281167 [00:18<00:50, 20406.55 examples/s]
+[1AGenerating train split:  20%|██        | 257981/1281167 [00:18<01:08, 14867.76 examples/s]
+[1AGenerating train split:  20%|██        | 260597/1281167 [00:18<01:06, 15410.92 examples/s]
+[1AGenerating train split:  21%|██        | 263213/1281167 [00:19<01:31, 11169.52 examples/s]
+[1AGenerating train split:  21%|██        | 265829/1281167 [00:19<01:18, 13000.83 examples/s]
+[1AGenerating train split:  21%|██        | 268445/1281167 [00:19<01:11, 14214.42 examples/s]
+[1AGenerating train split:  21%|██        | 271928/1281167 [00:19<00:57, 17402.68 examples/s]
+[1AGenerating train split:  21%|██▏       | 274544/1281167 [00:19<00:56, 17804.17 examples/s]
+[1AGenerating train split:  22%|██▏       | 278028/1281167 [00:20<00:53, 18803.73 examples/s]
+[1AGenerating train split:  22%|██▏       | 280644/1281167 [00:20<01:04, 15404.77 examples/s]
+[1AGenerating train split:  22%|██▏       | 283258/1281167 [00:20<01:00, 16592.15 examples/s]
+[1AGenerating train split:  22%|██▏       | 285874/1281167 [00:20<01:13, 13502.97 examples/s]
+[1AGenerating train split:  22%|██▏       | 287616/1281167 [00:20<01:18, 12728.73 examples/s]
+[1AGenerating train split:  23%|██▎       | 291101/1281167 [00:21<01:07, 14662.90 examples/s]
+[1AGenerating train split:  23%|██▎       | 294587/1281167 [00:21<00:56, 17313.71 examples/s]
+[1AGenerating train split:  23%|██▎       | 297203/1281167 [00:21<01:10, 13936.63 examples/s]
+[1AGenerating train split:  23%|██▎       | 298945/1281167 [00:21<01:14, 13264.11 examples/s]
+[1AGenerating train split:  24%|██▎       | 301561/1281167 [00:21<01:11, 13622.71 examples/s]
+[1AGenerating train split:  24%|██▎       | 304177/1281167 [00:21<01:06, 14734.05 examples/s]
+[1AGenerating train split:  24%|██▍       | 306793/1281167 [00:22<00:57, 16839.19 examples/s]
+[1AGenerating train split:  24%|██▍       | 309404/1281167 [00:22<01:01, 15852.12 examples/s]
+[1AGenerating train split:  24%|██▍       | 312892/1281167 [00:23<02:39, 6070.83 examples/s] 
+[1AGenerating train split:  25%|██▍       | 314636/1281167 [00:24<05:05, 3167.62 examples/s]
+[1AGenerating train split:  25%|██▍       | 316378/1281167 [00:26<06:58, 2302.68 examples/s]
+[1AGenerating train split:  25%|██▍       | 317250/1281167 [00:26<07:10, 2241.46 examples/s]
+[1AGenerating train split:  25%|██▍       | 318122/1281167 [00:27<06:56, 2311.88 examples/s]
+[1AGenerating train split:  25%|██▍       | 318994/1281167 [00:27<06:17, 2545.46 examples/s]
+[1AGenerating train split:  25%|██▍       | 319863/1281167 [00:27<05:30, 2909.68 examples/s]
+[1AGenerating train split:  25%|██▌       | 320735/1281167 [00:27<05:25, 2946.35 examples/s]
+[1AGenerating train split:  25%|██▌       | 322479/1281167 [00:28<04:50, 3300.85 examples/s]
+[1AGenerating train split:  25%|██▌       | 323349/1281167 [00:28<04:22, 3645.38 examples/s]
+[1AGenerating train split:  25%|██▌       | 325091/1281167 [00:29<05:51, 2716.26 examples/s]
+[1AGenerating train split:  25%|██▌       | 325963/1281167 [00:29<05:23, 2950.36 examples/s]
+[1AGenerating train split:  26%|██▌       | 327707/1281167 [00:29<04:23, 3614.46 examples/s]
+[1AGenerating train split:  26%|██▌       | 329451/1281167 [00:29<03:18, 4785.07 examples/s]
+[1AGenerating train split:  26%|██▌       | 332064/1281167 [00:30<02:08, 7382.70 examples/s]
+[1AGenerating train split:  26%|██▌       | 333808/1281167 [00:30<01:56, 8142.86 examples/s]
+[1AGenerating train split:  26%|██▌       | 335552/1281167 [00:30<01:55, 8202.61 examples/s]
+[1AGenerating train split:  26%|██▋       | 337296/1281167 [00:30<01:58, 7994.26 examples/s]
+[1AGenerating train split:  26%|██▋       | 339038/1281167 [00:30<01:50, 8530.96 examples/s]
+[1AGenerating train split:  27%|██▋       | 341652/1281167 [00:30<01:27, 10776.04 examples/s]
+[1AGenerating train split:  27%|██▋       | 343393/1281167 [00:31<01:38, 9559.60 examples/s] 
+[1AGenerating train split:  27%|██▋       | 346009/1281167 [00:31<01:17, 12033.66 examples/s]
+[1AGenerating train split:  27%|██▋       | 347749/1281167 [00:31<01:13, 12640.31 examples/s]
+[1AGenerating train split:  27%|██▋       | 349491/1281167 [00:32<02:29, 6244.43 examples/s] 
+[1AGenerating train split:  27%|██▋       | 351235/1281167 [00:32<02:27, 6316.88 examples/s]
+[1AGenerating train split:  28%|██▊       | 352979/1281167 [00:32<03:06, 4963.95 examples/s]
+[1AGenerating train split:  28%|██▊       | 354723/1281167 [00:33<02:34, 5987.71 examples/s]
+[1AGenerating train split:  28%|██▊       | 357339/1281167 [00:33<02:05, 7363.23 examples/s]
+[1AGenerating train split:  28%|██▊       | 359083/1281167 [00:33<01:48, 8520.01 examples/s]
+[1AGenerating train split:  28%|██▊       | 360827/1281167 [00:33<01:34, 9703.22 examples/s]
+[1AGenerating train split:  28%|██▊       | 362571/1281167 [00:33<01:42, 8969.69 examples/s]
+[1AGenerating train split:  29%|██▊       | 365187/1281167 [00:33<01:29, 10244.00 examples/s]
+[1AGenerating train split:  29%|██▊       | 367801/1281167 [00:34<01:12, 12575.62 examples/s]
+[1AGenerating train split:  29%|██▉       | 369543/1281167 [00:34<01:24, 10818.80 examples/s]
+[1AGenerating train split:  29%|██▉       | 373031/1281167 [00:34<01:05, 13920.39 examples/s]
+[1AGenerating train split:  29%|██▉       | 374772/1281167 [00:34<01:07, 13400.24 examples/s]
+[1AGenerating train split:  29%|██▉       | 377386/1281167 [00:34<01:04, 13969.13 examples/s]
+[1AGenerating train split:  30%|██▉       | 379128/1281167 [00:34<01:06, 13570.97 examples/s]
+[1AGenerating train split:  30%|██▉       | 380870/1281167 [00:35<01:13, 12170.88 examples/s]
+[1AGenerating train split:  30%|██▉       | 382614/1281167 [00:35<01:13, 12168.48 examples/s]
+[1AGenerating train split:  30%|███       | 384355/1281167 [00:35<01:10, 12739.28 examples/s]
+[1AGenerating train split:  30%|███       | 386099/1281167 [00:35<01:29, 9994.42 examples/s] 
+[1AGenerating train split:  30%|███       | 387841/1281167 [00:35<01:33, 9522.24 examples/s]
+[1AGenerating train split:  30%|███       | 390457/1281167 [00:36<01:19, 11205.11 examples/s]
+[1AGenerating train split:  31%|███       | 392201/1281167 [00:36<01:33, 9462.81 examples/s] 
+[1AGenerating train split:  31%|███       | 393945/1281167 [00:36<01:46, 8314.62 examples/s]
+[1AGenerating train split:  31%|███       | 396559/1281167 [00:36<01:21, 10810.33 examples/s]
+[1AGenerating train split:  31%|███       | 398303/1281167 [00:36<01:19, 11143.07 examples/s]
+[1AGenerating train split:  31%|███       | 400047/1281167 [00:37<01:24, 10487.60 examples/s]
+[1AGenerating train split:  31%|███▏      | 401791/1281167 [00:37<01:20, 10871.65 examples/s]
+[1AGenerating train split:  32%|███▏      | 404405/1281167 [00:37<01:15, 11604.24 examples/s]
+[1AGenerating train split:  32%|███▏      | 407021/1281167 [00:37<01:09, 12586.81 examples/s]
+[1AGenerating train split:  32%|███▏      | 409634/1281167 [00:37<01:08, 12717.43 examples/s]
+[1AGenerating train split:  32%|███▏      | 413118/1281167 [00:37<00:57, 15204.95 examples/s]
+[1AGenerating train split:  33%|███▎      | 416604/1281167 [00:38<01:05, 13250.75 examples/s]
+[1AGenerating train split:  33%|███▎      | 420089/1281167 [00:38<00:58, 14732.50 examples/s]
+[1AGenerating train split:  33%|███▎      | 421831/1281167 [00:38<01:08, 12513.64 examples/s]
+[1AGenerating train split:  33%|███▎      | 423575/1281167 [00:38<01:04, 13323.11 examples/s]
+[1AGenerating train split:  33%|███▎      | 427063/1281167 [00:38<00:59, 14247.03 examples/s]
+[1AGenerating train split:  33%|███▎      | 428807/1281167 [00:39<00:58, 14688.69 examples/s]
+[1AGenerating train split:  34%|███▎      | 430551/1281167 [00:39<01:01, 13800.10 examples/s]
+[1AGenerating train split:  34%|███▎      | 432293/1281167 [00:39<01:08, 12352.49 examples/s]
+[1AGenerating train split:  34%|███▍      | 436653/1281167 [00:39<00:54, 15462.60 examples/s]
+[1AGenerating train split:  34%|███▍      | 438397/1281167 [00:39<00:54, 15363.63 examples/s]
+[1AGenerating train split:  34%|███▍      | 441013/1281167 [00:39<00:55, 15091.94 examples/s]
+[1AGenerating train split:  35%|███▍      | 445369/1281167 [00:40<00:43, 19235.77 examples/s]
+[1AGenerating train split:  35%|███▌      | 448852/1281167 [00:40<00:37, 22000.22 examples/s]
+[1AGenerating train split:  35%|███▌      | 451466/1281167 [00:40<00:47, 17302.60 examples/s]
+[1AGenerating train split:  35%|███▌      | 454079/1281167 [00:40<00:55, 15000.27 examples/s]
+[1AGenerating train split:  36%|███▌      | 455821/1281167 [00:40<00:57, 14340.58 examples/s]
+[1AGenerating train split:  36%|███▌      | 457565/1281167 [00:40<00:58, 14025.46 examples/s]
+[1AGenerating train split:  36%|███▌      | 459309/1281167 [00:41<01:14, 10997.87 examples/s]
+[1AGenerating train split:  36%|███▌      | 461923/1281167 [00:41<01:04, 12718.09 examples/s]
+[1AGenerating train split:  36%|███▌      | 463667/1281167 [00:41<01:05, 12502.12 examples/s]
+[1AGenerating train split:  36%|███▋      | 466283/1281167 [00:41<01:00, 13575.06 examples/s]
+[1AGenerating train split:  37%|███▋      | 468027/1281167 [00:41<00:58, 13990.62 examples/s]
+[1AGenerating train split:  37%|███▋      | 469771/1281167 [00:41<01:10, 11576.53 examples/s]
+[1AGenerating train split:  37%|███▋      | 473259/1281167 [00:42<00:52, 15323.29 examples/s]
+[1AGenerating train split:  37%|███▋      | 475003/1281167 [00:42<00:51, 15575.79 examples/s]
+[1AGenerating train split:  37%|███▋      | 476747/1281167 [00:42<00:58, 13663.46 examples/s]
+[1AGenerating train split:  37%|███▋      | 478491/1281167 [00:42<00:57, 14076.02 examples/s]
+[1AGenerating train split:  38%|███▊      | 482849/1281167 [00:42<00:39, 20467.61 examples/s]
+[1AGenerating train split:  38%|███▊      | 485459/1281167 [00:42<00:37, 21157.99 examples/s]
+[1AGenerating train split:  38%|███▊      | 488941/1281167 [00:42<00:40, 19736.38 examples/s]
+[1AGenerating train split:  38%|███▊      | 491555/1281167 [00:43<00:40, 19352.30 examples/s]
+[1AGenerating train split:  39%|███▊      | 494169/1281167 [00:43<01:04, 12146.50 examples/s]
+[1AGenerating train split:  39%|███▊      | 495913/1281167 [00:43<01:07, 11673.11 examples/s]
+[1AGenerating train split:  39%|███▉      | 497657/1281167 [00:43<01:04, 12188.28 examples/s]
+[1AGenerating train split:  39%|███▉      | 499401/1281167 [00:43<01:09, 11291.10 examples/s]
+[1AGenerating train split:  39%|███▉      | 502889/1281167 [00:44<00:52, 14952.97 examples/s]
+[1AGenerating train split:  40%|███▉      | 507249/1281167 [00:44<00:40, 19302.39 examples/s]
+[1AGenerating train split:  40%|███▉      | 509865/1281167 [00:44<00:42, 18130.41 examples/s]
+[1AGenerating train split:  40%|████      | 515095/1281167 [00:44<00:35, 21793.37 examples/s]
+[1AGenerating train split:  40%|████      | 518578/1281167 [00:44<00:35, 21695.01 examples/s]
+[1AGenerating train split:  41%|████      | 522064/1281167 [00:44<00:32, 23495.56 examples/s]
+[1AGenerating train split:  41%|████      | 524676/1281167 [00:44<00:35, 21163.59 examples/s]
+[1AGenerating train split:  41%|████      | 527289/1281167 [00:45<00:47, 15991.20 examples/s]
+[1AGenerating train split:  41%|████▏     | 529903/1281167 [00:45<00:46, 16260.95 examples/s]
+[1AGenerating train split:  42%|████▏     | 532519/1281167 [00:45<00:52, 14209.85 examples/s]
+[1AGenerating train split:  42%|████▏     | 534263/1281167 [00:45<01:05, 11435.38 examples/s]
+[1AGenerating train split:  42%|████▏     | 538623/1281167 [00:46<00:50, 14807.38 examples/s]
+[1AGenerating train split:  42%|████▏     | 542109/1281167 [00:46<00:41, 17866.08 examples/s]
+[1AGenerating train split:  43%|████▎     | 544725/1281167 [00:46<00:44, 16368.46 examples/s]
+[1AGenerating train split:  43%|████▎     | 547341/1281167 [00:46<00:41, 17532.58 examples/s]
+[1AGenerating train split:  43%|████▎     | 549955/1281167 [00:46<00:43, 16728.78 examples/s]
+[1AGenerating train split:  43%|████▎     | 554313/1281167 [00:46<00:44, 16379.83 examples/s]
+[1AGenerating train split:  44%|████▎     | 558670/1281167 [00:47<00:34, 21139.67 examples/s]
+[1AGenerating train split:  44%|████▍     | 561282/1281167 [00:47<00:40, 17629.43 examples/s]
+[1AGenerating train split:  44%|████▍     | 563896/1281167 [00:48<02:25, 4923.73 examples/s] 
+[1AGenerating train split:  44%|████▍     | 565640/1281167 [00:49<02:58, 4015.51 examples/s]
+[1AGenerating train split:  44%|████▍     | 567382/1281167 [00:50<02:43, 4375.70 examples/s]
+[1AGenerating train split:  44%|████▍     | 569126/1281167 [00:50<03:23, 3491.63 examples/s]
+[1AGenerating train split:  44%|████▍     | 569998/1281167 [00:50<03:11, 3705.75 examples/s]
+[1AGenerating train split:  45%|████▍     | 570870/1281167 [00:51<03:03, 3867.25 examples/s]
+[1AGenerating train split:  45%|████▍     | 571742/1281167 [00:51<03:02, 3886.47 examples/s]
+[1AGenerating train split:  45%|████▍     | 573484/1281167 [00:51<02:31, 4668.95 examples/s]
+[1AGenerating train split:  45%|████▍     | 575225/1281167 [00:51<02:12, 5335.41 examples/s]
+[1AGenerating train split:  45%|████▍     | 576097/1281167 [00:52<02:36, 4503.81 examples/s]
+[1AGenerating train split:  45%|████▌     | 577839/1281167 [00:52<02:02, 5750.18 examples/s]
+[1AGenerating train split:  45%|████▌     | 580455/1281167 [00:52<01:33, 7487.10 examples/s]
+[1AGenerating train split:  45%|████▌     | 582197/1281167 [00:52<01:32, 7542.76 examples/s]
+[1AGenerating train split:  46%|████▌     | 585685/1281167 [00:52<01:10, 9865.60 examples/s]
+[1AGenerating train split:  46%|████▌     | 587429/1281167 [00:53<01:42, 6783.94 examples/s]
+[1AGenerating train split:  46%|████▌     | 590045/1281167 [00:53<01:18, 8818.00 examples/s]
+[1AGenerating train split:  46%|████▌     | 591789/1281167 [00:53<01:20, 8544.62 examples/s]
+[1AGenerating train split:  46%|████▋     | 594403/1281167 [00:53<01:03, 10900.05 examples/s]
+[1AGenerating train split:  47%|████▋     | 596147/1281167 [00:54<01:38, 6946.83 examples/s] 
+[1AGenerating train split:  47%|████▋     | 597889/1281167 [00:54<01:42, 6692.47 examples/s]
+[1AGenerating train split:  47%|████▋     | 600505/1281167 [00:54<01:18, 8671.08 examples/s]
+[1AGenerating train split:  47%|████▋     | 603119/1281167 [00:55<01:05, 10342.32 examples/s]
+[1AGenerating train split:  47%|████▋     | 604861/1281167 [00:55<01:04, 10527.60 examples/s]
+[1AGenerating train split:  47%|████▋     | 607475/1281167 [00:55<01:03, 10628.35 examples/s]
+[1AGenerating train split:  48%|████▊     | 609219/1281167 [00:55<01:25, 7870.25 examples/s] 
+[1AGenerating train split:  48%|████▊     | 610963/1281167 [00:55<01:15, 8861.77 examples/s]
+[1AGenerating train split:  48%|████▊     | 612707/1281167 [00:56<01:10, 9501.37 examples/s]
+[1AGenerating train split:  48%|████▊     | 615318/1281167 [00:56<00:57, 11633.47 examples/s]
+[1AGenerating train split:  48%|████▊     | 617062/1281167 [00:56<00:57, 11618.89 examples/s]
+[1AGenerating train split:  48%|████▊     | 618806/1281167 [00:56<00:54, 12181.17 examples/s]
+[1AGenerating train split:  48%|████▊     | 620550/1281167 [00:56<00:53, 12363.37 examples/s]
+[1AGenerating train split:  49%|████▊     | 623163/1281167 [00:56<00:48, 13447.37 examples/s]
+[1AGenerating train split:  49%|████▉     | 624907/1281167 [00:56<00:49, 13130.45 examples/s]
+[1AGenerating train split:  49%|████▉     | 626651/1281167 [00:57<00:51, 12739.65 examples/s]
+[1AGenerating train split:  49%|████▉     | 629263/1281167 [00:57<00:48, 13443.85 examples/s]
+[1AGenerating train split:  49%|████▉     | 631007/1281167 [00:57<00:58, 11161.42 examples/s]
+[1AGenerating train split:  49%|████▉     | 632751/1281167 [00:57<00:57, 11201.74 examples/s]
+[1AGenerating train split:  50%|████▉     | 634495/1281167 [00:57<00:59, 10784.26 examples/s]
+[1AGenerating train split:  50%|████▉     | 636239/1281167 [00:58<00:56, 11486.24 examples/s]
+[1AGenerating train split:  50%|████▉     | 638851/1281167 [00:58<00:47, 13644.39 examples/s]
+[1AGenerating train split:  50%|█████     | 640595/1281167 [00:58<00:59, 10775.39 examples/s]
+[1AGenerating train split:  50%|█████     | 642339/1281167 [00:58<00:59, 10775.50 examples/s]
+[1AGenerating train split:  50%|█████     | 644953/1281167 [00:58<00:49, 12907.87 examples/s]
+[1AGenerating train split:  50%|█████     | 646695/1281167 [00:58<00:50, 12482.26 examples/s]
+[1AGenerating train split:  51%|█████     | 649311/1281167 [00:59<00:47, 13384.26 examples/s]
+[1AGenerating train split:  51%|█████     | 651055/1281167 [00:59<00:47, 13144.86 examples/s]
+[1AGenerating train split:  51%|█████     | 652796/1281167 [00:59<00:48, 12898.57 examples/s]
+[1AGenerating train split:  51%|█████     | 654540/1281167 [00:59<01:00, 10423.83 examples/s]
+[1AGenerating train split:  51%|█████     | 656284/1281167 [00:59<00:57, 10958.10 examples/s]
+[1AGenerating train split:  51%|█████▏    | 658900/1281167 [00:59<00:47, 12969.67 examples/s]
+[1AGenerating train split:  52%|█████▏    | 662385/1281167 [00:59<00:37, 16409.01 examples/s]
+[1AGenerating train split:  52%|█████▏    | 664999/1281167 [01:00<00:40, 15257.82 examples/s]
+[1AGenerating train split:  52%|█████▏    | 668483/1281167 [01:00<00:37, 16432.83 examples/s]
+[1AGenerating train split:  52%|█████▏    | 671099/1281167 [01:00<00:38, 15911.58 examples/s]
+[1AGenerating train split:  53%|█████▎    | 672841/1281167 [01:00<00:43, 14043.19 examples/s]
+[1AGenerating train split:  53%|█████▎    | 675457/1281167 [01:00<00:40, 14961.74 examples/s]
+[1AGenerating train split:  53%|█████▎    | 677201/1281167 [01:01<00:44, 13491.42 examples/s]
+[1AGenerating train split:  53%|█████▎    | 679815/1281167 [01:01<00:48, 12509.39 examples/s]
+[1AGenerating train split:  53%|█████▎    | 684173/1281167 [01:01<00:40, 14639.90 examples/s]
+[1AGenerating train split:  54%|█████▎    | 687658/1281167 [01:01<00:35, 16839.30 examples/s]
+[1AGenerating train split:  54%|█████▍    | 690274/1281167 [01:01<00:45, 12985.30 examples/s]
+[1AGenerating train split:  54%|█████▍    | 693762/1281167 [01:02<00:35, 16370.28 examples/s]
+[1AGenerating train split:  54%|█████▍    | 696376/1281167 [01:02<00:34, 16909.01 examples/s]
+[1AGenerating train split:  55%|█████▍    | 698992/1281167 [01:02<00:34, 16722.18 examples/s]
+[1AGenerating train split:  55%|█████▍    | 701608/1281167 [01:02<00:31, 18231.52 examples/s]
+[1AGenerating train split:  55%|█████▌    | 705089/1281167 [01:02<00:30, 19096.68 examples/s]
+[1AGenerating train split:  55%|█████▌    | 707703/1281167 [01:02<00:29, 19740.26 examples/s]
+[1AGenerating train split:  55%|█████▌    | 710319/1281167 [01:02<00:33, 17133.99 examples/s]
+[1AGenerating train split:  56%|█████▌    | 712935/1281167 [01:03<00:36, 15498.79 examples/s]
+[1AGenerating train split:  56%|█████▌    | 714677/1281167 [01:03<00:37, 15040.29 examples/s]
+[1AGenerating train split:  56%|█████▌    | 717291/1281167 [01:03<00:33, 16932.75 examples/s]
+[1AGenerating train split:  56%|█████▌    | 719907/1281167 [01:03<00:33, 16738.51 examples/s]
+[1AGenerating train split:  56%|█████▋    | 723390/1281167 [01:03<00:29, 18883.41 examples/s]
+[1AGenerating train split:  57%|█████▋    | 726006/1281167 [01:04<00:39, 14002.49 examples/s]
+[1AGenerating train split:  57%|█████▋    | 729494/1281167 [01:04<00:32, 16801.56 examples/s]
+[1AGenerating train split:  57%|█████▋    | 732110/1281167 [01:04<00:38, 14347.06 examples/s]
+[1AGenerating train split:  57%|█████▋    | 733854/1281167 [01:04<00:42, 12810.72 examples/s]
+[1AGenerating train split:  58%|█████▊    | 737342/1281167 [01:04<00:34, 15963.79 examples/s]
+[1AGenerating train split:  58%|█████▊    | 739956/1281167 [01:04<00:32, 16782.87 examples/s]
+[1AGenerating train split:  58%|█████▊    | 743442/1281167 [01:05<00:29, 18111.67 examples/s]
+[1AGenerating train split:  58%|█████▊    | 748667/1281167 [01:05<00:25, 21180.97 examples/s]
+[1AGenerating train split:  59%|█████▊    | 751283/1281167 [01:05<00:29, 18247.53 examples/s]
+[1AGenerating train split:  59%|█████▉    | 753896/1281167 [01:05<00:28, 18335.41 examples/s]
+[1AGenerating train split:  59%|█████▉    | 756508/1281167 [01:05<00:31, 16401.37 examples/s]
+[1AGenerating train split:  59%|█████▉    | 758252/1281167 [01:06<00:38, 13584.85 examples/s]
+[1AGenerating train split:  59%|█████▉    | 759996/1281167 [01:06<00:47, 10867.85 examples/s]
+[1AGenerating train split:  60%|█████▉    | 762612/1281167 [01:06<00:40, 12951.54 examples/s]
+[1AGenerating train split:  60%|█████▉    | 766972/1281167 [01:06<00:31, 16303.90 examples/s]
+[1AGenerating train split:  60%|██████    | 769586/1281167 [01:06<00:32, 15895.04 examples/s]
+[1AGenerating train split:  60%|██████    | 773072/1281167 [01:06<00:27, 18516.20 examples/s]
+[1AGenerating train split:  61%|██████    | 775688/1281167 [01:07<00:28, 17590.65 examples/s]
+[1AGenerating train split:  61%|██████    | 778299/1281167 [01:07<00:33, 15211.32 examples/s]
+[1AGenerating train split:  61%|██████    | 780043/1281167 [01:07<00:36, 13545.90 examples/s]
+[1AGenerating train split:  61%|██████    | 781787/1281167 [01:07<00:43, 11490.17 examples/s]
+[1AGenerating train split:  61%|██████    | 784401/1281167 [01:07<00:38, 12779.88 examples/s]
+[1AGenerating train split:  61%|██████▏   | 787886/1281167 [01:08<00:32, 15209.54 examples/s]
+[1AGenerating train split:  62%|██████▏   | 790500/1281167 [01:08<00:29, 16886.89 examples/s]
+[1AGenerating train split:  62%|██████▏   | 793114/1281167 [01:08<00:31, 15439.21 examples/s]
+[1AGenerating train split:  62%|██████▏   | 794858/1281167 [01:09<01:11, 6818.65 examples/s] 
+[1AGenerating train split:  62%|██████▏   | 796602/1281167 [01:09<01:47, 4502.89 examples/s]
+[1AGenerating train split:  62%|██████▏   | 798346/1281167 [01:10<01:28, 5425.39 examples/s]
+[1AGenerating train split:  62%|██████▏   | 800087/1281167 [01:10<01:32, 5213.51 examples/s]
+[1AGenerating train split:  63%|██████▎   | 801831/1281167 [01:10<01:21, 5848.45 examples/s]
+[1AGenerating train split:  63%|██████▎   | 803573/1281167 [01:10<01:07, 7040.94 examples/s]
+[1AGenerating train split:  63%|██████▎   | 805317/1281167 [01:11<01:19, 5948.76 examples/s]
+[1AGenerating train split:  63%|██████▎   | 807933/1281167 [01:11<00:56, 8421.37 examples/s]
+[1AGenerating train split:  63%|██████▎   | 809674/1281167 [01:11<01:06, 7077.75 examples/s]
+[1AGenerating train split:  63%|██████▎   | 811418/1281167 [01:11<01:00, 7787.71 examples/s]
+[1AGenerating train split:  64%|██████▎   | 814906/1281167 [01:11<00:41, 11172.03 examples/s]
+[1AGenerating train split:  64%|██████▎   | 816648/1281167 [01:12<01:10, 6631.37 examples/s] 
+[1AGenerating train split:  64%|██████▍   | 818392/1281167 [01:12<01:03, 7250.93 examples/s]
+[1AGenerating train split:  64%|██████▍   | 821006/1281167 [01:12<00:54, 8504.25 examples/s]
+[1AGenerating train split:  64%|██████▍   | 822750/1281167 [01:13<01:02, 7339.88 examples/s]
+[1AGenerating train split:  64%|██████▍   | 825364/1281167 [01:13<00:48, 9402.65 examples/s]
+[1AGenerating train split:  65%|██████▍   | 827106/1281167 [01:13<00:53, 8413.75 examples/s]
+[1AGenerating train split:  65%|██████▍   | 828848/1281167 [01:13<00:47, 9621.64 examples/s]
+[1AGenerating train split:  65%|██████▍   | 830589/1281167 [01:14<01:21, 5543.25 examples/s]
+[1AGenerating train split:  65%|██████▍   | 832333/1281167 [01:14<01:39, 4499.35 examples/s]
+[1AGenerating train split:  65%|██████▌   | 835821/1281167 [01:15<01:02, 7142.03 examples/s]
+[1AGenerating train split:  65%|██████▌   | 838437/1281167 [01:15<00:51, 8569.74 examples/s]
+[1AGenerating train split:  66%|██████▌   | 840181/1281167 [01:15<00:45, 9674.35 examples/s]
+[1AGenerating train split:  66%|██████▌   | 841925/1281167 [01:15<00:49, 8957.13 examples/s]
+[1AGenerating train split:  66%|██████▌   | 845413/1281167 [01:15<00:47, 9249.61 examples/s]
+[1AGenerating train split:  66%|██████▋   | 848899/1281167 [01:16<00:33, 12723.69 examples/s]
+[1AGenerating train split:  67%|██████▋   | 852384/1281167 [01:16<00:33, 12825.48 examples/s]
+[1AGenerating train split:  67%|██████▋   | 855872/1281167 [01:16<00:28, 14994.89 examples/s]
+[1AGenerating train split:  67%|██████▋   | 860223/1281167 [01:16<00:25, 16598.24 examples/s]
+[1AGenerating train split:  67%|██████▋   | 862837/1281167 [01:16<00:23, 18024.91 examples/s]
+[1AGenerating train split:  68%|██████▊   | 865451/1281167 [01:17<00:27, 15088.09 examples/s]
+[1AGenerating train split:  68%|██████▊   | 868067/1281167 [01:17<00:45, 9157.87 examples/s] 
+[1AGenerating train split:  68%|██████▊   | 870683/1281167 [01:17<00:38, 10756.19 examples/s]
+[1AGenerating train split:  68%|██████▊   | 872427/1281167 [01:17<00:37, 10957.47 examples/s]
+[1AGenerating train split:  68%|██████▊   | 875043/1281167 [01:18<00:30, 13349.39 examples/s]
+[1AGenerating train split:  69%|██████▊   | 877659/1281167 [01:18<00:30, 13227.41 examples/s]
+[1AGenerating train split:  69%|██████▉   | 881144/1281167 [01:18<00:27, 14741.12 examples/s]
+[1AGenerating train split:  69%|██████▉   | 882888/1281167 [01:18<00:27, 14531.32 examples/s]
+[1AGenerating train split:  69%|██████▉   | 886374/1281167 [01:18<00:23, 17105.86 examples/s]
+[1AGenerating train split:  69%|██████▉   | 888990/1281167 [01:18<00:21, 18169.93 examples/s]
+[1AGenerating train split:  70%|██████▉   | 891606/1281167 [01:19<00:22, 17158.43 examples/s]
+[1AGenerating train split:  70%|██████▉   | 895088/1281167 [01:19<00:19, 20313.61 examples/s]
+[1AGenerating train split:  70%|███████   | 897702/1281167 [01:19<00:19, 20121.17 examples/s]
+[1AGenerating train split:  70%|███████   | 900313/1281167 [01:19<00:24, 15418.75 examples/s]
+[1AGenerating train split:  70%|███████   | 902929/1281167 [01:19<00:24, 15172.87 examples/s]
+[1AGenerating train split:  71%|███████   | 905542/1281167 [01:19<00:23, 15771.20 examples/s]
+[1AGenerating train split:  71%|███████   | 908158/1281167 [01:20<00:30, 12122.43 examples/s]
+[1AGenerating train split:  71%|███████   | 909902/1281167 [01:20<00:30, 12189.73 examples/s]
+[1AGenerating train split:  71%|███████   | 911646/1281167 [01:20<00:30, 12251.95 examples/s]
+[1AGenerating train split:  71%|███████▏  | 915134/1281167 [01:20<00:25, 14094.49 examples/s]
+[1AGenerating train split:  72%|███████▏  | 916876/1281167 [01:20<00:28, 13003.20 examples/s]
+[1AGenerating train split:  72%|███████▏  | 921236/1281167 [01:21<00:24, 14907.04 examples/s]
+[1AGenerating train split:  72%|███████▏  | 923852/1281167 [01:21<00:24, 14689.98 examples/s]
+[1AGenerating train split:  72%|███████▏  | 926464/1281167 [01:21<00:22, 15908.38 examples/s]
+[1AGenerating train split:  73%|███████▎  | 929950/1281167 [01:21<00:17, 19581.30 examples/s]
+[1AGenerating train split:  73%|███████▎  | 932564/1281167 [01:21<00:19, 18331.66 examples/s]
+[1AGenerating train split:  73%|███████▎  | 935177/1281167 [01:21<00:18, 19037.11 examples/s]
+[1AGenerating train split:  73%|███████▎  | 939531/1281167 [01:21<00:17, 19364.68 examples/s]
+[1AGenerating train split:  74%|███████▎  | 942147/1281167 [01:22<00:19, 17136.13 examples/s]
+[1AGenerating train split:  74%|███████▎  | 944763/1281167 [01:22<00:18, 18085.74 examples/s]
+[1AGenerating train split:  74%|███████▍  | 947379/1281167 [01:22<00:18, 18216.23 examples/s]
+[1AGenerating train split:  74%|███████▍  | 949995/1281167 [01:22<00:18, 17611.39 examples/s]
+[1AGenerating train split:  74%|███████▍  | 952611/1281167 [01:22<00:18, 17781.92 examples/s]
+[1AGenerating train split:  75%|███████▍  | 956099/1281167 [01:22<00:17, 18541.92 examples/s]
+[1AGenerating train split:  75%|███████▍  | 959581/1281167 [01:23<00:15, 21182.41 examples/s]
+[1AGenerating train split:  75%|███████▌  | 963939/1281167 [01:23<00:12, 25757.20 examples/s]
+[1AGenerating train split:  76%|███████▌  | 967424/1281167 [01:23<00:15, 20483.41 examples/s]
+[1AGenerating train split:  76%|███████▌  | 970038/1281167 [01:23<00:15, 19703.91 examples/s]
+[1AGenerating train split:  76%|███████▌  | 972654/1281167 [01:23<00:17, 17274.87 examples/s]
+[1AGenerating train split:  76%|███████▌  | 976139/1281167 [01:23<00:15, 20015.15 examples/s]
+[1AGenerating train split:  76%|███████▋  | 978752/1281167 [01:24<00:16, 18636.62 examples/s]
+[1AGenerating train split:  77%|███████▋  | 981368/1281167 [01:24<00:15, 18868.43 examples/s]
+[1AGenerating train split:  77%|███████▋  | 983984/1281167 [01:24<00:16, 18370.54 examples/s]
+[1AGenerating train split:  77%|███████▋  | 987472/1281167 [01:24<00:14, 20267.85 examples/s]
+[1AGenerating train split:  77%|███████▋  | 990956/1281167 [01:24<00:13, 21474.44 examples/s]
+[1AGenerating train split:  78%|███████▊  | 993572/1281167 [01:24<00:13, 20980.99 examples/s]
+[1AGenerating train split:  78%|███████▊  | 996186/1281167 [01:24<00:15, 18064.72 examples/s]
+[1AGenerating train split:  78%|███████▊  | 1000544/1281167 [01:25<00:12, 23356.86 examples/s]
+[1AGenerating train split:  78%|███████▊  | 1003157/1281167 [01:25<00:12, 21632.57 examples/s]
+[1AGenerating train split:  79%|███████▊  | 1005773/1281167 [01:25<00:12, 22309.53 examples/s]
+[1AGenerating train split:  79%|███████▉  | 1009259/1281167 [01:25<00:11, 22804.65 examples/s]
+[1AGenerating train split:  79%|███████▉  | 1013613/1281167 [01:25<00:11, 23365.82 examples/s]
+[1AGenerating train split:  79%|███████▉  | 1016229/1281167 [01:25<00:11, 23552.26 examples/s]
+[1AGenerating train split:  80%|███████▉  | 1018843/1281167 [01:25<00:13, 20173.64 examples/s]
+[1AGenerating train split:  80%|███████▉  | 1022329/1281167 [01:26<00:11, 22402.35 examples/s]
+[1AGenerating train split:  80%|████████  | 1024945/1281167 [01:26<00:15, 16209.02 examples/s]
+[1AGenerating train split:  80%|████████  | 1028433/1281167 [01:26<00:14, 17228.48 examples/s]
+[1AGenerating train split:  81%|████████  | 1031919/1281167 [01:26<00:13, 18844.00 examples/s]
+[1AGenerating train split:  81%|████████  | 1036276/1281167 [01:26<00:11, 21925.15 examples/s]
+[1AGenerating train split:  81%|████████  | 1038890/1281167 [01:26<00:11, 21252.87 examples/s]
+[1AGenerating train split:  81%|████████▏ | 1042376/1281167 [01:27<00:10, 23136.09 examples/s]
+[1AGenerating train split:  82%|████████▏ | 1045862/1281167 [01:27<00:10, 22231.49 examples/s]
+[1AGenerating train split:  82%|████████▏ | 1048478/1281167 [01:27<00:11, 20593.88 examples/s]
+[1AGenerating train split:  82%|████████▏ | 1051091/1281167 [01:27<00:11, 19349.86 examples/s]
+[1AGenerating train split:  82%|████████▏ | 1054576/1281167 [01:27<00:10, 21773.75 examples/s]
+[1AGenerating train split:  83%|████████▎ | 1057190/1281167 [01:27<00:13, 16461.60 examples/s]
+[1AGenerating train split:  83%|████████▎ | 1059803/1281167 [01:28<00:13, 16508.84 examples/s]
+[1AGenerating train split:  83%|████████▎ | 1062419/1281167 [01:28<00:14, 15450.72 examples/s]
+[1AGenerating train split:  83%|████████▎ | 1064163/1281167 [01:28<00:17, 12354.63 examples/s]
+[1AGenerating train split:  83%|████████▎ | 1069393/1281167 [01:28<00:12, 17158.33 examples/s]
+[1AGenerating train split:  84%|████████▎ | 1072009/1281167 [01:28<00:13, 15795.60 examples/s]
+[1AGenerating train split:  84%|████████▍ | 1074625/1281167 [01:29<00:11, 17408.81 examples/s]
+[1AGenerating train split:  84%|████████▍ | 1078107/1281167 [01:29<00:10, 18884.37 examples/s]
+[1AGenerating train split:  84%|████████▍ | 1080723/1281167 [01:29<00:10, 19421.64 examples/s]
+[1AGenerating train split:  85%|████████▍ | 1083339/1281167 [01:29<00:12, 15250.85 examples/s]
+[1AGenerating train split:  85%|████████▍ | 1085083/1281167 [01:29<00:13, 14218.03 examples/s]
+[1AGenerating train split:  85%|████████▍ | 1088571/1281167 [01:29<00:10, 17819.02 examples/s]
+[1AGenerating train split:  85%|████████▌ | 1092923/1281167 [01:29<00:08, 21935.73 examples/s]
+[1AGenerating train split:  86%|████████▌ | 1096411/1281167 [01:30<00:08, 23021.85 examples/s]
+[1AGenerating train split:  86%|████████▌ | 1099024/1281167 [01:30<00:08, 20887.23 examples/s]
+[1AGenerating train split:  86%|████████▌ | 1102508/1281167 [01:30<00:08, 21132.28 examples/s]
+[1AGenerating train split:  86%|████████▋ | 1105124/1281167 [01:30<00:08, 19800.59 examples/s]
+[1AGenerating train split:  87%|████████▋ | 1108610/1281167 [01:32<00:32, 5275.76 examples/s] 
+[1AGenerating train split:  87%|████████▋ | 1110354/1281167 [01:33<00:49, 3457.32 examples/s]
+[1AGenerating train split:  87%|████████▋ | 1112968/1281167 [01:33<00:39, 4232.48 examples/s]
+[1AGenerating train split:  87%|████████▋ | 1114712/1281167 [01:33<00:33, 4933.88 examples/s]
+[1AGenerating train split:  87%|████████▋ | 1116456/1281167 [01:34<00:39, 4169.63 examples/s]
+[1AGenerating train split:  87%|████████▋ | 1118200/1281167 [01:34<00:35, 4592.27 examples/s]
+[1AGenerating train split:  87%|████████▋ | 1119944/1281167 [01:35<00:34, 4697.66 examples/s]
+[1AGenerating train split:  88%|████████▊ | 1121685/1281167 [01:35<00:28, 5536.35 examples/s]
+[1AGenerating train split:  88%|████████▊ | 1123427/1281167 [01:35<00:27, 5668.93 examples/s]
+[1AGenerating train split:  88%|████████▊ | 1124299/1281167 [01:35<00:33, 4627.29 examples/s]
+[1AGenerating train split:  88%|████████▊ | 1126043/1281167 [01:36<00:26, 5902.03 examples/s]
+[1AGenerating train split:  88%|████████▊ | 1127784/1281167 [01:36<00:21, 7074.57 examples/s]
+[1AGenerating train split:  88%|████████▊ | 1129528/1281167 [01:36<00:20, 7564.78 examples/s]
+[1AGenerating train split:  88%|████████▊ | 1131270/1281167 [01:36<00:17, 8451.78 examples/s]
+[1AGenerating train split:  88%|████████▊ | 1133012/1281167 [01:38<00:53, 2769.82 examples/s]
+[1AGenerating train split:  89%|████████▊ | 1133884/1281167 [01:38<00:56, 2607.15 examples/s]
+[1AGenerating train split:  89%|████████▊ | 1134756/1281167 [01:38<00:51, 2848.23 examples/s]
+[1AGenerating train split:  89%|████████▊ | 1135628/1281167 [01:38<00:44, 3304.97 examples/s]
+[1AGenerating train split:  89%|████████▉ | 1138244/1281167 [01:39<00:25, 5607.50 examples/s]
+[1AGenerating train split:  89%|████████▉ | 1139986/1281167 [01:39<00:22, 6404.55 examples/s]
+[1AGenerating train split:  89%|████████▉ | 1143471/1281167 [01:39<00:14, 9430.90 examples/s]
+[1AGenerating train split:  89%|████████▉ | 1145215/1281167 [01:39<00:12, 10652.95 examples/s]
+[1AGenerating train split:  90%|████████▉ | 1148703/1281167 [01:39<00:11, 11238.34 examples/s]
+[1AGenerating train split:  90%|████████▉ | 1150447/1281167 [01:40<00:15, 8695.12 examples/s] 
+[1AGenerating train split:  90%|█████████ | 1153935/1281167 [01:40<00:11, 11369.31 examples/s]
+[1AGenerating train split:  90%|█████████ | 1158292/1281167 [01:40<00:09, 13082.28 examples/s]
+[1AGenerating train split:  91%|█████████ | 1160034/1281167 [01:40<00:09, 12981.12 examples/s]
+[1AGenerating train split:  91%|█████████ | 1163522/1281167 [01:40<00:07, 16398.97 examples/s]
+[1AGenerating train split:  91%|█████████ | 1166131/1281167 [01:40<00:06, 17345.95 examples/s]
+[1AGenerating train split:  91%|█████████ | 1168745/1281167 [01:41<00:06, 16265.48 examples/s]
+[1AGenerating train split:  91%|█████████▏| 1171361/1281167 [01:41<00:07, 13936.10 examples/s]
+[1AGenerating train split:  92%|█████████▏| 1173105/1281167 [01:41<00:08, 12447.12 examples/s]
+[1AGenerating train split:  92%|█████████▏| 1174844/1281167 [01:41<00:08, 12129.11 examples/s]
+[1AGenerating train split:  92%|█████████▏| 1177460/1281167 [01:41<00:07, 13217.78 examples/s]
+[1AGenerating train split:  92%|█████████▏| 1179204/1281167 [01:42<00:09, 11070.25 examples/s]
+[1AGenerating train split:  92%|█████████▏| 1180945/1281167 [01:42<00:11, 8438.25 examples/s] 
+[1AGenerating train split:  92%|█████████▏| 1182689/1281167 [01:42<00:10, 9039.08 examples/s]
+[1AGenerating train split:  92%|█████████▏| 1184433/1281167 [01:42<00:11, 8457.11 examples/s]
+[1AGenerating train split:  93%|█████████▎| 1186177/1281167 [01:43<00:10, 9235.23 examples/s]
+[1AGenerating train split:  93%|█████████▎| 1189663/1281167 [01:43<00:07, 12858.28 examples/s]
+[1AGenerating train split:  93%|█████████▎| 1191405/1281167 [01:43<00:07, 11578.63 examples/s]
+[1AGenerating train split:  93%|█████████▎| 1194021/1281167 [01:43<00:06, 13379.41 examples/s]
+[1AGenerating train split:  93%|█████████▎| 1195763/1281167 [01:43<00:06, 13247.50 examples/s]
+[1AGenerating train split:  94%|█████████▎| 1198376/1281167 [01:43<00:06, 12264.76 examples/s]
+[1AGenerating train split:  94%|█████████▎| 1200120/1281167 [01:43<00:06, 12191.54 examples/s]
+[1AGenerating train split:  94%|█████████▍| 1201864/1281167 [01:44<00:06, 12896.12 examples/s]
+[1AGenerating train split:  94%|█████████▍| 1203608/1281167 [01:44<00:07, 11071.32 examples/s]
+[1AGenerating train split:  94%|█████████▍| 1206222/1281167 [01:44<00:05, 13960.29 examples/s]
+[1AGenerating train split:  94%|█████████▍| 1207966/1281167 [01:44<00:05, 14509.68 examples/s]
+[1AGenerating train split:  94%|█████████▍| 1209707/1281167 [01:44<00:05, 13372.96 examples/s]
+[1AGenerating train split:  95%|█████████▍| 1211451/1281167 [01:44<00:05, 12450.76 examples/s]
+[1AGenerating train split:  95%|█████████▍| 1214064/1281167 [01:45<00:05, 13417.75 examples/s]
+[1AGenerating train split:  95%|█████████▍| 1216680/1281167 [01:45<00:04, 15882.15 examples/s]
+[1AGenerating train split:  95%|█████████▌| 1220166/1281167 [01:45<00:03, 17668.89 examples/s]
+[1AGenerating train split:  95%|█████████▌| 1222780/1281167 [01:45<00:03, 17202.75 examples/s]
+[1AGenerating train split:  96%|█████████▌| 1225394/1281167 [01:45<00:03, 18577.43 examples/s]
+[1AGenerating train split:  96%|█████████▌| 1228007/1281167 [01:45<00:03, 16244.79 examples/s]
+[1AGenerating train split:  96%|█████████▌| 1229751/1281167 [01:46<00:05, 10142.62 examples/s]
+[1AGenerating train split:  96%|█████████▌| 1232365/1281167 [01:46<00:04, 11792.55 examples/s]
+[1AGenerating train split:  96%|█████████▋| 1234981/1281167 [01:46<00:03, 13856.25 examples/s]
+[1AGenerating train split:  97%|█████████▋| 1236725/1281167 [01:46<00:03, 12452.49 examples/s]
+[1AGenerating train split:  97%|█████████▋| 1238466/1281167 [01:46<00:03, 11525.85 examples/s]
+[1AGenerating train split:  97%|█████████▋| 1240210/1281167 [01:46<00:03, 12342.53 examples/s]
+[1AGenerating train split:  97%|█████████▋| 1242824/1281167 [01:47<00:03, 12187.09 examples/s]
+[1AGenerating train split:  97%|█████████▋| 1244568/1281167 [01:47<00:03, 11523.83 examples/s]
+[1AGenerating train split:  97%|█████████▋| 1246312/1281167 [01:47<00:03, 11042.08 examples/s]
+[1AGenerating train split:  97%|█████████▋| 1248053/1281167 [01:47<00:02, 11077.06 examples/s]
+[1AGenerating train split:  98%|█████████▊| 1250667/1281167 [01:47<00:02, 12407.03 examples/s]
+[1AGenerating train split:  98%|█████████▊| 1253281/1281167 [01:48<00:02, 11922.72 examples/s]
+[1AGenerating train split:  98%|█████████▊| 1255025/1281167 [01:48<00:02, 9854.18 examples/s] 
+[1AGenerating train split:  98%|█████████▊| 1256769/1281167 [01:48<00:02, 10788.56 examples/s]
+[1AGenerating train split:  98%|█████████▊| 1258510/1281167 [01:48<00:02, 11141.68 examples/s]
+[1AGenerating train split:  98%|█████████▊| 1260254/1281167 [01:48<00:01, 10793.16 examples/s]
+[1AGenerating train split:  99%|█████████▊| 1261996/1281167 [01:48<00:01, 10943.63 examples/s]
+[1AGenerating train split:  99%|█████████▊| 1263740/1281167 [01:49<00:01, 10761.42 examples/s]
+[1AGenerating train split:  99%|█████████▉| 1265481/1281167 [01:49<00:01, 9444.08 examples/s] 
+[1AGenerating train split:  99%|█████████▉| 1267225/1281167 [01:49<00:01, 9058.93 examples/s]
+[1AGenerating train split:  99%|█████████▉| 1268966/1281167 [01:49<00:01, 7801.00 examples/s]
+[1AGenerating train split:  99%|█████████▉| 1270710/1281167 [01:50<00:01, 8255.45 examples/s]
+[1AGenerating train split:  99%|█████████▉| 1271582/1281167 [01:50<00:01, 7663.14 examples/s]
+[1AGenerating train split:  99%|█████████▉| 1272452/1281167 [01:50<00:01, 7272.09 examples/s]
+[1AGenerating train split:  99%|█████████▉| 1273324/1281167 [01:50<00:01, 7124.02 examples/s]
+[1AGenerating train split:  99%|█████████▉| 1274196/1281167 [01:50<00:01, 4984.23 examples/s]
+[1AGenerating train split: 100%|█████████▉| 1275068/1281167 [01:50<00:01, 5088.11 examples/s]
+[1AGenerating train split: 100%|█████████▉| 1276812/1281167 [01:51<00:00, 6119.50 examples/s]
+[1AGenerating train split: 100%|█████████▉| 1277684/1281167 [01:51<00:00, 6482.09 examples/s]
+[1AGenerating train split: 100%|█████████▉| 1279425/1281167 [01:51<00:00, 6360.43 examples/s]
+[1AGenerating train split: 100%|█████████▉| 1280297/1281167 [01:51<00:00, 5567.22 examples/s]
+[1AGenerating train split: 100%|██████████| 1281167/1281167 [01:51<00:00, 5727.08 examples/s]
+[1AGenerating train split: 100%|██████████| 1281167/1281167 [01:52<00:00, 11437.99 examples/s]
+
+[1AGenerating validation split:   0%|          | 0/50000 [00:00<?, ? examples/s]
+[1AGenerating validation split:   1%|▏         | 745/50000 [00:01<01:48, 452.64 examples/s]
+[1AGenerating validation split:   3%|▎         | 1490/50000 [00:01<00:53, 903.81 examples/s]
+[1AGenerating validation split:   4%|▍         | 2235/50000 [00:02<00:34, 1389.09 examples/s]
+[1AGenerating validation split:   7%|▋         | 3725/50000 [00:02<00:18, 2552.26 examples/s]
+[1AGenerating validation split:  13%|█▎        | 6705/50000 [00:02<00:08, 5022.37 examples/s]
+[1AGenerating validation split:  15%|█▍        | 7450/50000 [00:02<00:08, 5141.04 examples/s]
+[1AGenerating validation split:  16%|█▋        | 8195/50000 [00:02<00:10, 4142.02 examples/s]
+[1AGenerating validation split:  19%|█▉        | 9685/50000 [00:03<00:07, 5064.07 examples/s]
+[1AGenerating validation split:  22%|██▏       | 11175/50000 [00:03<00:06, 5938.17 examples/s]
+[1AGenerating validation split:  27%|██▋       | 13257/50000 [00:03<00:05, 6672.25 examples/s]
+[1AGenerating validation split:  28%|██▊       | 14002/50000 [00:03<00:06, 5432.42 examples/s]
+[1AGenerating validation split:  31%|███       | 15339/50000 [00:04<00:08, 4104.65 examples/s]
+[1AGenerating validation split:  32%|███▏      | 16084/50000 [00:04<00:10, 3260.36 examples/s]
+[1AGenerating validation split:  38%|███▊      | 19064/50000 [00:04<00:05, 6129.35 examples/s]
+[1AGenerating validation split:  41%|████      | 20401/50000 [00:05<00:04, 5957.11 examples/s]
+[1AGenerating validation split:  43%|████▎     | 21737/50000 [00:05<00:04, 6272.84 examples/s]
+[1AGenerating validation split:  48%|████▊     | 23818/50000 [00:05<00:03, 7924.95 examples/s]
+[1AGenerating validation split:  50%|█████     | 25154/50000 [00:05<00:04, 6103.96 examples/s]
+[1AGenerating validation split:  53%|█████▎    | 26490/50000 [00:06<00:04, 5095.45 examples/s]
+[1AGenerating validation split:  54%|█████▍    | 27235/50000 [00:06<00:07, 3162.45 examples/s]
+[1AGenerating validation split:  57%|█████▋    | 28725/50000 [00:07<00:08, 2391.08 examples/s]
+[1AGenerating validation split:  68%|██████▊   | 33786/50000 [00:07<00:02, 5596.09 examples/s]
+[1AGenerating validation split:  71%|███████   | 35276/50000 [00:08<00:02, 5691.86 examples/s]
+[1AGenerating validation split:  74%|███████▎  | 36766/50000 [00:08<00:02, 5804.90 examples/s]
+[1AGenerating validation split:  79%|███████▉  | 39746/50000 [00:08<00:01, 8422.08 examples/s]
+[1AGenerating validation split:  84%|████████▎ | 41828/50000 [00:08<00:00, 9734.65 examples/s]
+[1AGenerating validation split:  88%|████████▊ | 44063/50000 [00:08<00:00, 11432.61 examples/s]
+[1AGenerating validation split:  92%|█████████▏| 46145/50000 [00:08<00:00, 12314.95 examples/s]
+[1AGenerating validation split:  96%|█████████▋| 48226/50000 [00:09<00:00, 13548.64 examples/s]
+[1AGenerating validation split: 100%|██████████| 50000/50000 [00:09<00:00, 5428.78 examples/s] 
+
+[1AGenerating test split:   0%|          | 0/100000 [00:00<?, ? examples/s]
+[1AGenerating test split:   1%|          | 734/100000 [00:01<03:23, 488.12 examples/s]
+[1AGenerating test split:   4%|▎         | 3670/100000 [00:01<00:32, 2926.12 examples/s]
+[1AGenerating test split:   5%|▌         | 5138/100000 [00:01<00:23, 3979.95 examples/s]
+[1AGenerating test split:   7%|▋         | 7340/100000 [00:01<00:15, 6069.35 examples/s]
+[1AGenerating test split:  10%|▉         | 9542/100000 [00:02<00:12, 7497.45 examples/s]
+[1AGenerating test split:  12%|█▏        | 12478/100000 [00:02<00:08, 10728.39 examples/s]
+[1AGenerating test split:  15%|█▍        | 14680/100000 [00:02<00:06, 12760.97 examples/s]
+[1AGenerating test split:  17%|█▋        | 16882/100000 [00:02<00:06, 12433.36 examples/s]
+[1AGenerating test split:  21%|██        | 20552/100000 [00:02<00:04, 17209.33 examples/s]
+[1AGenerating test split:  23%|██▎       | 23292/100000 [00:02<00:04, 17332.12 examples/s]
+[1AGenerating test split:  28%|██▊       | 27936/100000 [00:02<00:03, 20147.12 examples/s]
+[1AGenerating test split:  31%|███       | 30773/100000 [00:03<00:05, 13241.59 examples/s]
+[1AGenerating test split:  33%|███▎      | 32975/100000 [00:03<00:06, 10217.39 examples/s]
+[1AGenerating test split:  37%|███▋      | 36645/100000 [00:04<00:06, 9871.15 examples/s] 
+[1AGenerating test split:  38%|███▊      | 38113/100000 [00:04<00:06, 9931.98 examples/s]
+[1AGenerating test split:  42%|████▏     | 41783/100000 [00:04<00:04, 13457.73 examples/s]
+[1AGenerating test split:  44%|████▍     | 43985/100000 [00:04<00:04, 13354.60 examples/s]
+[1AGenerating test split:  47%|████▋     | 46626/100000 [00:04<00:03, 14806.34 examples/s]
+[1AGenerating test split:  49%|████▉     | 48828/100000 [00:04<00:03, 15522.96 examples/s]
+[1AGenerating test split:  51%|█████     | 50931/100000 [00:04<00:03, 15098.98 examples/s]
+[1AGenerating test split:  53%|█████▎    | 53035/100000 [00:05<00:02, 15687.71 examples/s]
+[1AGenerating test split:  55%|█████▌    | 55138/100000 [00:05<00:04, 11065.76 examples/s]
+[1AGenerating test split:  57%|█████▋    | 57241/100000 [00:05<00:04, 10379.11 examples/s]
+[1AGenerating test split:  59%|█████▊    | 58610/100000 [00:05<00:04, 9718.67 examples/s] 
+[1AGenerating test split:  61%|██████    | 60812/100000 [00:06<00:04, 8271.95 examples/s]
+[1AGenerating test split:  62%|██████▏   | 62280/100000 [00:06<00:04, 8303.23 examples/s]
+[1AGenerating test split:  64%|██████▍   | 64482/100000 [00:06<00:03, 9281.54 examples/s]
+[1AGenerating test split:  66%|██████▌   | 65950/100000 [00:06<00:04, 8221.04 examples/s]
+[1AGenerating test split:  67%|██████▋   | 67418/100000 [00:06<00:03, 8739.99 examples/s]
+[1AGenerating test split:  69%|██████▉   | 68886/100000 [00:07<00:03, 9644.75 examples/s]
+[1AGenerating test split:  70%|███████   | 70354/100000 [00:07<00:03, 8772.22 examples/s]
+[1AGenerating test split:  74%|███████▍  | 74024/100000 [00:07<00:01, 13046.79 examples/s]
+[1AGenerating test split:  76%|███████▌  | 75930/100000 [00:07<00:01, 13975.30 examples/s]
+[1AGenerating test split:  78%|███████▊  | 78132/100000 [00:07<00:01, 15608.20 examples/s]
+[1AGenerating test split:  80%|████████  | 80138/100000 [00:07<00:01, 15530.98 examples/s]
+[1AGenerating test split:  82%|████████▏ | 82340/100000 [00:07<00:01, 12703.28 examples/s]
+[1AGenerating test split:  84%|████████▍ | 84344/100000 [00:08<00:01, 12000.94 examples/s]
+[1AGenerating test split:  86%|████████▌ | 85713/100000 [00:08<00:01, 11324.04 examples/s]
+[1AGenerating test split:  87%|████████▋ | 87181/100000 [00:08<00:01, 9655.65 examples/s] 
+[1AGenerating test split:  89%|████████▊ | 88649/100000 [00:08<00:01, 7224.43 examples/s]
+[1AGenerating test split:  90%|█████████ | 90117/100000 [00:08<00:01, 7820.58 examples/s]
+[1AGenerating test split:  92%|█████████▏| 91585/100000 [00:09<00:00, 8979.01 examples/s]
+[1AGenerating test split:  93%|█████████▎| 93053/100000 [00:09<00:01, 6879.14 examples/s]
+[1AGenerating test split:  94%|█████████▍| 94423/100000 [00:09<00:00, 6738.33 examples/s]
+[1AGenerating test split:  97%|█████████▋| 96526/100000 [00:09<00:00, 8692.40 examples/s]
+[1AGenerating test split:  99%|█████████▊| 98630/100000 [00:09<00:00, 9484.39 examples/s]
+[1AGenerating test split: 100%|██████████| 100000/100000 [00:10<00:00, 8474.31 examples/s]
+[1AGenerating test split: 100%|██████████| 100000/100000 [00:10<00:00, 9744.48 examples/s]
+[modal-client] 2026-10-05T07:21:35+0000 Timed out waiting for final app logs.
+✓ App completed. View run at https://modal.com/apps/curtisjhu/main/ap-hQttOt9npEpmWTeptRjDFd

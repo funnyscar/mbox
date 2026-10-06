@@ -1,0 +1,7 @@
+Note that running a local entrypoint in detached mode only keeps the last triggered Modal function alive after the parent process has been killed or disconnected.
+✓ Initialized. View run at https://modal.com/apps/curtisjhu/main/ap-VlvC87Glg34jhuVkLtABa9
+✓ Created objects.
+├── 🔨 Created mount /root/mbox/imagenet/vit/train.py
+├── 🔨 Created mount PythonPackage:model
+├── 🔨 Created function train.
+└── 🔨 Created function download.

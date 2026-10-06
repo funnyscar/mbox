@@ -11,7 +11,7 @@ app = modal.App("imagenet")
 image = (
 	modal.Image
 		.debian_slim()
-		.pip_install("torch", "datasets", "torchvision", "lpips")
+		.pip_install("torch", "datasets", "torchvision", "lpips", "tiktoken")
 		.add_local_python_source("model")
 )
 

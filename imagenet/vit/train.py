@@ -139,7 +139,7 @@ def train():
 			cmymodel.train()
 
 			rec = {"epoch": epoch, "train_loss": loss.item(),
-               "val_loss": vloss / n, "acc": correct / n}
+               "val_loss": vloss, "acc": correct / total}
 			print(rec)
 			with open("/data/log.jsonl", "a") as f:
 				f.write(json.dumps(rec) + "\n")
