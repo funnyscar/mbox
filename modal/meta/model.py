@@ -51,7 +51,7 @@ class MainGPT(nn.Module):
 	def __init__(self, context_size=128, vocab_size=50304, embedding_size=128, nheads=4, nblocks=4):
 		super().__init__()
 		self.nheads = nheads
-		self.nbloks = nblocks
+		self.nblocks = nblocks
 
 		self.Tmax, self.C = context_size, embedding_size
 

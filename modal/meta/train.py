@@ -78,8 +78,8 @@ def data_worker(worker_i, state_dict):
 	out_path = f"/data/shards/{state_dict['old_model_version']}-{worker_i}.bin"
 	ids = enc.encode_ordinary("Ask me a question.") + [EOP]
 	ice_breaker_len = len(ids)
-	max_tokens = 250
-	SHARD = 100_000
+	max_tokens = 148
+	SHARD = 50_000
 	num_errors = 0
 	n_chunks, written = 0, 0
 	with OpenRouter(api_key=os.getenv("OPEN_ROUTER_API_KEY")) as client, torch.no_grad(), open(out_path, "ab") as f:
@@ -96,6 +96,7 @@ def data_worker(worker_i, state_dict):
 						"role": "user",
 						"content": prompt,
 					}],
+					models=["deepseek/deepseek-v4.1-flash", "x-ai/grok-4.7", "mistralai/mistral-large-4-0"]
 				)
 				answer = res.choices[0].message.content or ""
 
@@ -259,18 +260,20 @@ def train(state_dict, total_steps=5000):
 
 
 @app.local_entrypoint()
-def main(workers: int = 2):
+def main(workers: int = 4):
 
 	# just get data
 	with modal.Dict.ephemeral() as state:
-		state["model_version"] = 0
-		state["old_model_version"] = -1
+		state["model_version"] = 1
+		state["old_model_version"] = 0
 		data_workers = [data_worker.spawn(i, state) for i in range(workers)]
 		for c in data_workers:
 			c.get()
 	
 	# just train
 	# with modal.Dict.ephemeral() as state:
+	# 	state["model_version"] = 0
+	# 	state["old_model_version"] = -1
 	# 	print("final loss:", train.remote(state))
 
 	# indefinite loop
