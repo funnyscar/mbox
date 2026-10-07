@@ -22,6 +22,30 @@ context_size=512, vocab_size=enc.n_vocab
 - r: embedding_size=1024, nheads=16, nblocks=20   # ~250
 - s: embedding_size=1280, nheads=20, nblocks=20   # ~393M (~24 hrs H100)
 
+### Serving
+
+The serving API reads `chinese-{letter}.pt` from the `chinese` Modal volume.
+Deploy it from this directory:
+
+```sh
+modal deploy serve.py
+```
+
+Send a request to the deployed endpoint with a version from `a` through `s`:
+
+```sh
+curl -X POST "$ENDPOINT_URL" \
+  -H "Authorization: $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"prompt":"你好","model_version":"l","max_tokens":100}'
+```
+
+For inference from the terminal without deploying the endpoint, run:
+
+```sh
+modal run serve.py --model-version l --prompt "你好"
+```
+
 
 
 everything else held same. even order of data

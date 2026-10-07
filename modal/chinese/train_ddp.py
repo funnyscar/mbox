@@ -50,6 +50,7 @@ def worker(rank, world_size, total_steps, model_version):
 	from transformers import AutoTokenizer
 	from datasets import load_dataset
 	from datasets.distributed import split_dataset_by_node
+	from torch.optim.lr_scheduler import LinearLR, CosineAnnealingLR, SequentialLR
 
 	# --- process group setup ---
 	os.environ["MASTER_ADDR"] = "localhost"
@@ -60,7 +61,7 @@ def worker(rank, world_size, total_steps, model_version):
 	master = rank == 0
 
 	out_path = f"/data/chinese-{model_version}.pt"
-	loss_path = f"/data/losses-{model_version}.json"
+	loss_path = f"/data/losses-{model_version}.jsonl"
 
 	enc = AutoTokenizer.from_pretrained("01-ai/Yi-6B")
 	EOT = enc.eos_token_id
@@ -85,8 +86,8 @@ def worker(rank, world_size, total_steps, model_version):
 		# embedding_size=512, nheads=8,  nblocks=10   # 31M i
 		# embedding_size=576, nheads=9,  nblocks=11   # 44M j
 		# embedding_size=640, nheads=10, nblocks=12   # 59M k
-		embedding_size=768, nheads=12, nblocks=12   # 85M l
-		# embedding_size=832, nheads=13, nblocks=13   # 108M m
+		# embedding_size=768, nheads=12, nblocks=12   # 85M l
+		embedding_size=832, nheads=13, nblocks=13   # 108M m
 		# embedding_size=896, nheads=14, nblocks=14   # 135M n
 		# embedding_size=960,  nheads=15, nblocks=15   # 166M o
 		# embedding_size=1024, nheads=16, nblocks=16   # 201M p
@@ -98,8 +99,20 @@ def worker(rank, world_size, total_steps, model_version):
     # ---- unwrapped model for saving and stats
 	raw_model = mymodel
 
+	base_lr, base_batch = 3e-4, 64 # on one gpu
+	global_batch = batchsize * world_size
+	lr = base_lr * (global_batch / base_batch) ** 0.5
 	criterion = nn.CrossEntropyLoss()
 	optimizer = torch.optim.AdamW(mymodel.parameters(), lr=1e-3, fused=True)
+	warmup = 500
+	scheduler = SequentialLR(
+		optimizer,
+		schedulers=[
+			LinearLR(optimizer, start_factor=1e-3, total_iters=warmup),
+			CosineAnnealingLR(optimizer, T_max=total_steps - warmup, eta_min=3e-5),
+		],
+		milestones=[warmup],
+	)
 
 	start = 0
 	loss = None
@@ -109,6 +122,7 @@ def worker(rank, world_size, total_steps, model_version):
 		ck = torch.load(out_path, map_location=device)
 		raw_model.load_state_dict(ck["model"])
 		optimizer.load_state_dict(ck["optim"])
+		scheduler.load_state_dict(ck["sched"])
 		start, best_val = ck["step"] + 1, ck["best_val"]
 		train_ds = train_ds.shuffle(seed=start, buffer_size=10_000)
 		if master:
@@ -150,7 +164,9 @@ def worker(rank, world_size, total_steps, model_version):
 
 		optimizer.zero_grad()
 		loss.backward()  # gradients are all-reduced across GPUs here
+		torch.nn.utils.clip_grad_norm_(mymodel.parameters(), 1.0)
 		optimizer.step()
+		scheduler.step()
 
 		if step % 100 == 0:
 			train_loss = loss.detach().clone()
@@ -166,6 +182,7 @@ def worker(rank, world_size, total_steps, model_version):
 					torch.save({
 						"model": raw_model.state_dict(),
 						"optim": optimizer.state_dict(),
+						"sched": scheduler.state_dict(),
 						"step": step,
 						"best_val": val_loss,
 					}, out_path)
@@ -185,8 +202,8 @@ def worker(rank, world_size, total_steps, model_version):
 	if master:
 		n_emb = sum(p.numel() for m in raw_model.modules() if isinstance(m, nn.Embedding) for p in m.parameters())
 		nparams = sum(p.numel() for p in raw_model.parameters()) - n_emb
-		with open(loss_path, "w") as f:
-			json.dump({
+		with open(loss_path, "a") as f:
+			f.write(json.dumps({
 				"train": lossi,
 				"val": vlossi,
 				"final_train": final_train.item(),
@@ -200,7 +217,7 @@ def worker(rank, world_size, total_steps, model_version):
 				"nblocks": raw_model.nblocks,
 				"world_size": world_size,
 				"global_batch": batchsize * world_size,
-			}, f)
+			}) + "\n")
 		vol.commit()
 		print("val loss: ", val_loss)
 		print("train loss: ", final_train.item())
@@ -209,8 +226,8 @@ def worker(rank, world_size, total_steps, model_version):
 	dist.destroy_process_group()
 
 
-@app.function(image=image, gpu=f"A100:{N_GPUS}", volumes={"/data": vol}, timeout=60 * 60 * 4, secrets=[modal.Secret.from_name("huggingface-secret")])
-def train(total_steps=20000, model_version="l"):
+@app.function(image=image, gpu=f"A100:{N_GPUS}", volumes={"/data": vol}, timeout=60 * 60 * 20, secrets=[modal.Secret.from_name("huggingface-secret")])
+def train(total_steps=20000, model_version="m.01"):
 	import torch.multiprocessing as mp
 
 	world_size = torch.cuda.device_count()
