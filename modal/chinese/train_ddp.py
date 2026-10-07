@@ -87,8 +87,8 @@ def worker(rank, world_size, total_steps, model_version):
 		# embedding_size=576, nheads=9,  nblocks=11   # 44M j
 		# embedding_size=640, nheads=10, nblocks=12   # 59M k
 		# embedding_size=768, nheads=12, nblocks=12   # 85M l
-		embedding_size=832, nheads=13, nblocks=13   # 108M m
-		# embedding_size=896, nheads=14, nblocks=14   # 135M n
+		# embedding_size=832, nheads=13, nblocks=13   # 108M m
+		embedding_size=896, nheads=14, nblocks=14   # 135M n
 		# embedding_size=960,  nheads=15, nblocks=15   # 166M o
 		# embedding_size=1024, nheads=16, nblocks=16   # 201M p
 		# embedding_size=1024, nheads=16, nblocks=18   # ~226M q
@@ -227,7 +227,7 @@ def worker(rank, world_size, total_steps, model_version):
 
 
 @app.function(image=image, gpu=f"A100:{N_GPUS}", volumes={"/data": vol}, timeout=60 * 60 * 20, secrets=[modal.Secret.from_name("huggingface-secret")])
-def train(total_steps=20000, model_version="m.01"):
+def train(total_steps=20000, model_version="n.01"):
 	import torch.multiprocessing as mp
 
 	world_size = torch.cuda.device_count()

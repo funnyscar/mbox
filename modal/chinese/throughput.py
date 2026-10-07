@@ -9,7 +9,7 @@ image = (modal.Image.debian_slim()
 vol = modal.Volume.from_name("chinese", create_if_missing=True)
 
 T, B, STEPS = 512, 32, 4000  # context, batch, steps
-PEAK_FLOPS = 312e12  # A100 bf16 dense (H100 SXM: 989e12)
+PEAK_FLOPS = 70e12  # A100 bf16 dense (H100 SXM: 989e12)
 LOG = "/data/metrics-single.jsonl"  # one JSON object per line
 
 def batches(ds, enc):
