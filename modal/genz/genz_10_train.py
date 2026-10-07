@@ -19,9 +19,11 @@ image = (
 
 vol = modal.Volume.from_name("genz", create_if_missing=True)
 
-context_size = 128
-batchsize = 32
-EOT = tiktoken.get_encoding("gpt2").eot_token
+context_size = 512
+batchsize = 64
+enc = tiktoken.get_encoding("gpt2")
+EOT = enc.eot_token
+n_vocab = -(-enc.n_vocab // 64) * 64
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -53,11 +55,18 @@ def get_batch(eotp, d):
 	return batch[:, :-1], batch[:, 1:]
 
 
-@app.function(image=image, gpu="A10G", volumes={"/data": vol}, timeout=60 * 60)
-def train(steps=1000, epochs=50, out_path="/data/genz-1.0.pt"):
+@app.function(image=image, gpu="A100", volumes={"/data": vol}, timeout=60 * 60 * 22)
+def train(steps=10000, epochs=50, model_version="l"):
 	from genz_10 import GenZGPT
 
-	mymodel = GenZGPT().to(device)
+	out_path = f"/data/genz-{model_version}.pt"
+	latest_path = f"/data/genz-{model_version}-latest.pt"
+	loss_path = f"/data/losses-{model_version}.json"
+
+	mymodel = GenZGPT(
+		context_size=context_size, vocab_size=n_vocab,
+		embedding_size=768, nheads=12, nblocks=12   # 85M l
+	).to(device)
 
 	criterion = nn.CrossEntropyLoss()
 	optimizer = torch.optim.AdamW(mymodel.parameters(), lr=1e-3, fused=True) 
@@ -81,10 +90,24 @@ def train(steps=1000, epochs=50, out_path="/data/genz-1.0.pt"):
 	lossi = []
 	vlossi = []
 
-	for epoch in epochs:
+
+	def eval_loss():
+		mymodel.eval()
+		with torch.no_grad(), torch.autocast("cuda", dtype=torch.bfloat16):
+			val_loss = 0
+			for x, y in val_batches:
+				logits = mymodel(x)
+				val_loss += criterion(logits.mT, y).item()
+			val_loss /= len(val_batches)
+		mymodel.train()
+		return val_loss
+
+	for epoch in range(epochs):
 
 		data, val_data = get_shard()
 		eot_pos, val_eot_pos = get_starts(data), get_starts(val_data)
+
+		val_batches = [get_batch(val_eot_pos, val_data) for _ in range(20)]
 
 		for step in range(start, steps):
 
@@ -96,51 +119,55 @@ def train(steps=1000, epochs=50, out_path="/data/genz-1.0.pt"):
 
 			optimizer.zero_grad()
 			loss.backward()
+			torch.nn.utils.clip_grad_norm_(mymodel.parameters(), 1.0)
 			optimizer.step()
 
-			lossi.append(loss.item())
-			if step % 100 == 0:
-				print(step, loss.item())
 
-			if step % 250 == 0:
-				mymodel.eval()
-				with torch.no_grad():
-					tokens, targets = get_batch(val_eot_pos, val_data)
-					with torch.autocast("cuda", dtype=torch.bfloat16):
-						logits = mymodel(tokens)
-						val_loss = criterion(logits.mT, targets).item()
-				mymodel.train()
+			if step % 500 == 0:
+				print(step, loss.item())
+				val_loss = eval_loss()
 				vlossi.append(val_loss)
+				lossi.append(loss.item())
+
+				ckpt = {
+					"model": mymodel._orig_mod.state_dict(),
+					"optim": optimizer.state_dict(),
+					"step": step,
+					"best_val": best_val,
+				}
+
+				torch.save(ckpt, latest_path)
 
 				if val_loss < best_val:
 					best_val = val_loss
-					torch.save({
-						"model": mymodel._orig_mod.state_dict(),
-						"optim": optimizer.state_dict(),
-						"step": step,
-						"best_val": best_val,
-						}, out_path)
-					
-					vol.commit()
+					torch.save(ckpt, out_path)
 					print("best val: ", val_loss)
+					
+				vol.commit()
 
 
-	with open("/data/losses-1.0.json", "w") as f:
-		json.dump({"train": lossi, "val": vlossi}, f)
+	with open(loss_path, "w") as f:
+		n_emb = sum(p.numel() for m in mymodel.modules() if isinstance(m, nn.Embedding) for p in m.parameters())
+		nparams = sum(p.numel() for p in mymodel.parameters()) - n_emb
+		json.dump({
+			"train": lossi, "val": vlossi,
+			"out_path": out_path,
+			"nparams":  nparams,
+			"vocab_size": n_vocab,
+			"context_size": context_size,
+			"embedding_size": mymodel._orig_mod.C,
+			"nheads": mymodel._orig_mod.nheads,
+			"nblocks": mymodel._orig_mod.nblocks
+		}, f)
 	vol.commit()
 
-	mymodel.eval()
-	with torch.no_grad():
-		tokens, targets = get_batch(val_eot_pos, val_data)
-		with torch.autocast("cuda", dtype=torch.bfloat16):
-			logits = mymodel(tokens)
-			val_loss = criterion(logits.mT, targets)
-		print("val loss: ", val_loss.item())
+	val_loss = eval_loss()
+	print("val loss: ", val_loss)
 
 	print("train loss: ", loss.item())
 	print("n model params: ", sum(p.numel() for p in mymodel.parameters() if p.requires_grad))
 
-	return loss.item(), val_loss.item()
+	return loss.item(), val_loss
 
 
 
