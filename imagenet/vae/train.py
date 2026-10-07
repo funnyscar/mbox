@@ -1,7 +1,7 @@
 import os
+import modal
 import torch
 import torch.nn as nn
-import modal
 import json
 import math
 
@@ -19,6 +19,7 @@ hf = modal.Secret.from_name("huggingface-secret")
 CACHE = "/data/hf_cache"
 CKPT = "/data/vae_cifar10.pt"
 
+
 @app.function(image=image, volumes={"/data": vol}, secrets=[hf], gpu="A10G")
 def generate(prompts: list[str], idx: int = -1):
 	import random
@@ -26,7 +27,7 @@ def generate(prompts: list[str], idx: int = -1):
 	from transformers import AutoTokenizer, AutoImageProcessor
 
 	IMG, TXT = "google/vit-base-patch16-224", "distilbert-base-uncased"
-	proc, tok = AutoImageProcessor.from_pretrained(IMG), AutoTokenizer.from_pretrained(TXT)
+	proc, tok = AutoImageProcessor.from_pretrained(IMG, cache_dir=CACHE), AutoTokenizer.from_pretrained(TXT, cache_dir=CACHE)
 
 	model = CLIP(VIT_MODEL=IMG, LLM_MODEL=TXT).cuda().eval()
 	model.load_state_dict(torch.load("/data/clip.pt", map_location="cuda"))

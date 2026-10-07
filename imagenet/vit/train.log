@@ -38,3 +38,26 @@ Note that running a local entrypoint in detached mode only keeps the last trigge
 /usr/local/lib/python3.12/site-packages/PIL/TiffImagePlugin.py:950: UserWarning: Corrupt EXIF data.  Expecting to read 2 bytes but only got 0. 
   warnings.warn(str(msg))
 {'epoch': 0, 'train_loss': 6.312384128570557, 'val_loss': 5.507260322570801, 'acc': 0.0885}
+{'epoch': 1, 'train_loss': 6.310881614685059, 'val_loss': 4.8441877365112305, 'acc': 0.16372}
+{'epoch': 2, 'train_loss': 5.932549476623535, 'val_loss': 4.828433036804199, 'acc': 0.16836}
+{'epoch': 3, 'train_loss': 5.437398433685303, 'val_loss': 4.653486728668213, 'acc': 0.17714}
+{'epoch': 4, 'train_loss': 6.026123046875, 'val_loss': 4.403017997741699, 'acc': 0.21546}
+{'epoch': 5, 'train_loss': 5.833878517150879, 'val_loss': 3.9471054077148438, 'acc': 0.2998}
+{'epoch': 6, 'train_loss': 5.632867813110352, 'val_loss': 3.688448429107666, 'acc': 0.34482}
+{'epoch': 7, 'train_loss': 5.388398170471191, 'val_loss': 3.813075542449951, 'acc': 0.32366}
+{'epoch': 8, 'train_loss': 5.96381139755249, 'val_loss': 4.010121822357178, 'acc': 0.29194}
+{'epoch': 9, 'train_loss': 4.541149616241455, 'val_loss': 3.711371660232544, 'acc': 0.33606}
+{'epoch': 10, 'train_loss': 5.413673400878906, 'val_loss': 3.358874797821045, 'acc': 0.40968}
+{'epoch': 11, 'train_loss': 5.280587196350098, 'val_loss': 3.3226473331451416, 'acc': 0.41974}
+{'epoch': 12, 'train_loss': 3.982515811920166, 'val_loss': 3.6662046909332275, 'acc': 0.37226}
+{'epoch': 13, 'train_loss': 5.507707118988037, 'val_loss': 3.6520650386810303, 'acc': 0.3545}
+{'epoch': 14, 'train_loss': 5.685784339904785, 'val_loss': 3.46346378326416, 'acc': 0.40674}
+{'epoch': 15, 'train_loss': 5.453370571136475, 'val_loss': 3.1450343132019043, 'acc': 0.4666}
+{'epoch': 16, 'train_loss': 3.8014581203460693, 'val_loss': 3.199085235595703, 'acc': 0.44762}
+{'epoch': 17, 'train_loss': 5.491790294647217, 'val_loss': 3.415367841720581, 'acc': 0.38636}
+{'epoch': 18, 'train_loss': 4.547713279724121, 'val_loss': 3.4213123321533203, 'acc': 0.393}
+{'epoch': 19, 'train_loss': 4.947170257568359, 'val_loss': 3.0363547801971436, 'acc': 0.46822}
+{'epoch': 20, 'train_loss': 3.6847009658813477, 'val_loss': 2.873610734939575, 'acc': 0.49522}
+{'epoch': 21, 'train_loss': 3.848501205444336, 'val_loss': 3.201167106628418, 'acc': 0.45188}
+{'epoch': 22, 'train_loss': 3.772535562515259, 'val_loss': 3.356243848800659, 'acc': 0.39838}
+{'epoch': 23, 'train_loss': 4.999928951263428, 'val_loss': 3.082085371017456, 'acc': 0.44678}

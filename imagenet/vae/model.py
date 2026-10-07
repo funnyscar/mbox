@@ -3,10 +3,6 @@ import torch
 import torch.nn as nn
 
 
-import torch
-import torch.nn as nn
-
-
 class ResBlock(nn.Module):
 	def __init__(self, cin, cout):
 		super().__init__()
