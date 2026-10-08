@@ -4,7 +4,6 @@ import os
 import torch
 import torch.nn as nn
 import tiktoken
-import urllib.request
 import modal
 import json
 import numpy as np
@@ -26,43 +25,58 @@ enc = tiktoken.get_encoding("gpt2")
 EOT = enc.eot_token
 n_vocab = -(-enc.n_vocab // 64) * 64
 
+N_VAL_FILES = 5          # whole shards held out as a fixed val set
+SHARDS_PER_GROUP = 50    # shards sampled from at once
+RELOAD_EVERY = 1000      # steps before swapping in a fresh group
+
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-def get_shard():
-	import numpy as np
+def split_files():
 	import glob
-	import os
-
-	# get random shard
 	files = sorted(glob.glob("/data/big/*"))
-	sizes = np.array([os.path.getsize(f) for f in files], dtype=float)
-	p = sizes / sizes.sum()
-	f = np.random.choice(files, p=p)
+	assert len(files) > N_VAL_FILES, f"only {len(files)} shards found"
+	return files[N_VAL_FILES:], files[:N_VAL_FILES]
 
-	# data = torch.from_numpy(np.fromfile(f, dtype=np.uint16).astype(np.int64)).to(device)
-	d = np.memmap(f, dtype=np.uint16, mode="r")
-	n = int(0.9 * len(d))
-	train_data, val_data = d[:n], d[n:]
-	return train_data, val_data
+def load_group(files, k):
+	files = np.random.choice(files, size=min(k, len(files)), replace=False)
+	shards, starts = [], []
+	for f in files:
+		d = np.memmap(f, dtype=np.uint16, mode="r")
+		s = get_starts(d)
+		if len(s):
+			shards.append(d)
+			starts.append(s)
+	return shards, starts
 
 def get_starts(d):
 	eot_pos = np.flatnonzero(d == EOT)
 	return eot_pos[eot_pos < len(d) - context_size - 1]
 
-def get_batch(eotp, d):
-	rstarts = eotp[np.random.randint(len(eotp), size=batchsize)]
-	idx = rstarts[:, None] + np.arange(context_size + 1)
-	batch = torch.from_numpy(d[idx].astype(np.int64)).pin_memory().to(device, non_blocking=True)
+def get_batch(shards, starts):
+	rows = []
+	for s in np.random.randint(len(shards), size=batchsize):   # random shard per sample
+		r = starts[s][np.random.randint(len(starts[s]))]        # random doc start in that shard
+		rows.append(shards[s][r : r + context_size + 1])
+	batch = torch.from_numpy(np.stack(rows).astype(np.int64)).pin_memory().to(device, non_blocking=True)
 	return batch[:, :-1], batch[:, 1:]
 
 
+
+
 @app.function(image=image, gpu="A10G", volumes={"/data": vol}, timeout=60 * 60 * 22)
-def train(steps=10000, epochs=20, model_version="l"):
+def train(steps=50000, model_version="l.01"):
 	from genz_10 import GenZGPT
+	from torch.optim.lr_scheduler import LinearLR, CosineAnnealingLR, SequentialLR
 
 	out_path = f"/data/genz-{model_version}.pt"
 	latest_path = f"/data/genz-{model_version}-latest.pt"
 	loss_path = f"/data/losses-{model_version}.jsonl"
+
+	train_files, val_files = split_files()
+	np.random.seed(0)
+	val_shards, val_starts = load_group(val_files, len(val_files))
+	val_batches = [get_batch(val_shards, val_starts) for _ in range(20)]
+	np.random.seed(None)
 
 	mymodel = GenZGPT(
 		context_size=context_size, vocab_size=n_vocab,
@@ -70,10 +84,26 @@ def train(steps=10000, epochs=20, model_version="l"):
 	).to(device)
 
 	criterion = nn.CrossEntropyLoss()
-	optimizer = torch.optim.AdamW(mymodel.parameters(), lr=1e-3, fused=True) 
+
+	lr = 6e-4
+	decay    = [p for p in mymodel.parameters() if p.requires_grad and p.dim() >= 2] # matrices
+	no_decay = [p for p in mymodel.parameters() if p.requires_grad and p.dim() < 2] # biases, ln
+	optimizer = torch.optim.AdamW([
+		{"params": decay, "weight_decay": 0.1},
+    	{"params": no_decay, "weight_decay": 0.0}
+	], lr=lr, betas=(0.9, 0.95), fused=True)
+
+	warmup = 500
+	scheduler = SequentialLR(
+		optimizer,
+		schedulers=[
+			LinearLR(optimizer, start_factor=1e-3, total_iters=warmup),
+			CosineAnnealingLR(optimizer, T_max=steps - warmup, eta_min=3e-5),
+		],
+		milestones=[warmup],
+	)
 
 	start = 0
-	start_epoch = 0
 	loss = None
 	best_val = float('inf')
 
@@ -82,8 +112,11 @@ def train(steps=10000, epochs=20, model_version="l"):
 		ck = torch.load(old, map_location=device)
 		mymodel.load_state_dict(ck["model"])
 		optimizer.load_state_dict(ck["optim"])
-		start, best_val, start_epoch = ck["step"] + 1, ck["best_val"], ck["epoch"]
+		scheduler.load_state_dict(ck["sched"]) 
+		start, best_val = ck["step"] + 1, ck["best_val"]
 		print(f"Loaded {old}", flush=True)
+	
+	assert start < steps
 
 	torch.set_float32_matmul_precision("high")
 	mymodel = torch.compile(mymodel)
@@ -99,57 +132,59 @@ def train(steps=10000, epochs=20, model_version="l"):
 			val_loss = 0
 			for x, y in val_batches:
 				logits = mymodel(x)
-				val_loss += criterion(x.reshape(-1, n_vocab), y.reshape(-1)).item()
+				val_loss += criterion(logits.reshape(-1, n_vocab), y.reshape(-1)).item()
 			val_loss /= len(val_batches)
 		mymodel.train()
 		return val_loss
-
-	for epoch in range(start_epoch, epochs):
-
-		data, val_data = get_shard()
-		eot_pos, val_eot_pos = get_starts(data), get_starts(val_data)
-
-		val_batches = [get_batch(val_eot_pos, val_data) for _ in range(20)]
-
-		for step in range(start, steps):
-
-			tokens, targets = get_batch(eot_pos, data)
-
-			with torch.autocast("cuda", dtype=torch.bfloat16):
-				logits = mymodel(tokens)
-				loss = criterion(logits.reshape(-1, n_vocab), targets.reshape(-1))
-
-			optimizer.zero_grad()
-			loss.backward()
-			torch.nn.utils.clip_grad_norm_(mymodel.parameters(), 1.0)
-			optimizer.step()
+	
+	shards, starts = load_group(train_files, SHARDS_PER_GROUP)
 
 
-			if step % 500 == 0:
-				print(step, loss.item())
-				val_loss = eval_loss()
-				vlossi.append(val_loss)
-				lossi.append(loss.item())
+	for step in range(start, steps):
+		if step != start and step % RELOAD_EVERY == 0:
+			shards, starts = load_group(train_files, SHARDS_PER_GROUP)
 
-				ckpt = {
-					"model": mymodel._orig_mod.state_dict(),
-					"optim": optimizer.state_dict(),
-					"step": step,
-					"best_val": best_val,
-					"epoch": epoch
-				}
+		tokens, targets = get_batch(shards, starts)
 
-				torch.save(ckpt, latest_path)
+		with torch.autocast("cuda", dtype=torch.bfloat16):
+			logits = mymodel(tokens)
+			loss = criterion(logits.reshape(-1, n_vocab), targets.reshape(-1))
 
-				if val_loss < best_val:
-					best_val = val_loss
-					torch.save(ckpt, out_path)
-					print("best val: ", val_loss)
-					
-				vol.commit()
+		optimizer.zero_grad()
+		loss.backward()
+		torch.nn.utils.clip_grad_norm_(mymodel.parameters(), 1.0)
+		optimizer.step()
+		scheduler.step()
 
-		start = 0
 
+		if step % 2000 == 0:
+			print(step, loss.item())
+			val_loss = eval_loss()
+			vlossi.append(val_loss)
+			lossi.append(loss.item())
+
+			prev_best_val = best_val
+			best_val = min(val_loss, best_val)
+
+			ckpt = {
+				"model": mymodel._orig_mod.state_dict(),
+				"optim": optimizer.state_dict(),
+				"step": step,
+				"best_val": best_val,
+				"sched": scheduler.state_dict(),
+			}
+
+			torch.save(ckpt, latest_path)
+
+			if val_loss < prev_best_val:
+				torch.save(ckpt, out_path)
+				print("best val: ", val_loss)
+				
+			vol.commit()
+
+
+
+	val_loss = eval_loss()
 
 	with open(loss_path, "a") as f:
 		n_emb = sum(p.numel() for m in mymodel.modules() if isinstance(m, nn.Embedding) for p in m.parameters())
@@ -162,12 +197,13 @@ def train(steps=10000, epochs=20, model_version="l"):
 			"context_size": context_size,
 			"embedding_size": mymodel._orig_mod.C,
 			"nheads": mymodel._orig_mod.nheads,
-			"nblocks": mymodel._orig_mod.nblocks
+			"nblocks": mymodel._orig_mod.nblocks,
+			"final_val": val_loss,
+			"final_train": loss.item(),
 		}, f)
 		f.write("\n")
 	vol.commit()
 
-	val_loss = eval_loss()
 	print("val loss: ", val_loss)
 	print("train loss: ", loss.item())
 	print("n model params: ", sum(p.numel() for p in mymodel.parameters() if p.requires_grad))
