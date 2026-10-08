@@ -55,6 +55,7 @@ class GenZGPT(nn.Module):
 		super().__init__()
 
 		self.Tmax, self.C = context_size, embedding_size
+		self.nheads, self.nblocks = nheads, nblocks
 
 		assert self.C % nheads == 0, "embedding_size must be divisible by nheads"
 

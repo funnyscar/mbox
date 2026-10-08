@@ -7,6 +7,7 @@ import tiktoken
 import urllib.request
 import modal
 import json
+import numpy as np
 
 app = modal.App("genz_10")
 
@@ -20,7 +21,7 @@ image = (
 vol = modal.Volume.from_name("genz", create_if_missing=True)
 
 context_size = 512
-batchsize = 64
+batchsize = 32
 enc = tiktoken.get_encoding("gpt2")
 EOT = enc.eot_token
 n_vocab = -(-enc.n_vocab // 64) * 64
@@ -38,30 +39,30 @@ def get_shard():
 	p = sizes / sizes.sum()
 	f = np.random.choice(files, p=p)
 
-	data = torch.from_numpy(np.fromfile(f, dtype=np.uint16).astype(np.int64)).to(device)
-	n = int(0.9 * len(data))
-	train_data = data[:n]
-	val_data = data[n:]
+	# data = torch.from_numpy(np.fromfile(f, dtype=np.uint16).astype(np.int64)).to(device)
+	d = np.memmap(f, dtype=np.uint16, mode="r")
+	n = int(0.9 * len(d))
+	train_data, val_data = d[:n], d[n:]
 	return train_data, val_data
 
 def get_starts(d):
-	eot_pos = (d == EOT).nonzero().squeeze(1)
+	eot_pos = np.flatnonzero(d == EOT)
 	return eot_pos[eot_pos < len(d) - context_size - 1]
 
 def get_batch(eotp, d):
-	rstarts = eotp[torch.randint(len(eotp), (batchsize,), device=d.device)]
-	ctx_slice = torch.arange(context_size+1, device=d.device)
-	batch = d[rstarts[:, None] + ctx_slice]
+	rstarts = eotp[np.random.randint(len(eotp), size=batchsize)]
+	idx = rstarts[:, None] + np.arange(context_size + 1)
+	batch = torch.from_numpy(d[idx].astype(np.int64)).pin_memory().to(device, non_blocking=True)
 	return batch[:, :-1], batch[:, 1:]
 
 
-@app.function(image=image, gpu="A100", volumes={"/data": vol}, timeout=60 * 60 * 22)
-def train(steps=10000, epochs=50, model_version="l"):
+@app.function(image=image, gpu="A10G", volumes={"/data": vol}, timeout=60 * 60 * 22)
+def train(steps=10000, epochs=20, model_version="l"):
 	from genz_10 import GenZGPT
 
 	out_path = f"/data/genz-{model_version}.pt"
 	latest_path = f"/data/genz-{model_version}-latest.pt"
-	loss_path = f"/data/losses-{model_version}.json"
+	loss_path = f"/data/losses-{model_version}.jsonl"
 
 	mymodel = GenZGPT(
 		context_size=context_size, vocab_size=n_vocab,
@@ -72,15 +73,16 @@ def train(steps=10000, epochs=50, model_version="l"):
 	optimizer = torch.optim.AdamW(mymodel.parameters(), lr=1e-3, fused=True) 
 
 	start = 0
+	start_epoch = 0
 	loss = None
 	best_val = float('inf')
 
-	old = out_path
+	old = latest_path
 	if os.path.exists(old):
 		ck = torch.load(old, map_location=device)
 		mymodel.load_state_dict(ck["model"])
 		optimizer.load_state_dict(ck["optim"])
-		start, best_val = ck["step"] + 1, ck["best_val"]
+		start, best_val, start_epoch = ck["step"] + 1, ck["best_val"], ck["epoch"]
 		print(f"Loaded {old}", flush=True)
 
 	torch.set_float32_matmul_precision("high")
@@ -97,12 +99,12 @@ def train(steps=10000, epochs=50, model_version="l"):
 			val_loss = 0
 			for x, y in val_batches:
 				logits = mymodel(x)
-				val_loss += criterion(logits.mT, y).item()
+				val_loss += criterion(x.reshape(-1, n_vocab), y.reshape(-1)).item()
 			val_loss /= len(val_batches)
 		mymodel.train()
 		return val_loss
 
-	for epoch in range(epochs):
+	for epoch in range(start_epoch, epochs):
 
 		data, val_data = get_shard()
 		eot_pos, val_eot_pos = get_starts(data), get_starts(val_data)
@@ -115,7 +117,7 @@ def train(steps=10000, epochs=50, model_version="l"):
 
 			with torch.autocast("cuda", dtype=torch.bfloat16):
 				logits = mymodel(tokens)
-				loss = criterion(logits.mT, targets)
+				loss = criterion(logits.reshape(-1, n_vocab), targets.reshape(-1))
 
 			optimizer.zero_grad()
 			loss.backward()
@@ -134,6 +136,7 @@ def train(steps=10000, epochs=50, model_version="l"):
 					"optim": optimizer.state_dict(),
 					"step": step,
 					"best_val": best_val,
+					"epoch": epoch
 				}
 
 				torch.save(ckpt, latest_path)
@@ -145,8 +148,10 @@ def train(steps=10000, epochs=50, model_version="l"):
 					
 				vol.commit()
 
+		start = 0
 
-	with open(loss_path, "w") as f:
+
+	with open(loss_path, "a") as f:
 		n_emb = sum(p.numel() for m in mymodel.modules() if isinstance(m, nn.Embedding) for p in m.parameters())
 		nparams = sum(p.numel() for p in mymodel.parameters()) - n_emb
 		json.dump({
@@ -159,11 +164,11 @@ def train(steps=10000, epochs=50, model_version="l"):
 			"nheads": mymodel._orig_mod.nheads,
 			"nblocks": mymodel._orig_mod.nblocks
 		}, f)
+		f.write("\n")
 	vol.commit()
 
 	val_loss = eval_loss()
 	print("val loss: ", val_loss)
-
 	print("train loss: ", loss.item())
 	print("n model params: ", sum(p.numel() for p in mymodel.parameters() if p.requires_grad))
 
@@ -173,6 +178,6 @@ def train(steps=10000, epochs=50, model_version="l"):
 
 @app.local_entrypoint()
 def main():
-	print("final loss:", train.remote())
+	print("final", train.remote())
 
 
