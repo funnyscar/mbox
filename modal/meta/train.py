@@ -124,8 +124,8 @@ def data_worker(worker_i, state_dict):
 	print("fetched data")
 
 
-@app.function(image=image, gpu="A10G", volumes={"/data": vol}, timeout=60 * 60)
-def train(state_dict, total_steps=5000):
+@app.function(image=image, gpu="A10G", volumes={"/data": vol}, timeout=60 * 60 * 4)
+def train(state_dict, total_steps=10000):
 	import glob
 	import numpy as np
 	from collections import Counter
@@ -171,6 +171,7 @@ def train(state_dict, total_steps=5000):
 			vol.reload()
 			full_batch_size = 10*batchsize
 			shards = sorted(glob.glob(f"/data/shards/{old_model_version}-*.bin"))
+			assert shards, "no shards found"
 			randi = np.random.choice(len(shards), full_batch_size)
 			counts = Counter(randi.tolist())
 
@@ -263,18 +264,18 @@ def train(state_dict, total_steps=5000):
 def main(workers: int = 4):
 
 	# just get data
+	# with modal.Dict.ephemeral() as state:
+	# 	state["model_version"] = 1
+	# 	state["old_model_version"] = 0
+	# 	data_workers = [data_worker.spawn(i, state) for i in range(workers)]
+	# 	for c in data_workers:
+	# 		c.get()
+	
+	# just train
 	with modal.Dict.ephemeral() as state:
 		state["model_version"] = 1
 		state["old_model_version"] = 0
-		data_workers = [data_worker.spawn(i, state) for i in range(workers)]
-		for c in data_workers:
-			c.get()
-	
-	# just train
-	# with modal.Dict.ephemeral() as state:
-	# 	state["model_version"] = 0
-	# 	state["old_model_version"] = -1
-	# 	print("final loss:", train.remote(state))
+		print("final:", train.remote(state))
 
 	# indefinite loop
 	# with modal.Dict.ephemeral() as state:

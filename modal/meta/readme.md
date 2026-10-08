@@ -9,7 +9,16 @@ bones 平 Knight proj offr tua맥|(
 
 Chat retuns....
 ```
-Are assistance I feel you need...you're trying to help with random encoding to help with single
+Could you please clarify what you'd like help with? For example:
+- Do you need translation assistance?
+- Are you testing multilingual text processing?
+- Do you have a specific question about programming, circuits, or another topic?
+- Was this message sent by accident?
+
+I'm happy to help once I understand what you need!
 ```
+
+Scratch that. I don't think that'll work.
+
 
 Over time it learns what to say

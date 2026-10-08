@@ -43,8 +43,8 @@ def get_batch_stream(ds, enc, EOT):
 	
 
 
-@app.function(image=image, gpu="A100", volumes={"/data": vol}, timeout=60 * 60 * 4, secrets=[modal.Secret.from_name("huggingface-secret")])
-def train(total_steps=10000, model_version="i"):
+@app.function(image=image, gpu="A10G", volumes={"/data": vol}, timeout=60 * 60 * 4, secrets=[modal.Secret.from_name("huggingface-secret")])
+def train(total_steps=10000, model_version="h.01"):
 	from model import ChineseGPT
 	from transformers import AutoTokenizer
 	import torch
@@ -75,8 +75,8 @@ def train(total_steps=10000, model_version="i"):
 		# embedding_size=256, nheads=4,  nblocks=8    # 6.3M e 
 		# embedding_size=320, nheads=5,  nblocks=8    # 9.8M f 
 		# embedding_size=384, nheads=6,  nblocks=8    # 14M g 
-		# embedding_size=448, nheads=7,  nblocks=9    # 22M h
-		embedding_size=512, nheads=8,  nblocks=10   # 31M i 
+		embedding_size=448, nheads=7,  nblocks=9    # 22M h
+		# embedding_size=512, nheads=8,  nblocks=10   # 31M i 
 		# embedding_size=576, nheads=9,  nblocks=11   # 44M j
 		# embedding_size=640, nheads=10, nblocks=12   # 59M k
 		# embedding_size=768, nheads=12, nblocks=12   # 85M l
