@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 
 class GenerateRequest(BaseModel):
 	prompt: str = Field(min_length=1, max_length=2000)
-	model_version: Literal["gen_00", "gen_10"] = "gen_10"
+	model_version: Literal["genz_00", "genz_l", "genz_l.01"] = "genz_l.01"
 	max_tokens: int = Field(200, ge=1, le=512)
 	temperature: float = Field(0.8, gt=0, le=2.0)
 
