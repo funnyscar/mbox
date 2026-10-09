@@ -15,15 +15,22 @@ class GenerateRequest(BaseModel):
 
 
 MODEL_SPECS = {
-	"gen_00": {
+	"genz_00": {
 		"checkpoint": "/data/genz-0.1.pt",
 		"context_size": 128,
 		"embedding_size": 128,
 		"nheads": 4,
 		"nblocks": 4,
 	},
-	"gen_10": {
+	"genz_l": {
 		"checkpoint": "/data/genz-l.pt",
+		"context_size": 512,
+		"embedding_size": 768,
+		"nheads": 12,
+		"nblocks": 12,
+	},
+	"genz_l.01": {
+		"checkpoint": "/data/genz-l.01.pt",
 		"context_size": 512,
 		"embedding_size": 768,
 		"nheads": 12,
@@ -34,7 +41,7 @@ MODEL_SPECS = {
 app = modal.App("genz-serve")
 image = (
 	modal.Image.debian_slim()
-	.pip_install("torch", "tiktoken", "fastapi[standard]")
+	.pip_install("torch", "tiktoken", "numpy", "fastapi[standard]")
 	.add_local_python_source("genz_00", "genz_10")
 )
 vol = modal.Volume.from_name("genz")
@@ -61,7 +68,7 @@ class GenZModel:
 		self.encoder = tiktoken.get_encoding("gpt2")
 		self.models = {}
 
-		for version, model_class in (("gen_00", GenZ00), ("gen_10", GenZ10)):
+		for version, model_class in (("genz_00", GenZ00), ("genz_l", GenZ10), ("genz_l.01", GenZ10)):
 			spec = MODEL_SPECS[version]
 			checkpoint = torch.load(
 				spec["checkpoint"],
@@ -100,7 +107,7 @@ class GenZModel:
 	def generate(
 		self,
 		prompt: str,
-		model_version: str = "gen_10",
+		model_version: str = "genz_l",
 		max_tokens: int = 200,
 		temperature: float = 0.8,
 	):
@@ -116,21 +123,33 @@ class GenZModel:
 		)
 		eot_token = self.encoder.eot_token
 
-		with torch.inference_mode():
-			for token_index in range(max_tokens):
-				logits = model(ids[:, -model.Tmax :])[:, -1, :]
-				next_id = torch.multinomial(
-					torch.softmax(logits.float() / temperature, dim=-1),
-					num_samples=1,
-				)
-				ids = torch.cat([ids, next_id], dim=1)
-				if token_index % 16 == 15 and (ids[0, -16:] == eot_token).any().item():
-					break
+		max_phrases = 5
 
-		output_ids = ids[0].tolist()
-		if eot_token in output_ids:
-			output_ids = output_ids[: output_ids.index(eot_token)]
-		return self.encoder.decode(output_ids)
+		prompt_len = ids.shape[1]
+		n_eot = 0
+		with torch.inference_mode():
+			for _ in range(max_tokens):
+				logits = model(ids[:, -model.Tmax:])[:, -1, :].float()
+				logits[:, self.encoder.n_vocab:] = -float("inf")  # mask padded vocab
+				next_id = torch.multinomial(torch.softmax(logits / temperature, dim=-1), 1)
+				ids = torch.cat([ids, next_id], dim=1)
+				if next_id.item() == eot_token:
+					n_eot += 1
+					if n_eot >= max_phrases:
+						break
+
+		# split generated tokens on EOT; first segment continues the prompt
+		segments, cur = [], []
+		for t in ids[0, prompt_len:].tolist():
+			if t == eot_token:
+				segments.append(self.encoder.decode(cur))
+				cur = []
+			else:
+				cur.append(t)
+		if cur:
+			segments.append(self.encoder.decode(cur))  # last one may be cut off by max_tokens
+		return "\n---\n".join(segments)
+
 
 	@modal.fastapi_endpoint(method="POST")
 	def web(
@@ -152,8 +171,8 @@ class GenZModel:
 
 @app.local_entrypoint()
 def main(
-	prompt: str = "whats good",
-	model_version: str = "gen_10",
+	prompt: str = "whats good homie?",
+	model_version: str = "genz_l.01",
 	max_tokens: int = 200,
 	temperature: float = 0.8,
 ):
