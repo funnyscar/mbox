@@ -23,6 +23,7 @@ Options:
   --size      output width/height in px, 0 = model resolution (default 0)
   --bitrate   video bitrate (default 6M; Cloudflare recommends <= ~8M)
   --minutes   stop after N minutes, 0 = run until stopped (max 24 h)
+  --model     .pkl in the volume; partial names work (e.g. ffhq, cat, modern_art)
   --gpu       Modal GPU type (default L4; needs NVENC: L4, T4, A10G, L40S)
 """
 import os
@@ -32,6 +33,22 @@ import modal
 VOLUME_NAME = "anadol"
 PKL_NAME = "WikiArt_Uncond2.pkl"
 MOUNT = "/anadol"
+
+
+def find_pkl(name: str) -> str:
+    """Find a .pkl in the volume by exact name or unique partial match (case-insensitive)."""
+    import glob
+    import os
+    files = sorted(glob.glob(f"{MOUNT}/**/*.pkl", recursive=True))
+    names = [os.path.basename(f) for f in files]
+    q = name.lower().removesuffix(".pkl")
+    exact = [f for f, n in zip(files, names) if n.lower().removesuffix(".pkl") == q]
+    hits = exact or [f for f, n in zip(files, names) if q in n.lower()]
+    if len(hits) == 1:
+        return hits[0]
+    listing = "\n  ".join(names) or "(none)"
+    why = "matches several models" if hits else "matches no model"
+    raise FileNotFoundError(f"--model '{name}' {why}. Models in volume '{VOLUME_NAME}':\n  {listing}")
 
 image = (
     modal.Image.from_registry("nvidia/cuda:12.4.1-devel-ubuntu22.04", add_python="3.11")
@@ -160,18 +177,18 @@ def _ffmpeg_cmd(res, size, fps, bitrate, encoder, dst):
     timeout=24 * 60 * 60,
 )
 class Streamer:
+    model: str = modal.parameter(default=PKL_NAME)
+
     @modal.enter()
     def load(self):
         import glob
         import torch
         import legacy
 
-        matches = glob.glob(f"{MOUNT}/**/{PKL_NAME}", recursive=True)
-        if not matches:
-            raise FileNotFoundError(f"{PKL_NAME} not found in volume '{VOLUME_NAME}'")
-        with open(matches[0], "rb") as f:
+        path = find_pkl(self.model)
+        with open(path, "rb") as f:
             self.G = legacy.load_network_pkl(f)["G_ema"].cuda().eval()
-        print(f"Loaded {matches[0]}: z_dim={self.G.z_dim} res={self.G.img_resolution}")
+        print(f"Loaded {path}: z_dim={self.G.z_dim} res={self.G.img_resolution}")
         with torch.inference_mode():  # warm up / compile CUDA ops (cached in the volume)
             self.G(torch.zeros(1, self.G.z_dim, device="cuda"),
                    torch.zeros(1, self.G.c_dim, device="cuda"), noise_mode="const")
@@ -283,9 +300,10 @@ class Streamer:
 
 
 @app.local_entrypoint()
-def main(seed: int = 0, mode: str = "perlin", fps: int = 30, speed: float = 0.3, amp: float = 1.5,
-         psi: float = 0.8, size: int = 0, bitrate: str = "6M", minutes: float = 0, gpu: str = "L4"):
+def main(seed: int = 0, mode: str = "perlin", fps: int = 30, speed: float = 0.1, amp: float = 1.5,
+         psi: float = 0.6, size: int = 0, bitrate: str = "6M", minutes: float = 0, gpu: str = "L4",
+         model: str = PKL_NAME):
     if mode not in ("perlin", "walk"):
         raise SystemExit("--mode must be 'perlin' or 'walk'")
-    streamer = Streamer.with_options(gpu=gpu)()
+    streamer = Streamer.with_options(gpu=gpu)(model=model)
     streamer.stream.remote(seed, mode, fps, speed, amp, psi, size, bitrate, minutes)
