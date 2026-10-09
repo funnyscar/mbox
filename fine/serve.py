@@ -1,4 +1,8 @@
+import os, secrets
 import modal
+from fastapi import Header, HTTPException
+from typing import Literal
+from pydantic import BaseModel, Field
 
 app = modal.App("fine-serve")
 
@@ -32,8 +36,16 @@ CONFIGS = {
 }
 VERSION = "r"
 
+class GenerateRequest(BaseModel):
+	prompt: str = Field(min_length=1, max_length=2000)
+	model_version: Literal["r"] = "r"
+	max_tokens: int = Field(200, ge=1, le=512)
+	temperature: float = Field(0.8, gt=0, le=2.0)
+	topk: int = Field(50, ge=5, le=N_VOCAB)
 
-@app.cls(image=image, gpu="L4", volumes={"/data": vol}, scaledown_window=300)
+
+@app.cls(image=image, gpu="A10G", volumes={"/data": vol}, scaledown_window=300, 
+			secrets=[modal.Secret.from_name("models-gateway")])
 class Model:
 	version: str = modal.parameter(default=VERSION)
 
@@ -88,14 +100,21 @@ class Model:
 		return self._generate(prompt, max_tokens, temperature, top_k)
 
 	@modal.fastapi_endpoint(method="POST")
-	def web(self, req: dict):
+	def web(self,
+		req: GenerateRequest,
+		authorization: str | None = Header(default=None),
+	):
+		expected = os.environ["API_TOKEN"]
+		if not authorization or not secrets.compare_digest(authorization, expected):
+			raise HTTPException(status_code=401)
 		text = self._generate(
-			req["prompt"],
-			int(req.get("max_tokens", 200)),
-			float(req.get("temperature", 0.8)),
-			int(req.get("top_k", 50)),
+			req.prompt,
+			# req.model_version,
+			req.max_tokens,
+			req.temperature,
+			req.topk
 		)
-		return {"completion": text}
+		return {"text": text}
 
 
 @app.local_entrypoint()

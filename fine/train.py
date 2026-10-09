@@ -257,7 +257,7 @@ def worker(rank, world_size, total_steps, model_version, smoke_test=True):
 
 
 @app.function(image=image, gpu=f"A100:{N_GPUS}", volumes={"/data": vol}, timeout=60 * 60 * 20, secrets=[modal.Secret.from_name("huggingface-secret")])
-def train(total_steps=76000, model_version="r", smoke_test=True):
+def train(total_steps=152000, model_version="r", smoke_test=True):
 	import torch.multiprocessing as mp
 
 	world_size = torch.cuda.device_count()
@@ -272,5 +272,5 @@ def train(total_steps=76000, model_version="r", smoke_test=True):
 
 
 @app.local_entrypoint()
-def main(smoke_test: bool = False, steps: int = 76000, version: str = "r"):
+def main(smoke_test: bool = False, steps: int = 152000, version: str = "r"):
 	print("final loss:", train.remote(total_steps=steps, model_version=version, smoke_test=smoke_test))
