@@ -169,7 +169,7 @@ def worker(rank, world_size, total_steps, model_version, smoke_test=True):
 
 		with torch.autocast("cuda", dtype=torch.bfloat16):
 			logits = mymodel(tokens)
-			loss = criterion(logits.view(-1, n_vocab), targets.view(-1))
+			loss = criterion(logits.reshape(-1, n_vocab), targets.reshape(-1))
 
 		optimizer.zero_grad()
 		loss.backward()  # gradients are all-reduced across GPUs here
@@ -257,7 +257,7 @@ def worker(rank, world_size, total_steps, model_version, smoke_test=True):
 
 
 @app.function(image=image, gpu=f"A100:{N_GPUS}", volumes={"/data": vol}, timeout=60 * 60 * 20, secrets=[modal.Secret.from_name("huggingface-secret")])
-def train(total_steps=76000, model_version="r", smoke_test=False):
+def train(total_steps=76000, model_version="r", smoke_test=True):
 	import torch.multiprocessing as mp
 
 	world_size = torch.cuda.device_count()
