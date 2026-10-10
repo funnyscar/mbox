@@ -10,11 +10,40 @@ class MultiHead(nn.Module):
 		self.QKV = nn.Linear(C, 3*C, bias=False)
 		self.W0 = nn.Linear(C, C, bias=False)
 
-	def forward(self, x):
+		self.register_buffer("k_cache", None, persistent=False)
+		self.register_buffer("v_cache", None, persistent=False)
+
+	def forward(self, x, pos=None):
 		B, T, C = x.shape
 		q, k, v = self.QKV(x).split(C, dim=-1)
+		# k: (B, T, C)
 		q, k, v = (t.view(B, T, self.nh, C//self.nh).transpose(1, 2) for t in (q, k, v))   
-		attn = F.scaled_dot_product_attention(q, k, v, is_causal=True)
+		# k: (B, nh, T, d)
+
+		if pos is None: # normal training unaffected
+			attn = F.scaled_dot_product_attention(q, k, v, is_causal=True)
+		else: # caching during inference 
+
+			# absolute pos in cache (pos = toks alr in cache)
+			# (T) not Tmax
+			idx = pos + torch.arange(T, device=x.device)
+
+			# rather than recomputing 
+			# (B, nheads, Tmax, d), we'll write into dim (Tmax)
+			self.k_cache[:, :, idx, :] = k.to(self.k_cache.dtype)
+			self.v_cache[:, :, idx, :] = v.to(self.v_cache.dtype)
+
+			# grab tensor shape preassigned
+			Tmax = self.k_cache.shape[2]
+
+			# (1, Tmax) <= (T, 1) ... projected
+			# (T, Tmax) same causal rule masking all the tokens behind and predicting the next one
+			# remember idx is (0, 1, 2, 3, 4...) + off tensor size ()
+			mask = torch.arange(Tmax, device=x.device)[None, :] <= idx[:, None]
+
+			# use cache + custom mask instead of is_causal
+			attn = F.scaled_dot_product_attention(q, self.k_cache, self.v_cache, attn_mask=mask)
+
 		attn = attn.transpose(1, 2).contiguous().view(B, T, C)
 		return self.W0(attn)
 
@@ -36,9 +65,9 @@ class Block(nn.Module):
 		self.ln1 = nn.LayerNorm(C, bias=False)
 		self.ln2 = nn.LayerNorm(C, bias=False)
 
-	def forward(self, x):
+	def forward(self, x, pos=None):
 		h = self.ln1(x)
-		x = x + self.multiheads(h)
+		x = x + self.multiheads(h, pos)
 		x = x + self.mlp(self.ln2(x))
 		return x
 
@@ -68,13 +97,30 @@ class MegaGPT(nn.Module):
 
 		self.head.weight = self.embeddings.weight
 	
-	def forward(self, tokens):
+	def setup_cache(self, batch_size=1, dtype=torch.bfloat16):
+		dev = self.embeddings.weight.device
+		d = self.C //self.nheads
+		# kv cache = shape (B, nheads, max context, d)
+		shape = (batch_size, self.nheads, self.Tmax, d)
+
+		for b in self.blocks:
+			mh = b.multiheads
+			# not in state_dict, only for cuda graph later on
+			mh.register_buffer("k_cache", torch.zeros(shape, dtype=dtype, device=dev), persistent=False)
+			mh.register_buffer("v_cache", torch.zeros(shape, dtype=dtype, device=dev), persistent=False)
+	
+	def forward(self, tokens, pos=None):
 		T = tokens.shape[1]
 		assert T <= self.Tmax, f"Sequence length {T} exceeds model context size {self.Tmax}"
-		x = self.embeddings(tokens) + self.pos(torch.arange(T, device=tokens.device))
+
+		offs = torch.arange(T, device=tokens.device)
+		if pos is not None:
+			offs = offs + pos
+
+		x = self.embeddings(tokens) + self.pos(offs)
 
 		for block in self.blocks:
-			x = block(x)
+			x = block(x, pos)
 
 		logits = self.head(self.ln_f(x)) 
 		return logits
