@@ -47,9 +47,9 @@ PORT = 8000
 MAX_STREAMS = 3                      # max simultaneous GPU containers
 GPUS = {"L4", "A10G", "L40S", "T4"}
 
-app = modal.App("gpu-view-w")
+app = modal.App("unsupervised")
 vol = modal.Volume.from_name(VOLUME_NAME)
-sessions = modal.Dict.from_name("gpu-view-w-sessions", create_if_missing=True)
+sessions = modal.Dict.from_name("unsupervised-sessions", create_if_missing=True)
 
 gpu_image = (
     modal.Image.from_registry("nvidia/cuda:12.4.1-devel-ubuntu22.04", add_python="3.11")
