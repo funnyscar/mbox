@@ -461,7 +461,7 @@ def api():
         gpu: str = "L4"
 
     def check_key(key):
-        if not key or not pysecrets.compare_digest(key, os.environ.get("API_KEY", "")):
+        if not key or not pysecrets.compare_digest(key, os.environ.get("GPU_API_TOKEN", "")):
             raise HTTPException(401, "missing or wrong X-API-Key")
 
     def active_count():
