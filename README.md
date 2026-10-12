@@ -39,14 +39,21 @@ projects:
 ✅ [experimental scaling laws](modal/chinese) - scaling laws & gpu throughput study <br>
 ✅ [sft](modal/post_train/) - sft, lora, dpo <br>
 ✅ [imagenet-small](minimal/imagenet) - resnet, vit, dit, vae, deepdream<br>
-🟡 [imagenet-large](imagenet) - (need more compute for bare min results) vae, dit, vit, VL, clip <br>
-🟡 [audionet](minimal/audionet) - diff, AST, CLAP, whisper, neural codecs, audioLM, full duplex <br>
-🟡 [obama](gideon) - facial meshing the obama paper <br>
-🟡 [minimultimodality](gemini) - text,audio,images. also explored in [imagenet](imagenet) and [audionet](audionet) separately <br>
-🟡 [voicechat]() - local encoding + rest streaming<br>
-🟡 [gideon](gideon) - facial meshing, asmr video data <br>
-🟡 [videos](minimal/audionet) - vivit <br>
+✅ [imagenet-large](imagenet) - (need more compute for bare min results) vae, dit, vit, VL, clip <br>
+✅ [minimultimodality](imagenet) - text,audio,images. also explored in [imagenet](imagenet) and [audionet](audionet) separately <br>
 ✅ [ray](ray) - trying out ray for training, serve, data<br>
+✅ish [audionet](minimal/audionet) - AST, CLAP, whisper, neural codecs, audioLM, full duplex, diff <br>
+✅ [anadol](anadol) - retrain <br>
+✅ [fineweb-*](fine) more general intelligence chatting<br>
+✅ [gpuart.studio](minimal/audionet) - gpu art <br>
+🟡 [facemeshgpt](gideon) - facial meshing the obama paper <br>
+🟡 [gideon](gideon) - facial meshing, asmr video data <br>
+🟡 [voicechat-*](voicechat) - local encoding + rest streaming<br>
+⬜ [pysr]() - cranmer2023<br>
+⬜ [piml]() - fluid sims<br>
+🟡 [videos](minimal/audionet) - vivit <br>
+🟡 [llmos](minimal/audionet) - llmos <br>
+🟡 [codeisfree](minimal/audionet) -  <br>
 🟡 [arxivgpt-*](ray/arxiv) massive<br>
 - arxiv (100 GB per month) - arxiv-1.0, arxiv-2.6
 🟡 [openwebtext-*](ray/openwebtext/) - kilogpt-(1.0-2.6) larger transformers models vaswani2018<br>
@@ -57,6 +64,7 @@ projects:
 - vllm
 - CUDA graphs, spec decoding, prefix caching, paged attention <br>
 🟡 [moe]() - shazeer2017<br>
+🟡 [gpu lib]() - https://modal.com/gpu-glossary <br>
 🟡 [cnfs](minimal/cnfs) - cnf, wasserstein <br>
 🟡 [spark, flink, databricks]() - matei2016 (i took his cs162 class lolz)<br>
 🟡 [interpretability]() - grokking <br>
@@ -65,7 +73,6 @@ projects:
 🟡 [agents]() -  <br>
 🟡 [post-training]() - sft, rlhf <br>
 ⬜ [pixelcnn]() - oord2016 <br>
-⬜ [pysr]() - cranmer2023<br>
 ⬜ [gnome]() - <br>
 ⬜ [miniautopilot]() - <br>
 ⬜ fold - <br>
